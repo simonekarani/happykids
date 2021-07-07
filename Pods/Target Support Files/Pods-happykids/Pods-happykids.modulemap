@@ -1,0 +1,6 @@
+framework module Pods_happykids {
+  umbrella header "Pods-happykids-umbrella.h"
+
+  export *
+  module * { export * }
+}

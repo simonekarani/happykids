@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuotePastTableViewCell" rowHeight="98" id="Mfc-QM-Wsu" customClass="QuotePastTableViewCell" customModule="happykids" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="341" height="98"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mfc-QM-Wsu" id="MXA-jf-1w4">
+                <rect key="frame" x="0.0" y="0.0" width="341" height="98"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMu-Re-jiD">
+                        <rect key="frame" x="10" y="10" width="321" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nT6-Wr-Lab">
+                        <rect key="frame" x="10" y="41" width="321" height="47"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.97647058819999999" green="0.027450980390000001" blue="0.062745098040000002" alpha="0.16994863020000001" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="nT6-Wr-Lab" secondAttribute="trailing" constant="10" id="1yJ-b3-XCi"/>
+                    <constraint firstAttribute="trailing" secondItem="YMu-Re-jiD" secondAttribute="trailing" constant="10" id="7r8-sz-45v"/>
+                    <constraint firstItem="YMu-Re-jiD" firstAttribute="top" secondItem="MXA-jf-1w4" secondAttribute="top" constant="10" id="COE-zE-8iQ"/>
+                    <constraint firstItem="nT6-Wr-Lab" firstAttribute="leading" secondItem="MXA-jf-1w4" secondAttribute="leading" constant="10" id="GwS-Bl-ZQg"/>
+                    <constraint firstItem="nT6-Wr-Lab" firstAttribute="top" secondItem="YMu-Re-jiD" secondAttribute="bottom" constant="10" id="NHz-3Z-YLh"/>
+                    <constraint firstAttribute="bottom" secondItem="nT6-Wr-Lab" secondAttribute="bottom" constant="10" id="Ngj-0z-oDK"/>
+                    <constraint firstItem="YMu-Re-jiD" firstAttribute="leading" secondItem="MXA-jf-1w4" secondAttribute="leading" constant="10" id="XOf-05-Oih"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="TYT-9M-EA4"/>
+            <connections>
+                <outlet property="quoteDate" destination="YMu-Re-jiD" id="CND-s9-No1"/>
+                <outlet property="quoteMsg" destination="nT6-Wr-Lab" id="IUb-BA-ifE"/>
+            </connections>
+            <point key="canvasLocation" x="152.89855072463769" y="108.48214285714285"/>
+        </tableViewCell>
+    </objects>
+</document>
