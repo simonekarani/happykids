@@ -1,8 +1,8 @@
 //
-//  LetterListScreenController.swift
+//  AngryViewController.swift
 //  happykids
 //
-//  Created by Simone Karani on 2/15/21.
+//  Created by Simone Karani on 2/19/21.
 //  Copyright © 2021 Simone Karani. All rights reserved.
 //
 
@@ -11,29 +11,25 @@ import CoreData
 import Foundation
 import UIKit
 
-class LetterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AngryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+        
+    @IBOutlet weak var angryTableList: UITableView!
     
-    @IBOutlet weak var letterListTableView: UITableView!
-    
-    var editLetterRec: EsteemRecItem!
-    var letterRecCount: Int!
+    var editAngryRec: EsteemRecItem!
+    var angryRecCount: Int!
 
     var esteemItemArray = [EsteemRecItem]()
-    var letterItemArray = [EsteemRecItem]()
+    var angryItemArray = [EsteemRecItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 10.0, *) {
-        } else {
-        }
-        
         loadLetterRecords()
         setupTableView()
         
-        if letterItemArray.count == 0 {
-            editLetterRec = nil
-            performSegue(withIdentifier: "gotoFriendNote", sender: self)
+        if angryItemArray.count == 0 {
+            editAngryRec = nil
+            performSegue(withIdentifier: "gotoAngryNote", sender: self)
         }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -48,43 +44,42 @@ class LetterViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillAppear(_ animated: Bool) {
         loadLetterRecords()
         DispatchQueue.main.async {
-            self.letterListTableView.reloadData() }
+            self.angryTableList.reloadData() }
     }
     
     func setupTableView() {
-        letterListTableView.allowsSelection = true
-        letterListTableView.allowsSelectionDuringEditing = true
+        angryTableList.allowsSelection = true
+        angryTableList.allowsSelectionDuringEditing = true
         
-        letterListTableView.delegate = self
-        letterListTableView.dataSource = self
+        angryTableList.delegate = self
+        angryTableList.dataSource = self
         
         // Set automatic dimensions for row height
-        letterListTableView.rowHeight = UITableView.automaticDimension
-        letterListTableView.estimatedRowHeight = UITableView.automaticDimension
+        angryTableList.rowHeight = UITableView.automaticDimension
+        angryTableList.estimatedRowHeight = UITableView.automaticDimension
         
-        self.letterListTableView.register(UINib.init(nibName: "LetterRecTableViewCell", bundle: .main), forCellReuseIdentifier: "LetterRecTableViewCell")
+        self.angryTableList.register(UINib.init(nibName: "AngryRecTableViewCell", bundle: .main), forCellReuseIdentifier: "AngryRecTableViewCell")
         
-        letterListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        angryTableList.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     @IBAction func addTapped(_ sender: Any) {
-        editLetterRec = nil
-        performSegue(withIdentifier: "gotoFriendNote", sender: self)
+        editAngryRec = nil
+        performSegue(withIdentifier: "gotoAngryNote", sender: self)
     }
     
     func loadLetterRecords() {
         esteemItemArray.removeAll()
-        letterItemArray.removeAll()
+        angryItemArray.removeAll()
         let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
         
         if #available(iOS 10.0, *) {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            
             do {
                 esteemItemArray = try context.fetch(request)
                 for (_, element) in esteemItemArray.enumerated() {
-                    if element.esteemType == EsteemType.LETTER.description {
-                        letterItemArray.append(element)
+                    if element.esteemType == EsteemType.ANGRY.description {
+                        angryItemArray.append(element)
                     }
                 }
             } catch {
@@ -92,12 +87,11 @@ class LetterViewController: UIViewController, UITableViewDataSource, UITableView
             }
         } else {
             let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            
             do {
                 esteemItemArray = try context.fetch(request)
                 for (_, element) in esteemItemArray.enumerated() {
-                    if element.esteemType == EsteemType.LETTER.description {
-                        letterItemArray.append(element)
+                    if element.esteemType == EsteemType.ANGRY.description {
+                        angryItemArray.append(element)
                     }
                 }
             } catch {
@@ -111,29 +105,29 @@ class LetterViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: LetterRecTableViewCell = letterListTableView.dequeueReusableCell(withIdentifier: "LetterRecTableViewCell", for: indexPath) as! LetterRecTableViewCell
-        cell.configureCell(recItem: letterItemArray[indexPath.row], count: letterItemArray.count)
+        let cell: AngryRecTableViewCell = angryTableList.dequeueReusableCell(withIdentifier: "AngryRecTableViewCell", for: indexPath) as! AngryRecTableViewCell
+        cell.configureCell(recItem: angryItemArray[indexPath.row], count: angryItemArray.count)
         return cell
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if letterItemArray.count == 0 {
+        if angryItemArray.count == 0 {
             return []
         }
-        editLetterRec = getRecord(actionForRowAt: indexPath)!
+        editAngryRec = getRecord(actionForRowAt: indexPath)!
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.performSegue(withIdentifier:"gotoFriendNote", sender: self.letterListTableView.cellForRow(at: indexPath))
+            self.performSegue(withIdentifier:"gotoAngryNote", sender: self.angryTableList.cellForRow(at: indexPath))
         })
         editAction.backgroundColor = UIColor.blue
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             // Declare Alert message
-            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record \(self.editLetterRec.msgTitle!)?", preferredStyle: .alert)
+            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record \(self.editAngryRec.msgTitle!)?", preferredStyle: .alert)
             
             // Create OK button with action handler
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                 print("Ok button tapped")
-                self.deleteEsteemRecord(deleteActionForRowAt: indexPath, recitem: self.editLetterRec)
+                self.deleteEsteemRecord(deleteActionForRowAt: indexPath, recitem: self.editAngryRec)
             })
             
             // Create Cancel button with action handlder
@@ -153,11 +147,11 @@ class LetterViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if letterItemArray.count == 0 {
+        if angryItemArray.count == 0 {
             return
         }
-        self.editLetterRec = getRecord(actionForRowAt: indexPath)!
-        performSegue(withIdentifier: "gotoFriendNote", sender: self)
+        self.editAngryRec = getRecord(actionForRowAt: indexPath)!
+        performSegue(withIdentifier: "gotoAngryNote", sender: self)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -169,20 +163,20 @@ class LetterViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func getRecordCount() -> Int {
-        letterRecCount = letterItemArray.count
-        return letterRecCount
+        angryRecCount = angryItemArray.count
+        return angryRecCount
     }
     
     func getRecord(actionForRowAt indexPath: IndexPath) -> EsteemRecItem? {
-        return letterItemArray[indexPath.row]
+        return angryItemArray[indexPath.row]
     }
     
     func deleteEsteemRecord(deleteActionForRowAt indexPath: IndexPath, recitem: EsteemRecItem) {
         if (indexPath.section == 0) {
-            letterItemArray.remove(at: indexPath.row)
+            angryItemArray.remove(at: indexPath.row)
             deleteRecord(timeMillis: recitem.timeMillis)
             DispatchQueue.main.async {
-                self.letterListTableView.reloadData() }
+                self.angryTableList.reloadData() }
         }
     }
     
@@ -190,7 +184,6 @@ class LetterViewController: UIViewController, UITableViewDataSource, UITableView
         let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
         if #available(iOS 10.0, *) {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            
             do {
                 esteemItemArray = try context.fetch(request)
                 for (_, element) in esteemItemArray.enumerated() {
@@ -239,30 +232,30 @@ class LetterViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is LetterFriendViewController {
-            let vc = segue.destination as? LetterFriendViewController
+        if segue.destination is AngryNoteViewController {
+            let vc = segue.destination as? AngryNoteViewController
             if sender != nil {
-                vc?.editEsteemRec = self.editLetterRec
+                vc?.editEsteemRec = self.editAngryRec
                 vc?.esteemRecCount = self.getRecordCount()
             }
         }
     }
 }
 
-extension LetterViewController: GrowingCellProtocol {
+extension AngryViewController: GrowingCellProtocol {
     // Update height of UITextView based on string height
     func updateHeightOfRow(_ cell: RecDetailTableViewCell, _ textView: UITextView) {
         let size = textView.bounds.size
-        let newSize = letterListTableView.sizeThatFits(CGSize(width: size.width,
-                                                                 height: CGFloat.greatestFiniteMagnitude))
+        let newSize = angryTableList.sizeThatFits(CGSize(width: size.width,
+                                                              height: CGFloat.greatestFiniteMagnitude))
         if size.height != newSize.height {
             UIView.setAnimationsEnabled(false)
-            letterListTableView?.beginUpdates()
-            letterListTableView?.endUpdates()
+            angryTableList?.beginUpdates()
+            angryTableList?.endUpdates()
             UIView.setAnimationsEnabled(true)
             // Scoll up your textview if required
-            if let thisIndexPath = letterListTableView.indexPath(for: cell) {
-                letterListTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
+            if let thisIndexPath = angryTableList.indexPath(for: cell) {
+                angryTableList.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
             }
         }
     }

@@ -1,8 +1,8 @@
 //
-//  LetterFriendViewController.swift
+//  AngryNoteScreenController.swift
 //  happykids
 //
-//  Created by Simone Karani on 2/14/21.
+//  Created by Simone Karani on 2/19/21.
 //  Copyright © 2021 Simone Karani. All rights reserved.
 //
 
@@ -10,35 +10,34 @@ import Foundation
 import CoreData
 import UIKit
 
-class LetterFriendViewController: UIViewController {
+class AngryNoteViewController: UIViewController {
     
-    @IBOutlet weak var friendName: UITextField!
-    
-    @IBOutlet weak var friendLetter: UITextView!
+    @IBOutlet weak var angryTitle: UITextField!
+    @IBOutlet weak var angryNote: UITextView!
     
     var editEsteemRec: EsteemRecItem!
     var esteemRecCount: Int!
 
     var recItemArray = [String]()
     var recCreated = false
-    var recState: RecState = .NONE
-
+    var recState:RecState = .NONE
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         recCreated = false
-        friendName.isUserInteractionEnabled = true
-        friendLetter.isEditable = true
+        angryTitle.isUserInteractionEnabled = true
+        angryNote.isEditable = true
 
         if (editEsteemRec != nil) {
-            friendName.text = editEsteemRec.msgTitle!
-            friendLetter.text = editEsteemRec.message!
+            angryTitle.text = editEsteemRec.msgTitle!
+            angryNote.text = editEsteemRec.message!
             recState = .UPDATE
         } else {
             recState = .ADD
         }
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -49,14 +48,15 @@ class LetterFriendViewController: UIViewController {
                 updateRecord()
             }
         }
+        
         if (esteemRecCount == 0 && recCreated == false) {
             let controllersInNavigationCount = self.navigationController?.viewControllers.count
         self.navigationController?.popToViewController(self.navigationController?.viewControllers[controllersInNavigationCount!-2] as! EsteemMainViewController, animated: true)
         }
     }
-
+    
     func createRecord() {
-        if friendName.text == "" && friendLetter.text == "" {
+        if (angryTitle.text == "" && angryNote.text == "") {
             return
         }
         
@@ -64,22 +64,22 @@ class LetterFriendViewController: UIViewController {
         if #available(iOS 10.0, *) {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             let esteemRecItem = EsteemRecItem(context: context)
-            esteemRecItem.esteemType = EsteemType.LETTER.description
-            esteemRecItem.feelingType = EsteemFeelingType.HAPPY.description
+            esteemRecItem.esteemType = EsteemType.ANGRY.description
+            esteemRecItem.feelingType = EsteemFeelingType.ANGRY.description
             esteemRecItem.timeMillis = getCurrentMillis()
             esteemRecItem.date = Date().getFormattedDate(format: "MM/dd/yyyy")
-            esteemRecItem.msgTitle = friendName.text
-            esteemRecItem.message = friendLetter.text
+            esteemRecItem.msgTitle = angryTitle.text
+            esteemRecItem.message = angryNote.text
             saveContext()
         } else {
             let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
             let esteemRecItem = EsteemRecItem()
-            esteemRecItem.esteemType = EsteemType.LETTER.description
-            esteemRecItem.feelingType = EsteemFeelingType.HAPPY.description
+            esteemRecItem.esteemType = EsteemType.ANGRY.description
+            esteemRecItem.feelingType = EsteemFeelingType.ANGRY.description
             esteemRecItem.timeMillis = getCurrentMillis()
             esteemRecItem.date = Date().getFormattedDate(format: "MM/dd/yyyy")
-            esteemRecItem.msgTitle = friendName.text
-            esteemRecItem.message = friendLetter.text
+            esteemRecItem.msgTitle = angryTitle.text
+            esteemRecItem.message = angryNote.text
             saveContext()
         }
     }
@@ -94,8 +94,8 @@ class LetterFriendViewController: UIViewController {
                 var isFound: Bool = false
                 for (_, element) in esteemItemArray.enumerated() {
                     if (element.timeMillis == editEsteemRec.timeMillis) {
-                        element.msgTitle = friendName.text
-                        element.message = friendLetter.text
+                        element.msgTitle = angryTitle.text
+                        element.message = angryNote.text
                         saveContext()
                         isFound = true
                         return
@@ -114,8 +114,8 @@ class LetterFriendViewController: UIViewController {
                 var isFound: Bool = false
                 for (_, element) in esteemItemArray.enumerated() {
                     if (element.timeMillis == editEsteemRec.timeMillis) {
-                        element.msgTitle = friendName.text
-                        element.message = friendLetter.text
+                        element.msgTitle = angryTitle.text
+                        element.message = angryNote.text
                         saveContext()
                         isFound = true
                         return
@@ -129,7 +129,7 @@ class LetterFriendViewController: UIViewController {
             }
         }
     }
-
+    
     func saveContext() {
         if #available(iOS 10.0, *) {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -147,16 +147,8 @@ class LetterFriendViewController: UIViewController {
             }
         }
     }
-
+    
     func getCurrentMillis()->Int64{
         return  Int64(NSDate().timeIntervalSince1970 * 1000)
-    }
-}
-
-extension Date {
-    func string(format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: self)
     }
 }

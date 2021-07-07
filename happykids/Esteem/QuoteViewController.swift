@@ -15,7 +15,7 @@ class QuoteViewController: UIViewController {
     
     @IBOutlet weak var quoteDetail: UITextView!
     
-    let mQuoteData: MoralQuoteData = MoralQuoteData()
+    let mQuoteData: MoralQuotesData = MoralQuotesData()
     
     override func viewDidLoad() {
         super.viewDidLoad()

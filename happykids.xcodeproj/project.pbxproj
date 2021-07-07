@@ -35,6 +35,15 @@
 		2C827B682695A1000054F12C /* LetterRecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B662695A1000054F12C /* LetterRecTableViewCell.swift */; };
 		2C827B692695A1000054F12C /* LetterRecTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C827B672695A1000054F12C /* LetterRecTableViewCell.xib */; };
 		2C827B6B2695A6F10054F12C /* QuotePastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B6A2695A6F10054F12C /* QuotePastViewController.swift */; };
+		2C827B702695BD6F0054F12C /* FeelingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B6F2695BD6F0054F12C /* FeelingViewController.swift */; };
+		2C827B722695BDC30054F12C /* FeelingNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B712695BDC30054F12C /* FeelingNoteViewController.swift */; };
+		2C827B752695BEA60054F12C /* FeelingRecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B732695BEA60054F12C /* FeelingRecTableViewCell.swift */; };
+		2C827B762695BEA60054F12C /* FeelingRecTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C827B742695BEA60054F12C /* FeelingRecTableViewCell.xib */; };
+		2C827B782695C1160054F12C /* AngryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B772695C1160054F12C /* AngryViewController.swift */; };
+		2C827B7A2695C15C0054F12C /* AngryNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B792695C15C0054F12C /* AngryNoteViewController.swift */; };
+		2C827B7D2695C1D20054F12C /* AngryRecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B7B2695C1D20054F12C /* AngryRecTableViewCell.swift */; };
+		2C827B7E2695C1D20054F12C /* AngryRecTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C827B7C2695C1D20054F12C /* AngryRecTableViewCell.xib */; };
+		2C827B802695C8030054F12C /* AnxietyReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B7F2695C8030054F12C /* AnxietyReportViewController.swift */; };
 		2CCC147E26941CC90085FA05 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC147D26941CC90085FA05 /* MainViewController.swift */; };
 		2CCC148126941E630085FA05 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC147F26941E630085FA05 /* MainCollectionViewCell.swift */; };
 		2CCC148526941FF60085FA05 /* MoralQuotesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC148426941FF60085FA05 /* MoralQuotesData.swift */; };
@@ -106,6 +115,15 @@
 		2C827B662695A1000054F12C /* LetterRecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterRecTableViewCell.swift; sourceTree = "<group>"; };
 		2C827B672695A1000054F12C /* LetterRecTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LetterRecTableViewCell.xib; sourceTree = "<group>"; };
 		2C827B6A2695A6F10054F12C /* QuotePastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotePastViewController.swift; sourceTree = "<group>"; };
+		2C827B6F2695BD6F0054F12C /* FeelingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingViewController.swift; sourceTree = "<group>"; };
+		2C827B712695BDC30054F12C /* FeelingNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingNoteViewController.swift; sourceTree = "<group>"; };
+		2C827B732695BEA60054F12C /* FeelingRecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingRecTableViewCell.swift; sourceTree = "<group>"; };
+		2C827B742695BEA60054F12C /* FeelingRecTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeelingRecTableViewCell.xib; sourceTree = "<group>"; };
+		2C827B772695C1160054F12C /* AngryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngryViewController.swift; sourceTree = "<group>"; };
+		2C827B792695C15C0054F12C /* AngryNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngryNoteViewController.swift; sourceTree = "<group>"; };
+		2C827B7B2695C1D20054F12C /* AngryRecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngryRecTableViewCell.swift; sourceTree = "<group>"; };
+		2C827B7C2695C1D20054F12C /* AngryRecTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AngryRecTableViewCell.xib; sourceTree = "<group>"; };
+		2C827B7F2695C8030054F12C /* AnxietyReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnxietyReportViewController.swift; sourceTree = "<group>"; };
 		2CCC147D26941CC90085FA05 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2CCC147F26941E630085FA05 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		2CCC148426941FF60085FA05 /* MoralQuotesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoralQuotesData.swift; sourceTree = "<group>"; };
@@ -293,6 +311,15 @@
 				2C827B642695A0AA0054F12C /* LetterFriendViewController.swift */,
 				2C827B662695A1000054F12C /* LetterRecTableViewCell.swift */,
 				2C827B672695A1000054F12C /* LetterRecTableViewCell.xib */,
+				2C827B6F2695BD6F0054F12C /* FeelingViewController.swift */,
+				2C827B712695BDC30054F12C /* FeelingNoteViewController.swift */,
+				2C827B732695BEA60054F12C /* FeelingRecTableViewCell.swift */,
+				2C827B742695BEA60054F12C /* FeelingRecTableViewCell.xib */,
+				2C827B772695C1160054F12C /* AngryViewController.swift */,
+				2C827B792695C15C0054F12C /* AngryNoteViewController.swift */,
+				2C827B7B2695C1D20054F12C /* AngryRecTableViewCell.swift */,
+				2C827B7C2695C1D20054F12C /* AngryRecTableViewCell.xib */,
+				2C827B7F2695C8030054F12C /* AnxietyReportViewController.swift */,
 			);
 			path = Esteem;
 			sourceTree = "<group>";
@@ -418,8 +445,10 @@
 				2C827B692695A1000054F12C /* LetterRecTableViewCell.xib in Resources */,
 				2CCC149C26944C460085FA05 /* GoalsListTableViewCell.xib in Resources */,
 				2C827B4F269580990054F12C /* DailyTodoTableViewCell.xib in Resources */,
+				2C827B762695BEA60054F12C /* FeelingRecTableViewCell.xib in Resources */,
 				2C5138462693ADEE00D50B9E /* LaunchScreen.storyboard in Resources */,
 				2C5138432693ADEE00D50B9E /* Assets.xcassets in Resources */,
+				2C827B7E2695C1D20054F12C /* AngryRecTableViewCell.xib in Resources */,
 				2C827B6126959CDF0054F12C /* QuotePastTableViewCell.xib in Resources */,
 				2C827B5726958F550054F12C /* GoalPlanTableViewCell.xib in Resources */,
 				2C51383E2693ADEC00D50B9E /* Main.storyboard in Resources */,
@@ -557,18 +586,24 @@
 				2C827B6B2695A6F10054F12C /* QuotePastViewController.swift in Sources */,
 				2CCC149626944A2E0085FA05 /* GoalsNoteScreenController.swift in Sources */,
 				2C827B5D26959C710054F12C /* QuoteViewController.swift in Sources */,
+				2C827B782695C1160054F12C /* AngryViewController.swift in Sources */,
 				2C827B4A269572CC0054F12C /* RecDetailTableViewCell.swift in Sources */,
+				2C827B802695C8030054F12C /* AnxietyReportViewController.swift in Sources */,
 				2CCC148B2694208D0085FA05 /* EsteemFeelingType.swift in Sources */,
 				2CCC14892694206E0085FA05 /* EsteemType.swift in Sources */,
+				2C827B722695BDC30054F12C /* FeelingNoteViewController.swift in Sources */,
 				2C827B6026959CDF0054F12C /* QuotePastTableViewCell.swift in Sources */,
 				2C51383B2693ADEC00D50B9E /* ViewController.swift in Sources */,
 				2CCC148126941E630085FA05 /* MainCollectionViewCell.swift in Sources */,
 				2C827B5326958DD60054F12C /* GoalPlanViewController.swift in Sources */,
 				2CCC1494269441260085FA05 /* GoalsMainTableViewCell.swift in Sources */,
+				2C827B7A2695C15C0054F12C /* AngryNoteViewController.swift in Sources */,
 				2C827B4E269580990054F12C /* DailyTodoTableViewCell.swift in Sources */,
 				2CCC14922694409C0085FA05 /* GoalsMainViewController.swift in Sources */,
+				2C827B752695BEA60054F12C /* FeelingRecTableViewCell.swift in Sources */,
 				2C5138372693ADEC00D50B9E /* AppDelegate.swift in Sources */,
 				2C5138392693ADEC00D50B9E /* SceneDelegate.swift in Sources */,
+				2C827B702695BD6F0054F12C /* FeelingViewController.swift in Sources */,
 				2C5138412693ADEC00D50B9E /* happykids.xcdatamodeld in Sources */,
 				2CCC149B26944C460085FA05 /* GoalsListTableViewCell.swift in Sources */,
 				2CCC147E26941CC90085FA05 /* MainViewController.swift in Sources */,
@@ -578,6 +613,7 @@
 				2C827B59269596C80054F12C /* EsteemMainViewController.swift in Sources */,
 				2CCC149826944BE10085FA05 /* GoalsViewController.swift in Sources */,
 				2C827B47269570D80054F12C /* RecState.swift in Sources */,
+				2C827B7D2695C1D20054F12C /* AngryRecTableViewCell.swift in Sources */,
 				2C827B682695A1000054F12C /* LetterRecTableViewCell.swift in Sources */,
 				2C827B6326959EBA0054F12C /* LetterViewController.swift in Sources */,
 				2C827B5626958F550054F12C /* GoalPlanTableViewCell.swift in Sources */,
