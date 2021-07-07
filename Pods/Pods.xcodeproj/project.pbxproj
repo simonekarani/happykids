@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -257,15 +257,14 @@
 		1E2E8405E163A2B82AA158359F650B5A /* PageboyViewController+Transitioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PageboyViewController+Transitioning.swift"; path = "Sources/Pageboy/Transitioning/PageboyViewController+Transitioning.swift"; sourceTree = "<group>"; };
 		225ACD488316E1C49C8CC7B1169C15B9 /* GestureScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GestureScrollView.swift; path = Sources/Tabman/Bar/Generic/GestureScrollView.swift; sourceTree = "<group>"; };
 		23A64F024AE5091F038E3E702D8AEB8B /* TMLabelBarButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMLabelBarButton.swift; path = Sources/Tabman/Bar/BarButton/Types/TMLabelBarButton.swift; sourceTree = "<group>"; };
-		23D5CD291D18F2187712FE6F84B6F1C6 /* Pageboy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pageboy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		23D5CD291D18F2187712FE6F84B6F1C6 /* Pageboy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pageboy.framework; path = Pageboy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24616CAC08B64BEFA5AC1965475DF2C3 /* Pods-happykids-happykidsUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-happykids-happykidsUITests-frameworks.sh"; sourceTree = "<group>"; };
 		24F672F0604C4350ADD9F04FB9F1E975 /* AutoInsetter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AutoInsetter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		254B542F7C26F3566E793D3CD6D36BB0 /* UIKit+TMBarItemable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIKit+TMBarItemable.swift"; path = "Sources/Tabman/Bar/BarItem/UIKit+TMBarItemable.swift"; sourceTree = "<group>"; };
 		2639432DD02AAB6A641741ECD9AA4A38 /* Pageboy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Pageboy.h; path = Sources/Pageboy/Pageboy.h; sourceTree = "<group>"; };
 		29DB53AACBFFB9893731CEA1B20FB3C0 /* Pods-happykids-happykidsUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-happykids-happykidsUITests-umbrella.h"; sourceTree = "<group>"; };
-		2A992BEA49835E60FD668B59D768E9F9 /* Pods_happykids_happykidsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_happykids_happykidsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A992BEA49835E60FD668B59D768E9F9 /* Pods_happykids_happykidsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_happykids_happykidsUITests.framework; path = "Pods-happykids-happykidsUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C74691618B89F18AC6BA7B32609593B /* Pods-happykids-happykidsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-happykids-happykidsUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		2C827B6E2695AF450054F12C /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../../../../../.Trash/Podfile; sourceTree = "<group>"; };
 		2D0C7FCAB29B670E1D66E9852624371B /* TMBarLayoutParent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMBarLayoutParent.swift; path = Sources/Tabman/Bar/BarLayout/TMBarLayoutParent.swift; sourceTree = "<group>"; };
 		2E76DDFC2F033924D187A6DA69CDCC8B /* Pods-happykids-happykidsUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-happykids-happykidsUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2EEAE556451353ADFB2B59D6379D9824 /* uicheckbox_checked@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "uicheckbox_checked@2x.png"; path = "UICheckbox/Resources/uicheckbox_checked@2x.png"; sourceTree = "<group>"; };
@@ -291,18 +290,18 @@
 		47B9601DBE567E605ECA7F8288D1F83E /* AutoInsetter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AutoInsetter-prefix.pch"; sourceTree = "<group>"; };
 		49C8ACAAB0783EA2034EE09081E57A2F /* Pods-happykids-happykidsUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-happykids-happykidsUITests-dummy.m"; sourceTree = "<group>"; };
 		4BEAE4438D74D19097CB1C69CB8C6EA8 /* UICheckbox-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "UICheckbox-Info.plist"; sourceTree = "<group>"; };
-		4D4799138F8AC5FFF2497DCB60AF4CBB /* Tabman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tabman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D4799138F8AC5FFF2497DCB60AF4CBB /* Tabman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Tabman.framework; path = Tabman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED795CE6DB894088401CF1ED812F436 /* uicheckbox_checked.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = uicheckbox_checked.png; path = UICheckbox/Resources/uicheckbox_checked.png; sourceTree = "<group>"; };
 		4FE126C8691F700C26C791CBA66A8147 /* DropDown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DropDown.release.xcconfig; sourceTree = "<group>"; };
 		4FE34F49E3E864415297B69CDBAA81D2 /* PageboyViewController+AutoScrolling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PageboyViewController+AutoScrolling.swift"; path = "Sources/Pageboy/AutoScrolling/PageboyViewController+AutoScrolling.swift"; sourceTree = "<group>"; };
 		51E9635F31507D02CB3D496820BC59BF /* TMBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMBarItem.swift; path = Sources/Tabman/Bar/BarItem/TMBarItem.swift; sourceTree = "<group>"; };
 		526AD8D985D575C8AC2F4657855BA7FF /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DPDUIView+Extension.swift"; path = "DropDown/helpers/DPDUIView+Extension.swift"; sourceTree = "<group>"; };
 		532A6CC637B1EB7A068098394BFBD0DB /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+AutoLayout.swift"; path = "Sources/Pageboy/Utilities/Extensions/UIView+AutoLayout.swift"; sourceTree = "<group>"; };
-		55888C5C1FA4856FD1856B3F6BBE7234 /* UICheckbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICheckbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55888C5C1FA4856FD1856B3F6BBE7234 /* UICheckbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UICheckbox.framework; path = UICheckbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D9C359727B59E16B79C1B3F909E850 /* TMBadgeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMBadgeView.swift; path = Sources/Tabman/Bar/BarButton/Badge/TMBadgeView.swift; sourceTree = "<group>"; };
 		57D7600A6B1403C862185EFFB15767C2 /* TMBarViewFocusRect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMBarViewFocusRect.swift; path = Sources/Tabman/Bar/BarView/TMBarViewFocusRect.swift; sourceTree = "<group>"; };
 		5907DF94A23834436BB0E08714504098 /* Pods-happykidsTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-happykidsTests-dummy.m"; sourceTree = "<group>"; };
-		59B9F3F12C3189009C4CB14279AAE1FB /* Pods_happykidsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_happykidsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59B9F3F12C3189009C4CB14279AAE1FB /* Pods_happykidsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_happykidsTests.framework; path = "Pods-happykidsTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A35C3CEA52875E4FEA3D8B28E74017E /* TMBarIndicatorLayoutHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMBarIndicatorLayoutHandler.swift; path = Sources/Tabman/Bar/BarIndicator/TMBarIndicatorLayoutHandler.swift; sourceTree = "<group>"; };
 		5A50235F597D861F12125DAD431C80D9 /* Tabman.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Tabman.release.xcconfig; sourceTree = "<group>"; };
 		5C2D9C6ED6518289AD613DAC24C43D61 /* TMBarButtonInteractionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMBarButtonInteractionController.swift; path = Sources/Tabman/Bar/BarButton/TMBarButtonInteractionController.swift; sourceTree = "<group>"; };
@@ -333,7 +332,7 @@
 		7FB486F05E84964FE4FAA4D96F21DDB2 /* TMConstrainedHorizontalBarLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMConstrainedHorizontalBarLayout.swift; path = Sources/Tabman/Bar/BarLayout/Types/TMConstrainedHorizontalBarLayout.swift; sourceTree = "<group>"; };
 		818F8AE75CD68FFD66A3D5F4C696CD4C /* PageboyViewControllerDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageboyViewControllerDataSource.swift; path = Sources/Pageboy/Protocols/PageboyViewControllerDataSource.swift; sourceTree = "<group>"; };
 		81FAB824D54F16031440B0BA51DA2461 /* TMBarButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMBarButton.swift; path = Sources/Tabman/Bar/BarButton/TMBarButton.swift; sourceTree = "<group>"; };
-		82C29160EE069D1549FC17D56E18FDB5 /* Pods_happykids.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_happykids.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82C29160EE069D1549FC17D56E18FDB5 /* Pods_happykids.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_happykids.framework; path = "Pods-happykids.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8360392F6A7BC5715483DCBBCB50D9A8 /* TMBarViewLayoutGrid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMBarViewLayoutGrid.swift; path = Sources/Tabman/Bar/BarView/TMBarViewLayoutGrid.swift; sourceTree = "<group>"; };
 		84D6167D04523556470ECF51286C5116 /* EdgeFadedView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EdgeFadedView.swift; path = Sources/Tabman/Bar/Generic/EdgeFadedView.swift; sourceTree = "<group>"; };
 		87B8CCF3A9A27DF011D28FB6AD90F4C5 /* Pods-happykids-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-happykids-dummy.m"; sourceTree = "<group>"; };
@@ -350,9 +349,10 @@
 		98D8CFD2FF8F47D900EAD505BA0FED37 /* Pods-happykidsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-happykidsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		99C50581F1F5DD8C28E897D7877FAE15 /* PageboyViewControllerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageboyViewControllerDelegate.swift; path = Sources/Pageboy/Protocols/PageboyViewControllerDelegate.swift; sourceTree = "<group>"; };
 		9A87BDCC8D0ABC4500128B31098FBE23 /* PageboyViewController+Updating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PageboyViewController+Updating.swift"; path = "Sources/Pageboy/PageboyViewController+Updating.swift"; sourceTree = "<group>"; };
-		9B6725B782188F18CB76A740433F14E4 /* DropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B6725B782188F18CB76A740433F14E4 /* DropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DropDown.framework; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE1ADE587CFAD4DB0126F3948090972 /* TabmanViewController+Insets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanViewController+Insets.swift"; path = "Sources/Tabman/TabmanViewController+Insets.swift"; sourceTree = "<group>"; };
 		9D4915DDAAE12207AD76E247EC990292 /* AutoInset.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AutoInset.h; path = Sources/AutoInsetter/AutoInset.h; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9ED4EAC80E0866454AC2E879AE1390E2 /* AnimateableLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimateableLabel.swift; path = Sources/Tabman/Bar/Generic/AnimateableLabel.swift; sourceTree = "<group>"; };
 		A2C7D94F5139F9FEB91CF6D05DF450A7 /* Pods-happykidsTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-happykidsTests.modulemap"; sourceTree = "<group>"; };
 		A2C9DA8FE18D4DAF40F476880F603785 /* AutoInsetter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AutoInsetter-umbrella.h"; sourceTree = "<group>"; };
@@ -402,7 +402,7 @@
 		F06C83DFBEEFD0332124A7EF6F47BEE2 /* Logger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Sources/AutoInsetter/Utilities/Logger.swift; sourceTree = "<group>"; };
 		F09A272AF7670FC58C5A898526D3BAC3 /* TMBarButtonController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMBarButtonController.swift; path = Sources/Tabman/Bar/BarButton/TMBarButtonController.swift; sourceTree = "<group>"; };
 		F177BD386CAC9B09CE5AF7854035BA1A /* UICheckbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICheckbox.debug.xcconfig; sourceTree = "<group>"; };
-		F253780933E62F63036BDD7B80F26C29 /* AutoInsetter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AutoInsetter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F253780933E62F63036BDD7B80F26C29 /* AutoInsetter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AutoInsetter.framework; path = AutoInsetter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3CC9E3CF72A465884294F41E275A55C /* UICheckbox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICheckbox.release.xcconfig; sourceTree = "<group>"; };
 		F6D5F91AB992636360598637B6338E2E /* Tabman-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Tabman-Info.plist"; sourceTree = "<group>"; };
 		F75EA63B5C8AF2BB605CC67468595615 /* DropDown-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DropDown-Info.plist"; sourceTree = "<group>"; };
@@ -528,6 +528,7 @@
 				1771A139A8D1F3FC420B988F4CC2FD02 /* Resources */,
 				D17EE16865547DEECDB7D73E140EF258 /* Support Files */,
 			);
+			name = DropDown;
 			path = DropDown;
 			sourceTree = "<group>";
 		};
@@ -616,6 +617,7 @@
 				4127A55C958912BF4A4C98F99EDDCBFA /* WeakContainer.swift */,
 				C95FD4D7CFF98E8C3E73D62D96957D4E /* Support Files */,
 			);
+			name = Pageboy;
 			path = Pageboy;
 			sourceTree = "<group>";
 		};
@@ -657,6 +659,7 @@
 				C96D2FD1E1C463ECF80456EFDA5B1B7A /* Resources */,
 				74CF3AF556ADF40D0002AFDB9BDE350F /* Support Files */,
 			);
+			name = UICheckbox;
 			path = UICheckbox;
 			sourceTree = "<group>";
 		};
@@ -728,6 +731,7 @@
 				D90C61AE66E6BB0807AB3269658DC015 /* WeakContainer.swift */,
 				77E0A9CBF09259D22A649A9DADFDE306 /* Support Files */,
 			);
+			name = Tabman;
 			path = Tabman;
 			sourceTree = "<group>";
 		};
@@ -760,7 +764,7 @@
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
-				2C827B6E2695AF450054F12C /* Podfile */,
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				E89B9C35E8A46213DC7F3002792C5F0E /* Frameworks */,
 				02EC16F360FC761B1C61217A45FC9D73 /* Pods */,
 				65D16BC10703896BE898FBA287546D15 /* Products */,
@@ -837,6 +841,7 @@
 				8EBD68144B6387A49B1EA0011C27C187 /* UIViewController+ScrollViewDetection.swift */,
 				25B67CED383712B021C9AE6D9D182E20 /* Support Files */,
 			);
+			name = AutoInsetter;
 			path = AutoInsetter;
 			sourceTree = "<group>";
 		};
@@ -1081,7 +1086,7 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
