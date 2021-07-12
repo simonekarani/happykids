@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AfternoonRecItem" representedClassName="AfternoonRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="dateStr" optional="YES" attributeType="String"/>
+        <attribute name="estTimeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="routine" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="DailyPlanRecItem" representedClassName="DailyPlanRecItem" syncable="YES" codeGenerationType="class">
         <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="endDate" optional="YES" attributeType="String"/>
@@ -58,11 +65,12 @@
     <elements>
         <element name="DailyPlanRecItem" positionX="-63" positionY="18" width="128" height="104"/>
         <element name="EsteemRecItem" positionX="-18" positionY="90" width="128" height="119"/>
+        <element name="EveningRecItem" positionX="-36" positionY="81" width="128" height="104"/>
         <element name="GoalPlanRecItem" positionX="-54" positionY="45" width="128" height="134"/>
         <element name="GoalsRecItem" positionX="-63" positionY="-18" width="128" height="104"/>
         <element name="MorningRecItem" positionX="-27" positionY="90" width="128" height="104"/>
         <element name="MyDayRecItem" positionX="-36" positionY="81" width="128" height="74"/>
         <element name="QuoteRecItem" positionX="-36" positionY="81" width="128" height="74"/>
-        <element name="EveningRecItem" positionX="-36" positionY="81" width="128" height="104"/>
+        <element name="AfternoonRecItem" positionX="-36" positionY="81" width="128" height="104"/>
     </elements>
 </model>

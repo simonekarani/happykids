@@ -65,6 +65,7 @@
 		2CCC149826944BE10085FA05 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC149726944BE10085FA05 /* GoalsViewController.swift */; };
 		2CCC149B26944C460085FA05 /* GoalsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC149926944C460085FA05 /* GoalsListTableViewCell.swift */; };
 		2CCC149C26944C460085FA05 /* GoalsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCC149A26944C460085FA05 /* GoalsListTableViewCell.xib */; };
+		2CDDA131269C245D001F22B1 /* AfternoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDDA130269C245D001F22B1 /* AfternoonViewController.swift */; };
 		2CF7F428269AC30600090A87 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7F427269AC30600090A87 /* ButtonWithImage.swift */; };
 		2CF7F42B269ACBAB00090A87 /* DidIDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7F429269ACBAB00090A87 /* DidIDoTableViewCell.swift */; };
 		2CF7F42E269BDAB900090A87 /* MorningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7F42D269BDAB900090A87 /* MorningViewController.swift */; };
@@ -157,6 +158,7 @@
 		2CCC149726944BE10085FA05 /* GoalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
 		2CCC149926944C460085FA05 /* GoalsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsListTableViewCell.swift; sourceTree = "<group>"; };
 		2CCC149A26944C460085FA05 /* GoalsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalsListTableViewCell.xib; sourceTree = "<group>"; };
+		2CDDA130269C245D001F22B1 /* AfternoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfternoonViewController.swift; sourceTree = "<group>"; };
 		2CF7F427269AC30600090A87 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
 		2CF7F429269ACBAB00090A87 /* DidIDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidIDoTableViewCell.swift; sourceTree = "<group>"; };
 		2CF7F42D269BDAB900090A87 /* MorningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				2CF7F429269ACBAB00090A87 /* DidIDoTableViewCell.swift */,
 				2CF7F42D269BDAB900090A87 /* MorningViewController.swift */,
 				2CFE8839269C1CB200C64EA7 /* EveningViewController.swift */,
+				2CDDA130269C245D001F22B1 /* AfternoonViewController.swift */,
 			);
 			path = MyHygiene;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				2CCC148126941E630085FA05 /* MainCollectionViewCell.swift in Sources */,
 				2C827B5326958DD60054F12C /* GoalPlanViewController.swift in Sources */,
 				2CCC1494269441260085FA05 /* GoalsMainTableViewCell.swift in Sources */,
+				2CDDA131269C245D001F22B1 /* AfternoonViewController.swift in Sources */,
 				2C827B7A2695C15C0054F12C /* AngryNoteViewController.swift in Sources */,
 				2C0319DB2696F52D0022FBA0 /* ProgramMainViewController.swift in Sources */,
 				2C0319E12698023E0022FBA0 /* HealthTipsMainViewController.swift in Sources */,

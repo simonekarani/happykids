@@ -1109,6 +1109,7 @@
                         <segue destination="Kgp-xU-21j" kind="show" identifier="gotoDidIDo" id="Bf3-dF-dof"/>
                         <segue destination="4hH-i6-qs6" kind="show" identifier="gotoMorningRoutine" id="DFB-kB-2ia"/>
                         <segue destination="rZG-vy-4V3" kind="show" identifier="gotoEveningRoutine" id="0R4-6G-36y"/>
+                        <segue destination="AFD-FC-9W5" kind="show" identifier="gotoAfternoonRoutine" id="4KS-Xs-ofJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6D-tV-Wrw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1734,6 +1735,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INy-ee-qCP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="318.84057971014494" y="1438.3928571428571"/>
+        </scene>
+        <!--Afternoon Routine-->
+        <scene sceneID="oaj-B8-VHd">
+            <objects>
+                <viewController id="AFD-FC-9W5" customClass="AfternoonViewController" customModule="happykids" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oqZ-J5-kpx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fmO-dx-ayD">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gFg-Jw-kqP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fmO-dx-ayD" firstAttribute="leading" secondItem="gFg-Jw-kqP" secondAttribute="leading" id="AC9-6m-zgD"/>
+                            <constraint firstItem="fmO-dx-ayD" firstAttribute="trailing" secondItem="gFg-Jw-kqP" secondAttribute="trailing" id="Tbs-9k-Kh6"/>
+                            <constraint firstAttribute="bottom" secondItem="fmO-dx-ayD" secondAttribute="bottom" id="jDe-MP-drq"/>
+                            <constraint firstItem="fmO-dx-ayD" firstAttribute="top" secondItem="gFg-Jw-kqP" secondAttribute="top" id="tl4-yq-AJT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Afternoon Routine" id="g4O-iu-New"/>
+                    <connections>
+                        <outlet property="afternoonTableView" destination="fmO-dx-ayD" id="SRw-8Z-uSK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="meI-Ba-T0E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1008.6956521739131" y="1269.6428571428571"/>
         </scene>
     </scenes>
     <designables>
