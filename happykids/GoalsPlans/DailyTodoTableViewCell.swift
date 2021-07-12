@@ -16,11 +16,13 @@ class DailyTodoTableViewCell: UITableViewCell {
     var planRecType: Int = 0
     var planRecItem:DailyPlanRecItem!
     var goalPlanRecItem:GoalPlanRecItem!
+    var morningRecItem:MorningRecItem!
+    var eveningRecItem:EveningRecItem!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        todoBtn.setImage(UIImage(named:"Checkmarkempty"), for: .normal)
-        todoBtn.setImage(UIImage(named:"Checkmark"), for: .selected)
+        todoBtn.setImage(UIImage(named:"checkempty"), for: .normal)
+        todoBtn.setImage(UIImage(named:"checkmark"), for: .selected)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -57,6 +59,34 @@ class DailyTodoTableViewCell: UITableViewCell {
         setupCellDetails()
     }
     
+    func configureCell(recItem: MorningRecItem) {
+        planRecType = 4
+        todoTask.text = recItem.routine!
+        if recItem.completed {
+            todoBtn.isSelected = true
+        } else {
+            todoBtn.isSelected = false
+        }
+        todoBtn.transform = .identity
+        morningRecItem = recItem
+        
+        setupCellDetails()
+    }
+    
+    func configureCell(recItem: EveningRecItem) {
+        planRecType = 5
+        todoTask.text = recItem.routine!
+        if recItem.completed {
+            todoBtn.isSelected = true
+        } else {
+            todoBtn.isSelected = false
+        }
+        todoBtn.transform = .identity
+        eveningRecItem = recItem
+        
+        setupCellDetails()
+    }
+    
     func setupCellDetails() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
@@ -67,8 +97,12 @@ class DailyTodoTableViewCell: UITableViewCell {
     @IBAction func todoSelected(_ sender: UIButton) {
         if planRecType == 1 {
             planRecItem.completed = !sender.isSelected
-        } else {
+        } else if planRecType == 3 {
             goalPlanRecItem.completed = !sender.isSelected
+        } else if planRecType == 4 {
+            morningRecItem.completed = !sender.isSelected
+        } else {
+            eveningRecItem.completed = !sender.isSelected
         }
         UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
             sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)

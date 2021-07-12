@@ -10,12 +10,14 @@ import UIKit
 
 class MainViewController: UICollectionViewController {
 
-    let frontLabelArray = ["Self-Esteem", "Goals & Plans",
-                           "Daily Activities",  "Resources"]
+    let frontLabelArray = ["Health Program", "Self-Esteem", "Health Tips",
+                           "Goals & Plans", "My Hygiene",  "Resources"]
     let frontImageArray = [
+        UIImage(named: "kidsprogram"),
         UIImage(named: "esteem"),
+        UIImage(named: "dailytips"),
         UIImage(named: "goals"),
-        UIImage(named: "plan"),
+        UIImage(named: "myhygiene"),
         UIImage(named: "resource")
     ]
     var tablefontSize: Int = 22
@@ -59,15 +61,21 @@ class MainViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            performSegue(withIdentifier: "gotoEsteem", sender: self)
+            performSegue(withIdentifier: "gotoProgram", sender: self)
             
         case 1:
-            performSegue(withIdentifier: "gotoGoalsPlans", sender: self)
+            performSegue(withIdentifier: "gotoEsteem", sender: self)
             
         case 2:
-            performSegue(withIdentifier: "gotoPlan", sender: self)
+            performSegue(withIdentifier: "gotoHealthTips", sender: self)
             
         case 3:
+            performSegue(withIdentifier: "gotoGoalsPlans", sender: self)
+            
+        case 4:
+            performSegue(withIdentifier: "gotoHygiene", sender: self)
+            
+        case 5:
             performSegue(withIdentifier: "gotoResources", sender: self)
             
         default:

@@ -15,6 +15,13 @@
         <attribute name="msgTitle" optional="YES" attributeType="String"/>
         <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="EveningRecItem" representedClassName="EveningRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="dateStr" optional="YES" attributeType="String"/>
+        <attribute name="estTimeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="routine" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="GoalPlanRecItem" representedClassName="GoalPlanRecItem" syncable="YES" codeGenerationType="class">
         <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="endDate" optional="YES" attributeType="String"/>
@@ -31,6 +38,18 @@
         <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="MorningRecItem" representedClassName="MorningRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="dateStr" optional="YES" attributeType="String"/>
+        <attribute name="estTimeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="routine" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="MyDayRecItem" representedClassName="MyDayRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="dayDate" optional="YES" attributeType="String"/>
+        <attribute name="howStatus" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="QuoteRecItem" representedClassName="QuoteRecItem" syncable="YES" codeGenerationType="class">
         <attribute name="quoteAuthor" optional="YES" attributeType="String"/>
         <attribute name="quoteDate" optional="YES" attributeType="String"/>
@@ -38,9 +57,12 @@
     </entity>
     <elements>
         <element name="DailyPlanRecItem" positionX="-63" positionY="18" width="128" height="104"/>
+        <element name="EsteemRecItem" positionX="-18" positionY="90" width="128" height="119"/>
         <element name="GoalPlanRecItem" positionX="-54" positionY="45" width="128" height="134"/>
         <element name="GoalsRecItem" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="MorningRecItem" positionX="-27" positionY="90" width="128" height="104"/>
+        <element name="MyDayRecItem" positionX="-36" positionY="81" width="128" height="74"/>
         <element name="QuoteRecItem" positionX="-36" positionY="81" width="128" height="74"/>
-        <element name="EsteemRecItem" positionX="-18" positionY="90" width="128" height="119"/>
+        <element name="EveningRecItem" positionX="-36" positionY="81" width="128" height="104"/>
     </elements>
 </model>
