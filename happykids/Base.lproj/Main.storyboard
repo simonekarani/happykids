@@ -1128,58 +1128,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b41-Zc-Foi">
                                 <rect key="frame" x="0.0" y="128" width="414" height="768"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mydayCell" rowHeight="73" id="Jse-yt-obS" customClass="DidIDoTableViewCell" customModule="happykids" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="73"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jse-yt-obS" id="tzH-eU-Qed">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="73"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pNW-vS-oyW">
-                                                    <rect key="frame" x="75" y="5" width="70" height="63"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="70" id="2fM-Va-FUk"/>
-                                                        <constraint firstAttribute="width" constant="70" id="Gpx-qt-SCr"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TDu-oq-68X">
-                                                    <rect key="frame" x="155" y="16" width="249" height="41"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Kf-JD-NHq">
-                                                    <rect key="frame" x="30" y="21.5" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="UOT-g1-nW2"/>
-                                                        <constraint firstAttribute="height" constant="30" id="thE-8Q-8Sc"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <action selector="checkBtnSelected:" destination="Jse-yt-obS" eventType="touchUpInside" id="kC7-l4-8Lr"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="pNW-vS-oyW" firstAttribute="top" secondItem="tzH-eU-Qed" secondAttribute="top" constant="5" id="1JX-iP-SOk"/>
-                                                <constraint firstAttribute="bottom" secondItem="pNW-vS-oyW" secondAttribute="bottom" constant="5" id="2gP-Ba-4T7"/>
-                                                <constraint firstItem="TDu-oq-68X" firstAttribute="leading" secondItem="pNW-vS-oyW" secondAttribute="trailing" constant="10" id="HJ2-uj-8oa"/>
-                                                <constraint firstItem="TDu-oq-68X" firstAttribute="top" secondItem="tzH-eU-Qed" secondAttribute="topMargin" constant="5" id="Jgh-wS-o71"/>
-                                                <constraint firstItem="pNW-vS-oyW" firstAttribute="centerY" secondItem="tzH-eU-Qed" secondAttribute="centerY" id="UTw-M2-NGY"/>
-                                                <constraint firstItem="6Kf-JD-NHq" firstAttribute="leading" secondItem="tzH-eU-Qed" secondAttribute="leadingMargin" constant="10" id="Vug-Dr-ZNF"/>
-                                                <constraint firstAttribute="trailing" secondItem="TDu-oq-68X" secondAttribute="trailing" constant="10" id="XHo-4M-Db0"/>
-                                                <constraint firstItem="pNW-vS-oyW" firstAttribute="leading" secondItem="6Kf-JD-NHq" secondAttribute="trailing" constant="15" id="cH0-TE-HaG"/>
-                                                <constraint firstItem="6Kf-JD-NHq" firstAttribute="centerY" secondItem="tzH-eU-Qed" secondAttribute="centerY" id="ffG-ge-qIO"/>
-                                                <constraint firstItem="TDu-oq-68X" firstAttribute="centerY" secondItem="tzH-eU-Qed" secondAttribute="centerY" id="hft-Up-46R"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="checkBtn" destination="6Kf-JD-NHq" id="69T-Y4-Dgi"/>
-                                            <outlet property="didImg" destination="pNW-vS-oyW" id="Ax6-LP-AM6"/>
-                                            <outlet property="didText" destination="TDu-oq-68X" id="Qb2-3c-X5u"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select one of the options for the Day?" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bgM-P8-t9I">
                                 <rect key="frame" x="5" y="93" width="404" height="30"/>

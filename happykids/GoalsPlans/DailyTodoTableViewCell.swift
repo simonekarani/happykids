@@ -113,6 +113,15 @@ class DailyTodoTableViewCell: UITableViewCell {
         setupCellDetails()
     }
     
+    func configureCell(cellText: String, cellImg:UIImage) {
+        planRecType = 8
+        todoTask.text = cellText
+        todoBtn.isSelected = true
+        todoBtn.transform = .identity
+
+        setupCellDetails()
+    }
+
     func setupCellDetails() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2

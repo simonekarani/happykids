@@ -79,6 +79,12 @@ class MyDayViewController: UIViewController {
         dayViewTblView.delegate = self
         dayViewTblView.dataSource = self
         
+        // Set automatic dimensions for row height
+        dayViewTblView.rowHeight = UITableView.automaticDimension
+        dayViewTblView.estimatedRowHeight = UITableView.automaticDimension
+        
+        self.dayViewTblView.register(UINib.init(nibName: "DidIDoTableViewCell", bundle: .main), forCellReuseIdentifier: "DidIDoTableViewCell")
+
         dayViewTblView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
     }
     
@@ -108,7 +114,7 @@ extension MyDayViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -122,6 +128,15 @@ extension MyDayViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        resetAllRows()
+        let cell:DidIDoTableViewCell = dayViewTblView.cellForRow(at: IndexPath(row: indexPath.row, section: indexPath.section)) as! DidIDoTableViewCell
+        cell.checkBtn.isSelected = true
+        cell.isCheckSelected = true
+        howMyDayIndex = indexPath.row
+        updateMyDayStatus(rowIdx: indexPath.row)
+    }
+    
+    func updateMyDayStatus(rowIdx: Int) {
         let dStr: String = Date().getFormattedDate(format: "MM/dd/yyyy")
         var updtItemArray = [MyDayRecItem]()
         let request: NSFetchRequest<MyDayRecItem> = MyDayRecItem.fetchRequest()
@@ -137,7 +152,7 @@ extension MyDayViewController: UITableViewDelegate {
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
                 if element.dayDate == dStr {
-                    element.howStatus = dayLabelArray[indexPath.row]
+                    element.howStatus = dayLabelArray[rowIdx]
                     isFound = true
                 }
             }
@@ -147,13 +162,13 @@ extension MyDayViewController: UITableViewDelegate {
                     let plansRecItem = MyDayRecItem(context: context)
                     plansRecItem.timeMillis = getCurrentMillis()
                     plansRecItem.dayDate = Date().getFormattedDate(format: "MM/dd/yyyy")
-                    plansRecItem.howStatus = dayLabelArray[indexPath.row]
+                    plansRecItem.howStatus = dayLabelArray[rowIdx]
                 } else {
                     _ = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
                     let plansRecItem = MyDayRecItem()
                     plansRecItem.timeMillis = getCurrentMillis()
                     plansRecItem.dayDate = Date().getFormattedDate(format: "MM/dd/yyyy")
-                    plansRecItem.howStatus = dayLabelArray[indexPath.row]
+                    plansRecItem.howStatus = dayLabelArray[rowIdx]
                 }
             }
         } catch {
@@ -202,27 +217,33 @@ extension MyDayViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "mydayCell", for: indexPath as IndexPath) as! DidIDoTableViewCell
-        cell.configureCell(cellText: self.dayLabelArray[indexPath .row], cellImg: self.dayImageArray[indexPath .row]!)
-        //cell.todoBtn.addTarget(self, action: #selector(DailyPlanViewController.onClickedMapButton(_:)), for: .touchUpInside)
-        // Set up cell
+        
+        let cell:DidIDoTableViewCell = dayViewTblView.dequeueReusableCell(withIdentifier: "DidIDoTableViewCell", for: indexPath as IndexPath) as! DidIDoTableViewCell
+        if indexPath.row == howMyDayIndex {
+            cell.configureCell(cellText: self.dayLabelArray[indexPath .row], cellImg: self.dayImageArray[indexPath .row]!, cellSelected: true)
+        } else {
+            cell.configureCell(cellText: self.dayLabelArray[indexPath .row], cellImg: self.dayImageArray[indexPath .row]!, cellSelected: false)
+        }
+        
         cell.delegate = self
-
         return cell
     }
 }
 
 extension MyDayViewController: MyDayTableViewCellDelegate {
     func toggleCheckmark(for cell: DidIDoTableViewCell) {
+        resetAllRows()
+    }
+    
+    func resetAllRows() {
         let totalSection = dayViewTblView.numberOfSections
         for section in 0..<totalSection {
             let totalRows = dayViewTblView.numberOfRows(inSection: section)
 
             for row in 0..<totalRows {
                 let cell:DidIDoTableViewCell = dayViewTblView.cellForRow(at: IndexPath(row: row, section: section)) as! DidIDoTableViewCell
-                if cell.isCheckSelected! == false {
-                    cell.checkBtn.isSelected = false
-                }
+                cell.checkBtn.isSelected = false
+                cell.isCheckSelected = false
             }
         }
     }
@@ -234,14 +255,11 @@ extension MyDayViewController: MyDayTableViewCellDelegate {
 
             for row in 0..<totalRows {
                 let cell:DidIDoTableViewCell = dayViewTblView.cellForRow(at: IndexPath(row: row, section: section)) as! DidIDoTableViewCell
-                if cell.isCheckSelected! {
+                if cell.isCheckSelected == true {
                     howMyDayIndex = row
                 }
             }
         }
-        loadMyDayRecords()
-        DispatchQueue.main.async {
-            self.dayViewTblView.reloadData()
-        }
+        updateMyDayStatus(rowIdx: howMyDayIndex)
     }
 }

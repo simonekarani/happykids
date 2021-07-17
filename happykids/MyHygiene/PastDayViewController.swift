@@ -104,7 +104,7 @@ class PastDayViewController: UIViewController, UITableViewDataSource, UITableVie
         if (descendingIdx < 0) {
             descendingIdx = 0
         }
-        cell.configureCell(recItem: myDayItemArray[indexPath.row])
+        cell.configureCell(recItem: myDayItemArray[descendingIdx])
         return cell
     }
     

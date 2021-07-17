@@ -10,8 +10,8 @@ import UIKit
 class DidIDoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var checkBtn: UIButton!
+    @IBOutlet weak var didText: UILabel!
     @IBOutlet weak var didImg: UIImageView!
-    @IBOutlet weak var didText: UITextField!
     
     var isCheckSelected:Bool? = false
     
@@ -22,15 +22,14 @@ class DidIDoTableViewCell: UITableViewCell {
         super.awakeFromNib()
         checkBtn.setImage(UIImage(named:"checkempty"), for: .normal)
         checkBtn.setImage(UIImage(named:"checkmark"), for: .selected)
-        setupCellDetails()
     }
     
-    func configureCell(cellText: String, cellImg:UIImage) {
+    func configureCell(cellText: String, cellImg: UIImage, cellSelected: Bool) {
         didText.text = cellText
         didImg.image = cellImg
-        checkBtn.isSelected = false
+        checkBtn.isSelected = cellSelected
         checkBtn.transform = .identity
-        isCheckSelected = false
+        isCheckSelected = cellSelected
 
         setupCellDetails()
     }
@@ -47,20 +46,20 @@ class DidIDoTableViewCell: UITableViewCell {
     }
     
     @IBAction func checkBtnSelected(_ sender: UIButton) {
-        checkBtn.isSelected = false
-        checkBtn.transform = .identity
-        isCheckSelected = true
+        checkBtn.isSelected = true
         delegate?.toggleCheckmark(for: self)
-        delegate?.updateTableView()
+        isCheckSelected = true
 
         UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
             sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             
         }) { (success) in
             UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-                sender.isSelected = !sender.isSelected
+                sender.isSelected = sender.isSelected
                 sender.transform = .identity
             }, completion: nil)
         }
+
+        delegate?.updateTableView()
     }
 }

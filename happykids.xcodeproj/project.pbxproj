@@ -13,6 +13,8 @@
 		2C0319E3269802590022FBA0 /* HealthTipsMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0319E2269802590022FBA0 /* HealthTipsMainTableViewCell.swift */; };
 		2C0319E5269804360022FBA0 /* HygieneMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0319E4269804360022FBA0 /* HygieneMainTableViewCell.swift */; };
 		2C0319E72698044C0022FBA0 /* HygieneMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0319E62698044C0022FBA0 /* HygieneMainViewController.swift */; };
+		2C16E03026A2A1EC00F3C8B6 /* DidIDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16E02E26A2A1EC00F3C8B6 /* DidIDoTableViewCell.swift */; };
+		2C16E03126A2A1EC00F3C8B6 /* DidIDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C16E02F26A2A1EC00F3C8B6 /* DidIDoTableViewCell.xib */; };
 		2C27A8AB26A039FC00755EAD /* PastMyDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C27A8A926A039FC00755EAD /* PastMyDayTableViewCell.swift */; };
 		2C27A8AC26A039FC00755EAD /* PastMyDayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C27A8AA26A039FC00755EAD /* PastMyDayTableViewCell.xib */; };
 		2C5138372693ADEC00D50B9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5138362693ADEC00D50B9E /* AppDelegate.swift */; };
@@ -70,7 +72,6 @@
 		2CDDA131269C245D001F22B1 /* AfternoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDDA130269C245D001F22B1 /* AfternoonViewController.swift */; };
 		2CF13324269EA882008BC358 /* DeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF13323269EA882008BC358 /* DeedsViewController.swift */; };
 		2CF7F428269AC30600090A87 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7F427269AC30600090A87 /* ButtonWithImage.swift */; };
-		2CF7F42B269ACBAB00090A87 /* DidIDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7F429269ACBAB00090A87 /* DidIDoTableViewCell.swift */; };
 		2CF7F42E269BDAB900090A87 /* MorningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7F42D269BDAB900090A87 /* MorningViewController.swift */; };
 		2CFE883A269C1CB200C64EA7 /* EveningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE8839269C1CB200C64EA7 /* EveningViewController.swift */; };
 		42ED20955ED79827EE59BA0E /* Pods_happykids.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FB3DC70EECFD554E5777C8 /* Pods_happykids.framework */; };
@@ -103,6 +104,8 @@
 		2C0319E2269802590022FBA0 /* HealthTipsMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTipsMainTableViewCell.swift; sourceTree = "<group>"; };
 		2C0319E4269804360022FBA0 /* HygieneMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HygieneMainTableViewCell.swift; sourceTree = "<group>"; };
 		2C0319E62698044C0022FBA0 /* HygieneMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HygieneMainViewController.swift; sourceTree = "<group>"; };
+		2C16E02E26A2A1EC00F3C8B6 /* DidIDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidIDoTableViewCell.swift; sourceTree = "<group>"; };
+		2C16E02F26A2A1EC00F3C8B6 /* DidIDoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DidIDoTableViewCell.xib; sourceTree = "<group>"; };
 		2C27A8A926A039FC00755EAD /* PastMyDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastMyDayTableViewCell.swift; sourceTree = "<group>"; };
 		2C27A8AA26A039FC00755EAD /* PastMyDayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastMyDayTableViewCell.xib; sourceTree = "<group>"; };
 		2C5138332693ADEC00D50B9E /* happykids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happykids.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,7 +169,6 @@
 		2CDDA130269C245D001F22B1 /* AfternoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfternoonViewController.swift; sourceTree = "<group>"; };
 		2CF13323269EA882008BC358 /* DeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeedsViewController.swift; sourceTree = "<group>"; };
 		2CF7F427269AC30600090A87 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
-		2CF7F429269ACBAB00090A87 /* DidIDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidIDoTableViewCell.swift; sourceTree = "<group>"; };
 		2CF7F42D269BDAB900090A87 /* MorningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningViewController.swift; sourceTree = "<group>"; };
 		2CFE8839269C1CB200C64EA7 /* EveningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EveningViewController.swift; sourceTree = "<group>"; };
 		8D83C32C25DAA730307DD5DF /* Pods-happykidsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-happykidsTests.debug.xcconfig"; path = "Target Support Files/Pods-happykidsTests/Pods-happykidsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -245,13 +247,14 @@
 				2C0319E4269804360022FBA0 /* HygieneMainTableViewCell.swift */,
 				2C96E3682699788800DB2201 /* MyDayViewController.swift */,
 				2C96E36A2699789900DB2201 /* PastDayViewController.swift */,
-				2CF7F429269ACBAB00090A87 /* DidIDoTableViewCell.swift */,
 				2CF7F42D269BDAB900090A87 /* MorningViewController.swift */,
 				2CFE8839269C1CB200C64EA7 /* EveningViewController.swift */,
 				2CDDA130269C245D001F22B1 /* AfternoonViewController.swift */,
 				2CF13323269EA882008BC358 /* DeedsViewController.swift */,
 				2C27A8A926A039FC00755EAD /* PastMyDayTableViewCell.swift */,
 				2C27A8AA26A039FC00755EAD /* PastMyDayTableViewCell.xib */,
+				2C16E02E26A2A1EC00F3C8B6 /* DidIDoTableViewCell.swift */,
+				2C16E02F26A2A1EC00F3C8B6 /* DidIDoTableViewCell.xib */,
 			);
 			path = MyHygiene;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				2C5138432693ADEE00D50B9E /* Assets.xcassets in Resources */,
 				2C827B7E2695C1D20054F12C /* AngryRecTableViewCell.xib in Resources */,
 				2C827B6126959CDF0054F12C /* QuotePastTableViewCell.xib in Resources */,
+				2C16E03126A2A1EC00F3C8B6 /* DidIDoTableViewCell.xib in Resources */,
 				2C827B5726958F550054F12C /* GoalPlanTableViewCell.xib in Resources */,
 				2C51383E2693ADEC00D50B9E /* Main.storyboard in Resources */,
 				2C827B4B269572CC0054F12C /* RecDetailTableViewCell.xib in Resources */,
@@ -665,8 +669,8 @@
 				2C827B4A269572CC0054F12C /* RecDetailTableViewCell.swift in Sources */,
 				2CF7F428269AC30600090A87 /* ButtonWithImage.swift in Sources */,
 				2C827B802695C8030054F12C /* AnxietyReportViewController.swift in Sources */,
-				2CF7F42B269ACBAB00090A87 /* DidIDoTableViewCell.swift in Sources */,
 				2CCC148B2694208D0085FA05 /* EsteemFeelingType.swift in Sources */,
+				2C16E03026A2A1EC00F3C8B6 /* DidIDoTableViewCell.swift in Sources */,
 				2CCC14892694206E0085FA05 /* EsteemType.swift in Sources */,
 				2C827B722695BDC30054F12C /* FeelingNoteViewController.swift in Sources */,
 				2CF13324269EA882008BC358 /* DeedsViewController.swift in Sources */,
