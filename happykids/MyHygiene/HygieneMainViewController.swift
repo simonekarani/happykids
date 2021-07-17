@@ -17,7 +17,7 @@ class HygieneMainViewController: UIViewController {
     let devCourses = [
         ("How I did Today"), ("Morning Routine"),
         ("Afternoon Routine"), ("Evening Routine"),
-        ("Good Deeds Today")
+        ("Good Deeds")
     ]
     let devCousesImages = [
         UIImage(named: "howDidIDo"), UIImage(named: "morning"),

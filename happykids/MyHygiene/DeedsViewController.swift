@@ -11,22 +11,17 @@ import CoreData
 import Foundation
 import UIKit
 
-class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DeedsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let NoGoalMessage: String = "\nNo Goals Found.\nPlease setup Goals using the screen option - Goals"
+    let NoGoalMessage: String = "\nNo Good Deeds Found"
     
-    @IBOutlet weak var goalListTableView: UITableView!
-    
-    @IBOutlet weak var todoBtn: RoundButton!
-    @IBOutlet weak var completedBtn: RoundButton!
-    @IBOutlet weak var allBtn: RoundButton!
+    @IBOutlet weak var deedsTableView: UITableView!
     
     var selectedBtnTag: Int!
-    var editGoalsTodoRec: GoalPlanRecItem!
+    var editGoalsTodoRec: DeedsRecItem!
     
-    var goalListItemArray = [GoalsRecItem]()
-    var goalsTodoAllItemArray = [GoalPlanRecItem]()
-    var goalsItemArray = [GoalPlanRecItem]()
+    var goalsTodoAllItemArray = [DeedsRecItem]()
+    var deedsList = [String]()
     var todoView: TodoViewType!
     var todoStr: String!
     
@@ -34,8 +29,14 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         
         todoView = .TODO_ACTIVE
-        loadGoalsRecords()
+        loadDeedsRecords()
         setupTableView()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addTapped)
+        )
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
@@ -45,9 +46,13 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadGoalsRecords()
+        loadDeedsRecords()
         DispatchQueue.main.async {
-            self.goalListTableView.reloadData() }
+            self.deedsTableView.reloadData() }
+    }
+    
+    @IBAction func addTapped(_ sender: Any) {
+        addTodoDialog(msg: "")
     }
     
     @objc func onPlusClickedMapButton(_ sender: UIButton) {
@@ -59,39 +64,9 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
         saveContext()
     }
     
-    @IBAction func allBtnClicked(_ sender: Any) {
-        todoView = .TODO_ALL
-        todoBtn.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
-        completedBtn.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
-        allBtn.backgroundColor = UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 0.8)
-        loadGoalsRecords()
-        DispatchQueue.main.async {
-            self.goalListTableView.reloadData() }
-    }
-    
-    @IBAction func completedBtnClicked(_ sender: Any) {
-        todoView = .TODO_COMPLETED
-        todoBtn.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
-        completedBtn.backgroundColor = UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 0.8)
-        allBtn.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
-        loadGoalsRecords()
-        DispatchQueue.main.async {
-            self.goalListTableView.reloadData() }
-    }
-    
-    @IBAction func todoBtnClicked(_ sender: Any) {
-        todoView = .TODO_ACTIVE
-        todoBtn.backgroundColor = UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 0.8)
-        completedBtn.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
-        allBtn.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
-        loadGoalsRecords()
-        DispatchQueue.main.async {
-            self.goalListTableView.reloadData() }
-    }
-    
     func addTodoDialog(msg: String) {
         var recExists = false
-        let alert = UIAlertController(title: "Goals Todo", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Good Deeds", message: nil, preferredStyle: .alert)
         if msg == "" {
             alert.addTextField { (textField) in
                 textField.placeholder = "Default placeholder text"
@@ -120,47 +95,25 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func setupTableView() {
-        goalListTableView.allowsSelection = true
-        goalListTableView.allowsSelectionDuringEditing = true
+        deedsTableView.allowsSelection = true
+        deedsTableView.allowsSelectionDuringEditing = true
         
-        goalListTableView.delegate = self
-        goalListTableView.dataSource = self
+        deedsTableView.delegate = self
+        deedsTableView.dataSource = self
         
         // Set automatic dimensions for row height
-        goalListTableView.rowHeight = UITableView.automaticDimension
-        goalListTableView.estimatedRowHeight = UITableView.automaticDimension
+        deedsTableView.rowHeight = UITableView.automaticDimension
+        deedsTableView.estimatedRowHeight = UITableView.automaticDimension
         
-        self.goalListTableView.register(UINib.init(nibName: "GoalPlanTableViewCell", bundle: .main), forCellReuseIdentifier: "GoalPlanTableViewCell")
-        self.goalListTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
+        self.deedsTableView.register(UINib.init(nibName: "GoalPlanTableViewCell", bundle: .main), forCellReuseIdentifier: "GoalPlanTableViewCell")
+        self.deedsTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
         
-        goalListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        deedsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
-    func loadGoalsRecords() {
-        let gRequest: NSFetchRequest<GoalsRecItem> = GoalsRecItem.fetchRequest()
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                goalListItemArray = try context.fetch(gRequest)
-            } catch {
-                print("Error in loading \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                goalListItemArray = try context.fetch(gRequest)
-            } catch {
-                print("Error in loading \(error)")
-            }
-        }
-
-        if goalListItemArray.count == 0 {
-            createNoGoalAlertAction(message: NoGoalMessage)
-        }
-
+    func loadDeedsRecords() {
         goalsTodoAllItemArray.removeAll()
-        goalsItemArray.removeAll()
-        let request: NSFetchRequest<GoalPlanRecItem> = GoalPlanRecItem.fetchRequest()
+        let request: NSFetchRequest<DeedsRecItem> = DeedsRecItem.fetchRequest()
         do {
             if #available(iOS 10.0, *) {
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -168,21 +121,6 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
             } else {
                 let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
                 goalsTodoAllItemArray = try context.fetch(request)
-            }
-            
-            for (_, element) in goalsTodoAllItemArray.enumerated() {
-                if todoView == TodoViewType.TODO_ALL {
-                    goalsItemArray.append(element)
-                }
-                else if todoView == TodoViewType.TODO_ACTIVE {
-                    if element.completed == false {
-                        goalsItemArray.append(element)
-                    }
-                } else {
-                    if element.completed {
-                        goalsItemArray.append(element)
-                    }
-                }
             }
         } catch {
             print("Error in loading \(error)")
@@ -195,26 +133,33 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("** row = \(indexPath.row) section = \(indexPath.section) count=\(indexPath.count)")
-        if (indexPath.row == 0) {
-            let cell: GoalPlanTableViewCell = goalListTableView.dequeueReusableCell(withIdentifier: "GoalPlanTableViewCell", for: indexPath) as! GoalPlanTableViewCell
+        if (goalsTodoAllItemArray.count == 0) {
+            let cell: GoalPlanTableViewCell = deedsTableView.dequeueReusableCell(withIdentifier: "GoalPlanTableViewCell", for: indexPath) as! GoalPlanTableViewCell
             cell.configureCell(section: indexPath.section, lblText: getGoalTitle(section: indexPath.section))
             cell.addBtn.addTarget(self, action: #selector(onPlusClickedMapButton(_:)), for: .touchUpInside)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
-        } else {
-            let recCount: Int = getRecordCount(numberOfRowsInSection: indexPath.section)
-            if recCount > 0 {
-                let cell: DailyTodoTableViewCell = goalListTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
-                let yearlyItem: GoalPlanRecItem = getRecord(actionForRowAt: indexPath)!
+        }
+        let recCount: Int = getRecordCount(numberOfRowsInSection: indexPath.section)
+        if recCount > 0 {
+            if indexPath.row == 0 {
+                let cell: GoalPlanTableViewCell = deedsTableView.dequeueReusableCell(withIdentifier: "GoalPlanTableViewCell", for: indexPath) as! GoalPlanTableViewCell
+                cell.configureCell(section: indexPath.section, lblText: getGoalTitle(section: indexPath.section))
+                cell.addBtn.addTarget(self, action: #selector(onPlusClickedMapButton(_:)), for: .touchUpInside)
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                return cell
+            } else {
+                let cell: DailyTodoTableViewCell = deedsTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
+                let yearlyItem: DeedsRecItem = getRecord(actionForRowAt: indexPath)!
                 cell.configureCell(recItem: yearlyItem)
                 cell.todoBtn.addTarget(self, action: #selector(DailyPlanViewController.onClickedMapButton(_:)), for: .touchUpInside)
                 return cell
             }
-            else {
-                let cell: DailyTodoTableViewCell = goalListTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
-                cell.todoBtn.addTarget(self, action: #selector(DailyPlanViewController.onClickedMapButton(_:)), for: .touchUpInside)
-                return cell
-            }
+        }
+        else {
+            let cell: DailyTodoTableViewCell = deedsTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
+            cell.todoBtn.addTarget(self, action: #selector(DailyPlanViewController.onClickedMapButton(_:)), for: .touchUpInside)
+            return cell
         }
     }
     
@@ -224,13 +169,13 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         editGoalsTodoRec = getRecord(actionForRowAt: indexPath)!
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.addTodoDialog(msg: self.editGoalsTodoRec.taskDetails!)
+            self.addTodoDialog(msg: self.editGoalsTodoRec.deedDetails!)
         })
         editAction.backgroundColor = UIColor.blue
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             // Declare Alert message
-            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record\n\(self.editGoalsTodoRec.taskDetails!)?", preferredStyle: .alert)
+            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record\n\(self.editGoalsTodoRec.deedDetails!)?", preferredStyle: .alert)
             
             // Create OK button with action handler
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
@@ -266,15 +211,24 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if goalsItemArray.count == 0 || indexPath.row == 0 {
+        if goalsTodoAllItemArray.count == 0 || indexPath.row == 0 {
             return
         }
         self.editGoalsTodoRec = getRecord(actionForRowAt: indexPath)!
-        self.addTodoDialog(msg: self.editGoalsTodoRec.taskDetails!)
+        self.addTodoDialog(msg: self.editGoalsTodoRec.deedDetails!)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return goalListItemArray.count
+        if goalsTodoAllItemArray.count == 0 {
+            return 1
+        } else {
+            var goodDeedSet = Set<String>()
+            for elem in goalsTodoAllItemArray {
+                goodDeedSet.insert(elem.dateStr!)
+            }
+            deedsList = Array(goodDeedSet)
+            return deedsList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -282,53 +236,60 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func getGoalTitle(section: Int) -> String {
-        if goalListItemArray.count > 0 {
-            return goalListItemArray[section].title!
+        let dateValue:String = Date().getFormattedDate(format: "MM/dd/yyyy")
+        if goalsTodoAllItemArray.count == 0 {
+            return "TODAY - " + dateValue
+        } else {
+            if dateValue == goalsTodoAllItemArray[section].dateStr! {
+                return "TODAY - " + dateValue
+            }
+            return goalsTodoAllItemArray[section].dateStr!
         }
-        return ""
     }
     
     func getRecordCount(numberOfRowsInSection section: Int) -> Int {
         // add 1 for each section heading
-        let gItem: GoalsRecItem = goalListItemArray[section]
+        if goalsTodoAllItemArray.count == 0 {
+            return 1
+        }
+        let dateSection: String = deedsList[section]
         var rowCount: Int = 1
-        for (_, element) in goalsItemArray.enumerated() {
-            if element.goalTimeMillis == gItem.timeMillis {
+        for (_, element) in goalsTodoAllItemArray.enumerated() {
+            if element.dateStr == dateSection {
                 rowCount += 1
             }
         }
         return rowCount
     }
     
-    func getRecord(actionForRowAt indexPath: IndexPath) -> GoalPlanRecItem? {
-        let gItem: GoalsRecItem = goalListItemArray[indexPath.section]
-        var recItem: GoalPlanRecItem!
-        var idxCount: Int = 1
-        for (_, element) in goalsItemArray.enumerated() {
-            if element.goalTimeMillis == gItem.timeMillis {
-                if indexPath.row == idxCount {
+    func getRecord(actionForRowAt indexPath: IndexPath) -> DeedsRecItem? {
+        var idxCount: Int = 0
+        let dateSection: String = deedsList[indexPath.section]
+        for (_, element) in goalsTodoAllItemArray.enumerated() {
+            if element.dateStr == dateSection {
+                if indexPath.row-1 == idxCount {
                     return element
                 }
                 idxCount += 1
             }
         }
-        return recItem
+        return nil
     }
     
-    func deletePlanRecord(deleteActionForRowAt indexPath: IndexPath, recitem: GoalPlanRecItem) {
+    func deletePlanRecord(deleteActionForRowAt indexPath: IndexPath, recitem: DeedsRecItem) {
         deleteRecord(timeMillis: recitem.timeMillis)
-        loadGoalsRecords()
+        loadDeedsRecords()
         DispatchQueue.main.async {
-            self.goalListTableView.reloadData() }
+            self.deedsTableView.reloadData() }
     }
     
     func deleteRecord(timeMillis: Int64) {
-        let request: NSFetchRequest<GoalPlanRecItem> = GoalPlanRecItem.fetchRequest()
+        let request: NSFetchRequest<DeedsRecItem> = DeedsRecItem.fetchRequest()
         do {
             if #available(iOS 10.0, *) {
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                goalsItemArray = try context.fetch(request)
-                for (_, element) in goalsItemArray.enumerated() {
+                goalsTodoAllItemArray = try context.fetch(request)
+                for (_, element) in goalsTodoAllItemArray.enumerated() {
                     if (element.timeMillis == timeMillis) {
                         context.delete(element)
                         saveContext()
@@ -337,8 +298,8 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
             } else {
                 let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                goalsItemArray = try context.fetch(request)
-                for (_, element) in goalsItemArray.enumerated() {
+                goalsTodoAllItemArray = try context.fetch(request)
+                for (_, element) in goalsTodoAllItemArray.enumerated() {
                     if (element.timeMillis == timeMillis) {
                         context.delete(element)
                         saveContext()
@@ -358,33 +319,23 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
         
         if #available(iOS 10.0, *) {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let plansRecItem = GoalPlanRecItem(context: context)
+            let plansRecItem = DeedsRecItem(context: context)
             plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.startDate = Date().getFormattedDate(format: "MM/dd/yyyy")
-            let sectionIdx: Int = selectedBtnTag - 2000
-            let gItem: GoalsRecItem = goalListItemArray[sectionIdx]
-            plansRecItem.goalStr = gItem.title
-            plansRecItem.goalTimeMillis = gItem.timeMillis
-            plansRecItem.taskDetails = todoStr
-            plansRecItem.completed = false
+            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+            plansRecItem.deedDetails = todoStr
         } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let plansRecItem = GoalPlanRecItem()
+            _ = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            let plansRecItem = DeedsRecItem()
             plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.startDate = Date().getFormattedDate(format: "MM/dd/yyyy")
-            let sectionIdx: Int = selectedBtnTag - 2000
-            let gItem: GoalsRecItem = goalListItemArray[sectionIdx]
-            plansRecItem.goalStr = gItem.title
-            plansRecItem.goalTimeMillis = gItem.timeMillis
-            plansRecItem.taskDetails = todoStr
-            plansRecItem.completed = false
+            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+            plansRecItem.deedDetails = todoStr
         }
         
         saveContext()
         
-        loadGoalsRecords()
+        loadDeedsRecords()
         DispatchQueue.main.async {
-            self.goalListTableView.reloadData() }
+            self.deedsTableView.reloadData() }
     }
     
     func updateRecord() {
@@ -405,9 +356,9 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
                     element.taskDetails = todoStr
                     saveContext()
                     isFound = true
-                    loadGoalsRecords()
+                    loadDeedsRecords()
                     DispatchQueue.main.async {
-                        self.goalListTableView.reloadData() }
+                        self.deedsTableView.reloadData() }
                     return
                 }
             }
@@ -442,20 +393,20 @@ class GoalPlanViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 }
 
-extension GoalPlanViewController: GrowingCellProtocol {
+extension DeedsViewController: GrowingCellProtocol {
     // Update height of UITextView based on string height
     func updateHeightOfRow(_ cell: RecDetailTableViewCell, _ textView: UITextView) {
         let size = textView.bounds.size
-        let newSize = goalListTableView.sizeThatFits(CGSize(width: size.width,
+        let newSize = deedsTableView.sizeThatFits(CGSize(width: size.width,
                                                               height: CGFloat.greatestFiniteMagnitude))
         if size.height != newSize.height {
             UIView.setAnimationsEnabled(false)
-            goalListTableView?.beginUpdates()
-            goalListTableView?.endUpdates()
+            deedsTableView?.beginUpdates()
+            deedsTableView?.endUpdates()
             UIView.setAnimationsEnabled(true)
             // Scoll up your textview if required
-            if let thisIndexPath = goalListTableView.indexPath(for: cell) {
-                goalListTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
+            if let thisIndexPath = deedsTableView.indexPath(for: cell) {
+                deedsTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
             }
         }
     }

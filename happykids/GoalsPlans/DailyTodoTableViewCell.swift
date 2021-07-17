@@ -19,6 +19,7 @@ class DailyTodoTableViewCell: UITableViewCell {
     var morningRecItem:MorningRecItem!
     var eveningRecItem:EveningRecItem!
     var afternoonRecItem:AfternoonRecItem!
+    var deedsRecItem:DeedsRecItem!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -102,6 +103,16 @@ class DailyTodoTableViewCell: UITableViewCell {
         setupCellDetails()
     }
     
+    func configureCell(recItem: DeedsRecItem) {
+        planRecType = 7
+        todoTask.text = recItem.deedDetails!
+        todoBtn.isSelected = true
+        todoBtn.transform = .identity
+        deedsRecItem = recItem
+        
+        setupCellDetails()
+    }
+    
     func setupCellDetails() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
@@ -118,8 +129,9 @@ class DailyTodoTableViewCell: UITableViewCell {
             morningRecItem.completed = !sender.isSelected
         } else if planRecType == 5 {
             eveningRecItem.completed = !sender.isSelected
-        } else {
+        } else if planRecType == 6 {
             afternoonRecItem.completed = !sender.isSelected
+        } else {
         }
         UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
             sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)

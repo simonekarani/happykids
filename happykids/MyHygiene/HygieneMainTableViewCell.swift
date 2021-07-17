@@ -2,7 +2,7 @@
 //  HygieneMainTableViewCell.swift
 //  happykids
 //
-//  Created by Vijay Karani on 7/8/21.
+//  Created by Simone Karani on 7/8/21.
 //
 
 import UIKit

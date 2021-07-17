@@ -1,5 +1,5 @@
 //
-//  QuoteListScreenController.swift
+//  PastDayViewController.swift
 //  happykids
 //
 //  Created by Simone Karani on 2/21/21.
@@ -13,51 +13,85 @@ import UIKit
 
 class PastDayViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var quoteTableViewList: UITableView!
-        
+    @IBOutlet weak var myDayTableView: UITableView!
+    @IBOutlet weak var mehLabel: UILabel!
+    @IBOutlet weak var yayLabel: UILabel!
+    @IBOutlet weak var oopsLabel: UILabel!
+    @IBOutlet weak var hoorayLabel: UILabel!
+    @IBOutlet weak var yikesLabel: UILabel!
+    
     var myDayItemArray = [MyDayRecItem]()
+    var hoorayCount: Int = 0
+    var yayCount: Int = 0
+    var mehCount: Int = 0
+    var oopsCount: Int = 0
+    var yikesCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadMyDayRecords()
         setupTableView()
+        
+        hoorayLabel.text = "\(hoorayCount)"
+        yayLabel.text = "\(yayCount)"
+        mehLabel.text = "\(mehCount)"
+        oopsLabel.text = "\(oopsCount)"
+        yikesLabel.text = "\(yikesCount)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadMyDayRecords()
         DispatchQueue.main.async {
-            self.quoteTableViewList.reloadData() }
+            self.myDayTableView.reloadData() }
     }
     
     func setupTableView() {
-        quoteTableViewList.allowsSelection = false
-        quoteTableViewList.allowsSelectionDuringEditing = false
+        myDayTableView.allowsSelection = false
+        myDayTableView.allowsSelectionDuringEditing = false
         
-        quoteTableViewList.delegate = self
-        quoteTableViewList.dataSource = self
+        myDayTableView.delegate = self
+        myDayTableView.dataSource = self
         
         // Set automatic dimensions for row height
-        quoteTableViewList.rowHeight = UITableView.automaticDimension
-        quoteTableViewList.estimatedRowHeight = UITableView.automaticDimension
+        myDayTableView.rowHeight = UITableView.automaticDimension
+        myDayTableView.estimatedRowHeight = UITableView.automaticDimension
         
-        self.quoteTableViewList.register(UINib.init(nibName: "QuotePastTableViewCell", bundle: .main), forCellReuseIdentifier: "QuotePastTableViewCell")
+        self.myDayTableView.register(UINib.init(nibName: "PastMyDayTableViewCell", bundle: .main), forCellReuseIdentifier: "pastMyDay")
         
-        quoteTableViewList.separatorStyle = UITableViewCell.SeparatorStyle.none
+        myDayTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     func loadMyDayRecords() {
         myDayItemArray.removeAll()
-        /*if #available(iOS 10.0, *) {
+        if #available(iOS 10.0, *) {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-            let request: NSFetchRequest<QuoteRecItem> = MyDayRecItem.fetchRequest()
+            let request: NSFetchRequest<MyDayRecItem> = MyDayRecItem.fetchRequest()
             do {
                 myDayItemArray = try context.fetch(request)
             } catch {
                 print("Error in loading \(error)")
             }
-        }*/
+        }
+        
+        for mydayRec in myDayItemArray {
+            switch mydayRec.howStatus! {
+            case "Hooray":
+                hoorayCount += 1
+            case "Yay":
+                yayCount += 1
+            case "Meh":
+                mehCount += 1
+            case "Oops":
+                oopsCount += 1
+            case "Yikes":
+                yikesCount += 1
+
+            default:
+                hoorayCount += 1
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,17 +99,27 @@ class PastDayViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: QuotePastTableViewCell = quoteTableViewList.dequeueReusableCell(withIdentifier: "QuotePastTableViewCell", for: indexPath) as! QuotePastTableViewCell
-        /*var descendingIdx: Int = myDayItemArray.count - 1 - indexPath.row
+        let cell: PastMyDayTableViewCell = myDayTableView.dequeueReusableCell(withIdentifier: "pastMyDay", for: indexPath) as! PastMyDayTableViewCell
+        var descendingIdx: Int = myDayItemArray.count - 1 - indexPath.row
         if (descendingIdx < 0) {
             descendingIdx = 0
         }
-        cell.configureCell(recItem: quoteItemArray[indexPath.row])*/
+        cell.configureCell(recItem: myDayItemArray[indexPath.row])
         return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = view.backgroundColor
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -86,8 +130,8 @@ class PastDayViewController: UIViewController, UITableViewDataSource, UITableVie
         return myDayItemArray.count
     }
     
-    func getRecord(actionForRowAt indexPath: IndexPath) -> QuoteRecItem? {
-        return nil //myDayItemArray[indexPath.row]
+    func getRecord(actionForRowAt indexPath: IndexPath) -> MyDayRecItem? {
+        return myDayItemArray[indexPath.row]
     }
 }
 
@@ -95,16 +139,16 @@ extension PastDayViewController: GrowingCellProtocol {
     // Update height of UITextView based on string height
     func updateHeightOfRow(_ cell: RecDetailTableViewCell, _ textView: UITextView) {
         let size = textView.bounds.size
-        let newSize = quoteTableViewList.sizeThatFits(CGSize(width: size.width,
+        let newSize = myDayTableView.sizeThatFits(CGSize(width: size.width,
                                                          height: CGFloat.greatestFiniteMagnitude))
         if size.height != newSize.height {
             UIView.setAnimationsEnabled(false)
-            quoteTableViewList?.beginUpdates()
-            quoteTableViewList?.endUpdates()
+            myDayTableView?.beginUpdates()
+            myDayTableView?.endUpdates()
             UIView.setAnimationsEnabled(true)
             // Scoll up your textview if required
-            if let thisIndexPath = quoteTableViewList.indexPath(for: cell) {
-                quoteTableViewList.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
+            if let thisIndexPath = myDayTableView.indexPath(for: cell) {
+                myDayTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
             }
         }
     }

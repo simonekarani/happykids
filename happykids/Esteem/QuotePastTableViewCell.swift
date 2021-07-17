@@ -28,6 +28,13 @@ class QuotePastTableViewCell: UITableViewCell {
         setupCellDetails()
     }
     
+    func configureCell(recItem: MyDayRecItem) {
+        quoteDate.text = recItem.dayDate
+        quoteMsg.text = recItem.howStatus!
+        
+        setupCellDetails()
+    }
+    
     func setupCellDetails() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
