@@ -9,6 +9,7 @@ target 'happykids' do
    pod 'UICheckbox'
    pod 'DropDown'
    pod 'Tabman', '~> 2.5.0'
+   pod 'youtube-ios-player-helper'
 
   target 'happykidsTests' do
     inherit! :search_paths

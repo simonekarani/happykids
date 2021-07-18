@@ -6,11 +6,13 @@ PODS:
     - AutoInsetter (~> 1.7.2)
     - Pageboy (~> 3.2.3)
   - UICheckbox (0.0.2)
+  - youtube-ios-player-helper (1.0.3)
 
 DEPENDENCIES:
   - DropDown
   - Tabman (~> 2.5.0)
   - UICheckbox
+  - youtube-ios-player-helper
 
 SPEC REPOS:
   trunk:
@@ -19,6 +21,7 @@ SPEC REPOS:
     - Pageboy
     - Tabman
     - UICheckbox
+    - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   AutoInsetter: 176c5c069b40bf6afa51bf7081be346ab70ca315
@@ -26,7 +29,8 @@ SPEC CHECKSUMS:
   Pageboy: 347c49b3a7f15aa78ddb6bf5c6c3b113e382fe52
   Tabman: 35f741ff663fb6654ed0a33870466b3c40668e35
   UICheckbox: 54af9bc308c8c2b18404f4c360172115c0daea36
+  youtube-ios-player-helper: 0185c57db23c80d63d6ca11251d110abb8a4ca61
 
-PODFILE CHECKSUM: a6ddd36c1186811688fd48f87c249a4e0101f70c
+PODFILE CHECKSUM: 3bd2170db24b582e89d28c2556258a2db5e1e392
 
 COCOAPODS: 1.10.1

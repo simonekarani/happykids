@@ -180,6 +180,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Tabman/Tabman.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UICheckbox/UICheckbox.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AutoInsetter/AutoInsetter.framework"
@@ -187,6 +188,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Tabman/Tabman.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UICheckbox/UICheckbox.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

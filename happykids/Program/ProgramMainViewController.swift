@@ -48,17 +48,17 @@ class ProgramMainViewController: UIViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.row) {
         case 0:
-            performSegue(withIdentifier: "gotoBooster", sender: self)
+            performSegue(withIdentifier: "goto10step", sender: self)
         case 1:
-            performSegue(withIdentifier: "gotoFeelList", sender: self)
+            performSegue(withIdentifier: "gotoSmileFirst", sender: self)
         case 2:
-            performSegue(withIdentifier: "gotoAngryList", sender: self)
+            performSegue(withIdentifier: "gotoDentalFirst", sender: self)
         case 3:
-            performSegue(withIdentifier: "gotoFriendList", sender: self)
+            performSegue(withIdentifier: "gotoHearingFirst", sender: self)
         case 4:
-            performSegue(withIdentifier: "gotoStressReport", sender: self)
+            performSegue(withIdentifier: "gotoVisionFirst", sender: self)
         default:
-            performSegue(withIdentifier: "gotoBooster", sender: self)
+            performSegue(withIdentifier: "goto10step", sender: self)
             
         }
     }

@@ -54,6 +54,7 @@
 		2C827B7D2695C1D20054F12C /* AngryRecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B7B2695C1D20054F12C /* AngryRecTableViewCell.swift */; };
 		2C827B7E2695C1D20054F12C /* AngryRecTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C827B7C2695C1D20054F12C /* AngryRecTableViewCell.xib */; };
 		2C827B802695C8030054F12C /* AnxietyReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B7F2695C8030054F12C /* AnxietyReportViewController.swift */; };
+		2C8868C726A406FF002C2AA2 /* Step10WorkshopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8868C626A406FE002C2AA2 /* Step10WorkshopViewController.swift */; };
 		2C96E3692699788800DB2201 /* MyDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C96E3682699788800DB2201 /* MyDayViewController.swift */; };
 		2C96E36B2699789900DB2201 /* PastDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C96E36A2699789900DB2201 /* PastDayViewController.swift */; };
 		2CCC147E26941CC90085FA05 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC147D26941CC90085FA05 /* MainViewController.swift */; };
@@ -71,6 +72,7 @@
 		2CCC149C26944C460085FA05 /* GoalsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCC149A26944C460085FA05 /* GoalsListTableViewCell.xib */; };
 		2CDDA131269C245D001F22B1 /* AfternoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDDA130269C245D001F22B1 /* AfternoonViewController.swift */; };
 		2CF13324269EA882008BC358 /* DeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF13323269EA882008BC358 /* DeedsViewController.swift */; };
+		2CF3038B26A36F2F00DD8552 /* Step10ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF3038A26A36F2F00DD8552 /* Step10ViewController.swift */; };
 		2CF7F428269AC30600090A87 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7F427269AC30600090A87 /* ButtonWithImage.swift */; };
 		2CF7F42E269BDAB900090A87 /* MorningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7F42D269BDAB900090A87 /* MorningViewController.swift */; };
 		2CFE883A269C1CB200C64EA7 /* EveningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE8839269C1CB200C64EA7 /* EveningViewController.swift */; };
@@ -151,6 +153,7 @@
 		2C827B7B2695C1D20054F12C /* AngryRecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngryRecTableViewCell.swift; sourceTree = "<group>"; };
 		2C827B7C2695C1D20054F12C /* AngryRecTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AngryRecTableViewCell.xib; sourceTree = "<group>"; };
 		2C827B7F2695C8030054F12C /* AnxietyReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnxietyReportViewController.swift; sourceTree = "<group>"; };
+		2C8868C626A406FE002C2AA2 /* Step10WorkshopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step10WorkshopViewController.swift; sourceTree = "<group>"; };
 		2C96E3682699788800DB2201 /* MyDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayViewController.swift; sourceTree = "<group>"; };
 		2C96E36A2699789900DB2201 /* PastDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastDayViewController.swift; sourceTree = "<group>"; };
 		2CCC147D26941CC90085FA05 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +171,7 @@
 		2CCC149A26944C460085FA05 /* GoalsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalsListTableViewCell.xib; sourceTree = "<group>"; };
 		2CDDA130269C245D001F22B1 /* AfternoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfternoonViewController.swift; sourceTree = "<group>"; };
 		2CF13323269EA882008BC358 /* DeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeedsViewController.swift; sourceTree = "<group>"; };
+		2CF3038A26A36F2F00DD8552 /* Step10ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step10ViewController.swift; sourceTree = "<group>"; };
 		2CF7F427269AC30600090A87 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
 		2CF7F42D269BDAB900090A87 /* MorningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningViewController.swift; sourceTree = "<group>"; };
 		2CFE8839269C1CB200C64EA7 /* EveningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EveningViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 			children = (
 				2C0319DA2696F52D0022FBA0 /* ProgramMainViewController.swift */,
 				2C0319DC2696F5AB0022FBA0 /* ProgramMainTableViewCell.swift */,
+				2CF3038A26A36F2F00DD8552 /* Step10ViewController.swift */,
+				2C8868C626A406FE002C2AA2 /* Step10WorkshopViewController.swift */,
 			);
 			path = Program;
 			sourceTree = "<group>";
@@ -659,6 +665,7 @@
 			files = (
 				2CCC148F269422100085FA05 /* ResourcesViewController.swift in Sources */,
 				2C827B5126958D1B0054F12C /* DailyPlanViewController.swift in Sources */,
+				2C8868C726A406FF002C2AA2 /* Step10WorkshopViewController.swift in Sources */,
 				2C0319E72698044C0022FBA0 /* HygieneMainViewController.swift in Sources */,
 				2CCC14872694202D0085FA05 /* RoundButton.swift in Sources */,
 				2C827B6B2695A6F10054F12C /* QuotePastViewController.swift in Sources */,
@@ -689,6 +696,7 @@
 				2C96E3692699788800DB2201 /* MyDayViewController.swift in Sources */,
 				2C827B752695BEA60054F12C /* FeelingRecTableViewCell.swift in Sources */,
 				2C5138372693ADEC00D50B9E /* AppDelegate.swift in Sources */,
+				2CF3038B26A36F2F00DD8552 /* Step10ViewController.swift in Sources */,
 				2C5138392693ADEC00D50B9E /* SceneDelegate.swift in Sources */,
 				2C827B702695BD6F0054F12C /* FeelingViewController.swift in Sources */,
 				2C5138412693ADEC00D50B9E /* happykids.xcdatamodeld in Sources */,
