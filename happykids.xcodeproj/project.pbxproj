@@ -61,6 +61,7 @@
 		2CBB1AD626A4C8F0006635F1 /* HearingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB1AD526A4C8F0006635F1 /* HearingFirstViewController.swift */; };
 		2CBB1AD826A51437006635F1 /* DentalFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB1AD726A51437006635F1 /* DentalFirstViewController.swift */; };
 		2CBB1ADA26A5315A006635F1 /* VisionFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB1AD926A5315A006635F1 /* VisionFirstViewController.swift */; };
+		2CBB1ADC26A57001006635F1 /* HealthTipsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB1ADB26A57001006635F1 /* HealthTipsCollectionViewController.swift */; };
 		2CCC147E26941CC90085FA05 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC147D26941CC90085FA05 /* MainViewController.swift */; };
 		2CCC148126941E630085FA05 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC147F26941E630085FA05 /* MainCollectionViewCell.swift */; };
 		2CCC148526941FF60085FA05 /* MoralQuotesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC148426941FF60085FA05 /* MoralQuotesData.swift */; };
@@ -164,6 +165,7 @@
 		2CBB1AD526A4C8F0006635F1 /* HearingFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingFirstViewController.swift; sourceTree = "<group>"; };
 		2CBB1AD726A51437006635F1 /* DentalFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DentalFirstViewController.swift; sourceTree = "<group>"; };
 		2CBB1AD926A5315A006635F1 /* VisionFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionFirstViewController.swift; sourceTree = "<group>"; };
+		2CBB1ADB26A57001006635F1 /* HealthTipsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTipsCollectionViewController.swift; sourceTree = "<group>"; };
 		2CCC147D26941CC90085FA05 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2CCC147F26941E630085FA05 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		2CCC148426941FF60085FA05 /* MoralQuotesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoralQuotesData.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			children = (
 				2C0319E02698023E0022FBA0 /* HealthTipsMainViewController.swift */,
 				2C0319E2269802590022FBA0 /* HealthTipsMainTableViewCell.swift */,
+				2CBB1ADB26A57001006635F1 /* HealthTipsCollectionViewController.swift */,
 			);
 			path = HealthTips;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				2CCC148F269422100085FA05 /* ResourcesViewController.swift in Sources */,
 				2C827B5126958D1B0054F12C /* DailyPlanViewController.swift in Sources */,
 				2C8868C726A406FF002C2AA2 /* Step10WorkshopViewController.swift in Sources */,
+				2CBB1ADC26A57001006635F1 /* HealthTipsCollectionViewController.swift in Sources */,
 				2C0319E72698044C0022FBA0 /* HygieneMainViewController.swift in Sources */,
 				2CBB1AD426A443C1006635F1 /* SmileFirstViewController.swift in Sources */,
 				2CCC14872694202D0085FA05 /* RoundButton.swift in Sources */,

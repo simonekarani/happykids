@@ -6,15 +6,77 @@
 //
 
 import UIKit
+import youtube_ios_player_helper
 
-class VisionFirstViewController: UIViewController {
+class VisionFirstViewController: UIViewController, YTPlayerViewDelegate {
 
+    @IBOutlet weak var emailVisionLabel: UILabel!
+    @IBOutlet weak var callVisionLabel: UILabel!
+    
+    @IBOutlet weak var ytPlayer: YTPlayerView!
+    @IBOutlet weak var videoPlayerButton: UIButton!
+    @IBOutlet weak var ytubeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        ytPlayer.delegate = self
+
+        emailVisionLabel.isUserInteractionEnabled = true
+        callVisionLabel.isUserInteractionEnabled = true
+        setupLabelInteractions()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ytPlayer.stopVideo()
+    }
+    
+    func setupLabelInteractions() {
+        let gesture1 = UITapGestureRecognizer(target: self, action: #selector(emailVisionClicked(_:)))
+        gesture1.numberOfTapsRequired = 1
+        emailVisionLabel.addGestureRecognizer(gesture1)
+
+        let gesture2 = UITapGestureRecognizer(target: self, action: #selector(callVisionClicked(_:)))
+        gesture2.numberOfTapsRequired = 1
+        callVisionLabel.addGestureRecognizer(gesture2)
+    }
+    
+    @objc func emailVisionClicked(_ sender: Any) {
+        /*if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://14085645114"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
+        }*/
+    }
+
+    @objc func callVisionClicked(_ sender: Any) {
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://14085645114"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
+        }
+    }
+
+    @IBAction func videoButtonClicked(_ sender: Any) {
+        ytPlayer.load(withVideoId: "kGMQ5MYaH3M")
+    }
+    
+    @IBAction func ytubeButtonClicked(_ sender: Any) {
+        ytPlayer.load(withVideoId: "kGMQ5MYaH3M")
+    }
+    
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        ytPlayer.playVideo()
+    }
 
     /*
     // MARK: - Navigation
