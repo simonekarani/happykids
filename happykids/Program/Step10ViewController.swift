@@ -53,7 +53,7 @@ class Step10ViewController: UIViewController, YTPlayerViewDelegate {
     }
     
     @objc func callEmail10Clicked(_ sender: Any) {
-        if #available(iOS 10.0, *) {
+        /*if #available(iOS 10.0, *) {
             guard let url = URL(string: "tel://8553446347"),
                 UIApplication.shared.canOpenURL(url) else {
                     return
@@ -61,7 +61,7 @@ class Step10ViewController: UIViewController, YTPlayerViewDelegate {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             
-        }
+        }*/
     }
 
     @objc func callPhone10Clicked(_ sender: Any) {

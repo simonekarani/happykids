@@ -1,5 +1,5 @@
 //
-//  HearingFirstViewController.swift
+//  DentalFirstViewController.swift
 //  happykids
 //
 //  Created by Simone Karani on 7/18/21.
@@ -8,41 +8,41 @@
 import UIKit
 import youtube_ios_player_helper
 
-class HearingFirstViewController: UIViewController, YTPlayerViewDelegate {
+class DentalFirstViewController: UIViewController, YTPlayerViewDelegate {
 
-    @IBOutlet weak var emailHearingLabel: UILabel!
-    @IBOutlet weak var phoneHearingLabel: UILabel!
+    @IBOutlet weak var emailDentalLabel: UILabel!
+    @IBOutlet weak var phoneDentalLabel: UILabel!
     
     @IBOutlet weak var ytPlayer: YTPlayerView!
-    @IBOutlet weak var hearingTestButton: UIButton!
-    @IBOutlet weak var ytButton: UIButton!
+    @IBOutlet weak var dentalVideoButton: UIButton!
+    @IBOutlet weak var ytubeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         ytPlayer.delegate = self
 
-        emailHearingLabel.isUserInteractionEnabled = true
-        phoneHearingLabel.isUserInteractionEnabled = true
+        emailDentalLabel.isUserInteractionEnabled = true
+        phoneDentalLabel.isUserInteractionEnabled = true
         setupLabelInteractions()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         ytPlayer.stopVideo()
     }
     
     func setupLabelInteractions() {
-        let gesture1 = UITapGestureRecognizer(target: self, action: #selector(emailHearingClicked(_:)))
+        let gesture1 = UITapGestureRecognizer(target: self, action: #selector(emailDentalClicked(_:)))
         gesture1.numberOfTapsRequired = 1
-        emailHearingLabel.addGestureRecognizer(gesture1)
+        emailDentalLabel.addGestureRecognizer(gesture1)
 
-        let gesture2 = UITapGestureRecognizer(target: self, action: #selector(callHearingClicked(_:)))
+        let gesture2 = UITapGestureRecognizer(target: self, action: #selector(callDentalClicked(_:)))
         gesture2.numberOfTapsRequired = 1
-        phoneHearingLabel.addGestureRecognizer(gesture2)
+        phoneDentalLabel.addGestureRecognizer(gesture2)
     }
     
-    @objc func emailHearingClicked(_ sender: Any) {
+    @objc func emailDentalClicked(_ sender: Any) {
         /*if #available(iOS 10.0, *) {
             guard let url = URL(string: "tel://14085645114"),
                 UIApplication.shared.canOpenURL(url) else {
@@ -54,7 +54,7 @@ class HearingFirstViewController: UIViewController, YTPlayerViewDelegate {
         }*/
     }
 
-    @objc func callHearingClicked(_ sender: Any) {
+    @objc func callDentalClicked(_ sender: Any) {
         if #available(iOS 10.0, *) {
             guard let url = URL(string: "tel://14085645114"),
                 UIApplication.shared.canOpenURL(url) else {
@@ -66,12 +66,12 @@ class HearingFirstViewController: UIViewController, YTPlayerViewDelegate {
         }
     }
 
-    @IBAction func hearingTestClicked(_ sender: Any) {
-        ytPlayer.load(withVideoId: "_QSHHR70lcQ")
+    @IBAction func videoButtonClicked(_ sender: Any) {
+        ytPlayer.load(withVideoId: "vXg60WC0juw")
     }
     
-    @IBAction func ytButtonClicked(_ sender: Any) {
-        ytPlayer.load(withVideoId: "_QSHHR70lcQ")
+    @IBAction func ytubeButtonClicked(_ sender: Any) {
+        ytPlayer.load(withVideoId: "vXg60WC0juw")
     }
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
