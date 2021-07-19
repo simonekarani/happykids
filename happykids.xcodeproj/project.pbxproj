@@ -57,6 +57,8 @@
 		2C8868C726A406FF002C2AA2 /* Step10WorkshopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8868C626A406FE002C2AA2 /* Step10WorkshopViewController.swift */; };
 		2C96E3692699788800DB2201 /* MyDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C96E3682699788800DB2201 /* MyDayViewController.swift */; };
 		2C96E36B2699789900DB2201 /* PastDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C96E36A2699789900DB2201 /* PastDayViewController.swift */; };
+		2CBB1AD426A443C1006635F1 /* SmileFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB1AD326A443C1006635F1 /* SmileFirstViewController.swift */; };
+		2CBB1AD626A4C8F0006635F1 /* HearingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB1AD526A4C8F0006635F1 /* HearingFirstViewController.swift */; };
 		2CCC147E26941CC90085FA05 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC147D26941CC90085FA05 /* MainViewController.swift */; };
 		2CCC148126941E630085FA05 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC147F26941E630085FA05 /* MainCollectionViewCell.swift */; };
 		2CCC148526941FF60085FA05 /* MoralQuotesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC148426941FF60085FA05 /* MoralQuotesData.swift */; };
@@ -156,6 +158,8 @@
 		2C8868C626A406FE002C2AA2 /* Step10WorkshopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step10WorkshopViewController.swift; sourceTree = "<group>"; };
 		2C96E3682699788800DB2201 /* MyDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayViewController.swift; sourceTree = "<group>"; };
 		2C96E36A2699789900DB2201 /* PastDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastDayViewController.swift; sourceTree = "<group>"; };
+		2CBB1AD326A443C1006635F1 /* SmileFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmileFirstViewController.swift; sourceTree = "<group>"; };
+		2CBB1AD526A4C8F0006635F1 /* HearingFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingFirstViewController.swift; sourceTree = "<group>"; };
 		2CCC147D26941CC90085FA05 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2CCC147F26941E630085FA05 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		2CCC148426941FF60085FA05 /* MoralQuotesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoralQuotesData.swift; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 				2C0319DC2696F5AB0022FBA0 /* ProgramMainTableViewCell.swift */,
 				2CF3038A26A36F2F00DD8552 /* Step10ViewController.swift */,
 				2C8868C626A406FE002C2AA2 /* Step10WorkshopViewController.swift */,
+				2CBB1AD326A443C1006635F1 /* SmileFirstViewController.swift */,
+				2CBB1AD526A4C8F0006635F1 /* HearingFirstViewController.swift */,
 			);
 			path = Program;
 			sourceTree = "<group>";
@@ -667,9 +673,11 @@
 				2C827B5126958D1B0054F12C /* DailyPlanViewController.swift in Sources */,
 				2C8868C726A406FF002C2AA2 /* Step10WorkshopViewController.swift in Sources */,
 				2C0319E72698044C0022FBA0 /* HygieneMainViewController.swift in Sources */,
+				2CBB1AD426A443C1006635F1 /* SmileFirstViewController.swift in Sources */,
 				2CCC14872694202D0085FA05 /* RoundButton.swift in Sources */,
 				2C827B6B2695A6F10054F12C /* QuotePastViewController.swift in Sources */,
 				2CCC149626944A2E0085FA05 /* GoalsNoteScreenController.swift in Sources */,
+				2CBB1AD626A4C8F0006635F1 /* HearingFirstViewController.swift in Sources */,
 				2C827B5D26959C710054F12C /* QuoteViewController.swift in Sources */,
 				2CFE883A269C1CB200C64EA7 /* EveningViewController.swift in Sources */,
 				2C827B782695C1160054F12C /* AngryViewController.swift in Sources */,
