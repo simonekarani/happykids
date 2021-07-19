@@ -1,5 +1,5 @@
 //
-//  ProgramMainTableViewCell.swift
+//  HealthTipsMainTableViewCell.swift
 //  happykids
 //
 //  Created by Simone Karani on 2/13/21.

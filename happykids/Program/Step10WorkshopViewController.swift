@@ -2,7 +2,7 @@
 //  Step10WorkshopViewController.swift
 //  happykids
 //
-//  Created by Vijay Karani on 7/17/21.
+//  Created by Simone Karani on 7/17/21.
 //
 
 import UIKit

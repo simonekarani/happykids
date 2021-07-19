@@ -141,6 +141,8 @@
                         <segue destination="fVi-xQ-9yb" kind="show" identifier="goto10step" id="h2U-Xr-Mff"/>
                         <segue destination="hmu-mU-Yfa" kind="show" identifier="gotoDentalFirst" id="VzZ-7J-0AY"/>
                         <segue destination="too-42-sVH" kind="show" identifier="gotoHearingFirst" id="UDg-Gb-q4K"/>
+                        <segue destination="phk-0P-xpA" kind="show" identifier="gotoSmileFirst" id="DCF-Jd-dJZ"/>
+                        <segue destination="eav-4m-2HD" kind="show" identifier="gotoVisionFirst" id="pZj-9t-9FL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBw-Ok-mI9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2011,6 +2013,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tg8-6J-Cmy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1540.5797101449277" y="1776.5625"/>
+        </scene>
+        <!--Smile First-->
+        <scene sceneID="6ME-FQ-XgO">
+            <objects>
+                <viewController id="phk-0P-xpA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zeN-Bl-ZD0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="5fE-Fy-0S8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Smile First" id="x0h-Lq-D2a"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YeT-Sn-pJ8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1741" y="-1261"/>
+        </scene>
+        <!--Vision First-->
+        <scene sceneID="06m-jE-Ic8">
+            <objects>
+                <viewController id="eav-4m-2HD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3mn-1w-7EF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1OV-sL-PNt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Vision First" id="YBt-D1-bmS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C9l-RJ-2d2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1149" y="-1653"/>
         </scene>
         <!--10 Steps-->
         <scene sceneID="kGh-MM-X6b">
