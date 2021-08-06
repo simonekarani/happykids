@@ -9,14 +9,13 @@
 /* Begin PBXBuildFile section */
 		2C0319DB2696F52D0022FBA0 /* ProgramMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0319DA2696F52D0022FBA0 /* ProgramMainViewController.swift */; };
 		2C0319DD2696F5AB0022FBA0 /* ProgramMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0319DC2696F5AB0022FBA0 /* ProgramMainTableViewCell.swift */; };
-		2C0319E12698023E0022FBA0 /* HealthTipsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0319E02698023E0022FBA0 /* HealthTipsMainViewController.swift */; };
-		2C0319E3269802590022FBA0 /* HealthTipsMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0319E2269802590022FBA0 /* HealthTipsMainTableViewCell.swift */; };
 		2C0319E5269804360022FBA0 /* HygieneMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0319E4269804360022FBA0 /* HygieneMainTableViewCell.swift */; };
 		2C0319E72698044C0022FBA0 /* HygieneMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0319E62698044C0022FBA0 /* HygieneMainViewController.swift */; };
 		2C16E03026A2A1EC00F3C8B6 /* DidIDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16E02E26A2A1EC00F3C8B6 /* DidIDoTableViewCell.swift */; };
 		2C16E03126A2A1EC00F3C8B6 /* DidIDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C16E02F26A2A1EC00F3C8B6 /* DidIDoTableViewCell.xib */; };
 		2C27A8AB26A039FC00755EAD /* PastMyDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C27A8A926A039FC00755EAD /* PastMyDayTableViewCell.swift */; };
 		2C27A8AC26A039FC00755EAD /* PastMyDayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C27A8AA26A039FC00755EAD /* PastMyDayTableViewCell.xib */; };
+		2C3A4A5526AD04970083E47B /* HealthMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A4A5426AD04970083E47B /* HealthMainCollectionViewCell.swift */; };
 		2C5138372693ADEC00D50B9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5138362693ADEC00D50B9E /* AppDelegate.swift */; };
 		2C5138392693ADEC00D50B9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5138382693ADEC00D50B9E /* SceneDelegate.swift */; };
 		2C51383B2693ADEC00D50B9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C51383A2693ADEC00D50B9E /* ViewController.swift */; };
@@ -26,6 +25,8 @@
 		2C5138462693ADEE00D50B9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C5138442693ADEE00D50B9E /* LaunchScreen.storyboard */; };
 		2C5138512693ADEF00D50B9E /* happykidsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5138502693ADEF00D50B9E /* happykidsTests.swift */; };
 		2C51385C2693ADEF00D50B9E /* happykidsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C51385B2693ADEF00D50B9E /* happykidsUITests.swift */; };
+		2C683B5226BBDA0100F9E11F /* HealthQuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683B5126BBDA0100F9E11F /* HealthQuoteViewController.swift */; };
+		2C683B5426BBE50C00F9E11F /* HealthQuotesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683B5326BBE50C00F9E11F /* HealthQuotesData.swift */; };
 		2C827B47269570D80054F12C /* RecState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B46269570D80054F12C /* RecState.swift */; };
 		2C827B4A269572CC0054F12C /* RecDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827B48269572CC0054F12C /* RecDetailTableViewCell.swift */; };
 		2C827B4B269572CC0054F12C /* RecDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C827B49269572CC0054F12C /* RecDetailTableViewCell.xib */; };
@@ -107,14 +108,13 @@
 		229618E6F7B7E5189923A77F /* Pods-happykids-happykidsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-happykids-happykidsUITests.release.xcconfig"; path = "Target Support Files/Pods-happykids-happykidsUITests/Pods-happykids-happykidsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2C0319DA2696F52D0022FBA0 /* ProgramMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramMainViewController.swift; sourceTree = "<group>"; };
 		2C0319DC2696F5AB0022FBA0 /* ProgramMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramMainTableViewCell.swift; sourceTree = "<group>"; };
-		2C0319E02698023E0022FBA0 /* HealthTipsMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTipsMainViewController.swift; sourceTree = "<group>"; };
-		2C0319E2269802590022FBA0 /* HealthTipsMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTipsMainTableViewCell.swift; sourceTree = "<group>"; };
 		2C0319E4269804360022FBA0 /* HygieneMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HygieneMainTableViewCell.swift; sourceTree = "<group>"; };
 		2C0319E62698044C0022FBA0 /* HygieneMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HygieneMainViewController.swift; sourceTree = "<group>"; };
 		2C16E02E26A2A1EC00F3C8B6 /* DidIDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidIDoTableViewCell.swift; sourceTree = "<group>"; };
 		2C16E02F26A2A1EC00F3C8B6 /* DidIDoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DidIDoTableViewCell.xib; sourceTree = "<group>"; };
 		2C27A8A926A039FC00755EAD /* PastMyDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastMyDayTableViewCell.swift; sourceTree = "<group>"; };
 		2C27A8AA26A039FC00755EAD /* PastMyDayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastMyDayTableViewCell.xib; sourceTree = "<group>"; };
+		2C3A4A5426AD04970083E47B /* HealthMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C5138332693ADEC00D50B9E /* happykids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happykids.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5138362693ADEC00D50B9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C5138382693ADEC00D50B9E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +130,8 @@
 		2C5138572693ADEF00D50B9E /* happykidsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = happykidsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C51385B2693ADEF00D50B9E /* happykidsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = happykidsUITests.swift; sourceTree = "<group>"; };
 		2C51385D2693ADEF00D50B9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C683B5126BBDA0100F9E11F /* HealthQuoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthQuoteViewController.swift; sourceTree = "<group>"; };
+		2C683B5326BBE50C00F9E11F /* HealthQuotesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthQuotesData.swift; sourceTree = "<group>"; };
 		2C827B46269570D80054F12C /* RecState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecState.swift; sourceTree = "<group>"; };
 		2C827B48269572CC0054F12C /* RecDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecDetailTableViewCell.swift; sourceTree = "<group>"; };
 		2C827B49269572CC0054F12C /* RecDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecDetailTableViewCell.xib; sourceTree = "<group>"; };
@@ -254,9 +256,9 @@
 		2C0319DE269801D30022FBA0 /* HealthTips */ = {
 			isa = PBXGroup;
 			children = (
-				2C0319E02698023E0022FBA0 /* HealthTipsMainViewController.swift */,
-				2C0319E2269802590022FBA0 /* HealthTipsMainTableViewCell.swift */,
 				2CBB1ADB26A57001006635F1 /* HealthTipsCollectionViewController.swift */,
+				2C3A4A5426AD04970083E47B /* HealthMainCollectionViewCell.swift */,
+				2C683B5126BBDA0100F9E11F /* HealthQuoteViewController.swift */,
 			);
 			path = HealthTips;
 			sourceTree = "<group>";
@@ -363,6 +365,7 @@
 				2C827B48269572CC0054F12C /* RecDetailTableViewCell.swift */,
 				2C827B49269572CC0054F12C /* RecDetailTableViewCell.xib */,
 				2CF7F427269AC30600090A87 /* ButtonWithImage.swift */,
+				2C683B5326BBE50C00F9E11F /* HealthQuotesData.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				2CBB1ADA26A5315A006635F1 /* VisionFirstViewController.swift in Sources */,
 				2CFE883A269C1CB200C64EA7 /* EveningViewController.swift in Sources */,
 				2C827B782695C1160054F12C /* AngryViewController.swift in Sources */,
+				2C3A4A5526AD04970083E47B /* HealthMainCollectionViewCell.swift in Sources */,
 				2C827B4A269572CC0054F12C /* RecDetailTableViewCell.swift in Sources */,
 				2CF7F428269AC30600090A87 /* ButtonWithImage.swift in Sources */,
 				2C827B802695C8030054F12C /* AnxietyReportViewController.swift in Sources */,
@@ -703,6 +707,7 @@
 				2CF13324269EA882008BC358 /* DeedsViewController.swift in Sources */,
 				2C827B6026959CDF0054F12C /* QuotePastTableViewCell.swift in Sources */,
 				2C27A8AB26A039FC00755EAD /* PastMyDayTableViewCell.swift in Sources */,
+				2C683B5426BBE50C00F9E11F /* HealthQuotesData.swift in Sources */,
 				2C51383B2693ADEC00D50B9E /* ViewController.swift in Sources */,
 				2CCC148126941E630085FA05 /* MainCollectionViewCell.swift in Sources */,
 				2C827B5326958DD60054F12C /* GoalPlanViewController.swift in Sources */,
@@ -710,7 +715,6 @@
 				2CDDA131269C245D001F22B1 /* AfternoonViewController.swift in Sources */,
 				2C827B7A2695C15C0054F12C /* AngryNoteViewController.swift in Sources */,
 				2C0319DB2696F52D0022FBA0 /* ProgramMainViewController.swift in Sources */,
-				2C0319E12698023E0022FBA0 /* HealthTipsMainViewController.swift in Sources */,
 				2C827B4E269580990054F12C /* DailyTodoTableViewCell.swift in Sources */,
 				2CCC14922694409C0085FA05 /* GoalsMainViewController.swift in Sources */,
 				2C96E3692699788800DB2201 /* MyDayViewController.swift in Sources */,
@@ -722,6 +726,7 @@
 				2C5138412693ADEC00D50B9E /* happykids.xcdatamodeld in Sources */,
 				2CF7F42E269BDAB900090A87 /* MorningViewController.swift in Sources */,
 				2CCC149B26944C460085FA05 /* GoalsListTableViewCell.swift in Sources */,
+				2C683B5226BBDA0100F9E11F /* HealthQuoteViewController.swift in Sources */,
 				2C96E36B2699789900DB2201 /* PastDayViewController.swift in Sources */,
 				2CCC147E26941CC90085FA05 /* MainViewController.swift in Sources */,
 				2C0319DD2696F5AB0022FBA0 /* ProgramMainTableViewCell.swift in Sources */,
@@ -736,7 +741,6 @@
 				2C827B682695A1000054F12C /* LetterRecTableViewCell.swift in Sources */,
 				2C827B6326959EBA0054F12C /* LetterViewController.swift in Sources */,
 				2C827B5626958F550054F12C /* GoalPlanTableViewCell.swift in Sources */,
-				2C0319E3269802590022FBA0 /* HealthTipsMainTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -914,12 +918,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JAC5P67S2G;
 				INFOPLIST_FILE = happykids/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.simonekarani.happykids;
+				PRODUCT_BUNDLE_IDENTIFIER = com.simonekarani.healthierkids;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -933,12 +938,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JAC5P67S2G;
 				INFOPLIST_FILE = happykids/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.simonekarani.happykids;
+				PRODUCT_BUNDLE_IDENTIFIER = com.simonekarani.healthierkids;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

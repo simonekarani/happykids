@@ -100,6 +100,7 @@ class MoralQuotesData {
         moralQuoteList.append(MoralQuote(quoteId: 80, quote: "There are no secrets to success. It is the result of preparation, hard work, and learning from failure.", author: "Colin Powell"))
         moralQuoteList.append(MoralQuote(quoteId: 81, quote: "The beautiful thing about learning is that no one can take it away from you.", author: "B.B. King"))
         moralQuoteList.append(MoralQuote(quoteId: 82, quote: "We learn more by looking for the answer to a question and not finding it than we do from learning the answer itself.", author: "Lloyd Alexander"))
+        moralQuoteList.append(MoralQuote(quoteId: 83, quote: "No matter how many mistakes you make or how slow you progress, you are still way ahead of everyone who isn’t trying", author: "Tony Robbins"))
     }
     
     func getMoralQuote() -> MoralQuote {

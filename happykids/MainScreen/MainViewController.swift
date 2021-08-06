@@ -10,13 +10,13 @@ import UIKit
 
 class MainViewController: UICollectionViewController {
 
-    let frontLabelArray = ["Health Program", "Self-Esteem", "Health Tips",
-                           "Goals & Plans", "My Hygiene",  "Resources"]
+    let frontLabelArray = ["Self-Esteem", "Goals & Plans", "Health Program",
+                           "Health Tips", "My Hygiene",  "Resources"]
     let frontImageArray = [
-        UIImage(named: "kidsprogram"),
         UIImage(named: "esteem"),
-        UIImage(named: "dailytips"),
         UIImage(named: "goals"),
+        UIImage(named: "kidsprogram"),
+        UIImage(named: "dailytips"),
         UIImage(named: "myhygiene"),
         UIImage(named: "resource")
     ]
@@ -61,17 +61,17 @@ class MainViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            performSegue(withIdentifier: "gotoProgram", sender: self)
-            
-        case 1:
             performSegue(withIdentifier: "gotoEsteem", sender: self)
             
-        case 2:
-            performSegue(withIdentifier: "gotoHealthTips", sender: self)
-            
-        case 3:
+        case 1:
             performSegue(withIdentifier: "gotoGoalsPlans", sender: self)
-            
+
+        case 2:
+            performSegue(withIdentifier: "gotoProgram", sender: self)
+
+        case 3:
+            performSegue(withIdentifier: "gotoHealthTips", sender: self)
+
         case 4:
             performSegue(withIdentifier: "gotoHygiene", sender: self)
             

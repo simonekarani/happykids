@@ -2,25 +2,27 @@
 //  HealthTipsCollectionViewController.swift
 //  happykids
 //
-//  Created by Vijay Karani on 7/19/21.
+//  Created by Simone Karani on 7/19/21.
 //
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "HealthMainCollectionViewCell"
 
 class HealthTipsCollectionViewController: UICollectionViewController {
+
+    let healthLabelArray = ["Health Affirm", "Eat Healthy"]
+    let healthImageArray = [
+        UIImage(named: "healthaffirm"), UIImage(named: "healthaffirm")
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        layout.minimumInteritemSpacing = 5
+        layout.itemSize = CGSize( width: (self.collectionView.frame.size.width - 20)/2, height: self.collectionView.frame.size.height/4)
     }
 
     /*
@@ -34,24 +36,26 @@ class HealthTipsCollectionViewController: UICollectionViewController {
     */
 
     // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return healthImageArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HealthMainCollectionViewCell", for: indexPath) as! HealthMainCollectionViewCell
     
-        // Configure the cell
+        cell.collectionLabel.text = healthLabelArray[indexPath.item]
+        cell.collectionImg.image = healthImageArray[indexPath.item]
     
         return cell
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            performSegue(withIdentifier: "gotoHealthQuote", sender: self)
+        default:
+            performSegue(withIdentifier: "gotoEsteem", sender: self)
+        }
     }
 
     // MARK: UICollectionViewDelegate

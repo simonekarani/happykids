@@ -35,6 +35,8 @@ class ResourcesViewController: UIViewController {
     @IBOutlet weak var teensDatingLabel: UILabel!
     @IBOutlet weak var parentingSupportLabel: UILabel!
     @IBOutlet weak var nationalLgbtqLabel: UILabel!
+    @IBOutlet weak var hkidsPhoneLabel: UILabel!
+    @IBOutlet weak var hkidsurlLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,10 @@ class ResourcesViewController: UIViewController {
         crisisMsgLabel.isUserInteractionEnabled = true
         crisis24Label.isUserInteractionEnabled = true
         
+        hkidsPhoneLabel.isUserInteractionEnabled = true
+        hkidsurlLabel.isUserInteractionEnabled = true
+        readsLabel.isUserInteractionEnabled = true
+
         teensLabel.isUserInteractionEnabled = true
         natHealthLabel.isUserInteractionEnabled = true
         depressionLabel.isUserInteractionEnabled = true
@@ -51,7 +57,6 @@ class ResourcesViewController: UIViewController {
         lgbtqTeensLabel.isUserInteractionEnabled = true
         violenceLabel.isUserInteractionEnabled = true
         parentLabel.isUserInteractionEnabled = true
-        readsLabel.isUserInteractionEnabled = true
         
         drugFreeLabel.isUserInteractionEnabled = true
         parentsDrugLabel.isUserInteractionEnabled = true
@@ -88,6 +93,19 @@ class ResourcesViewController: UIViewController {
         crisisMsgLabel.addGestureRecognizer(gesture19)
         
         // ----
+        let gesture20 = UITapGestureRecognizer(target: self, action: #selector(hkidsPhoneLabelClicked(_:)))
+        gesture20.numberOfTapsRequired = 1
+        hkidsPhoneLabel.addGestureRecognizer(gesture20)
+
+        let gesture21 = UITapGestureRecognizer(target: self, action: #selector(hkidsUrlLabelClicked(_:)))
+        gesture21.numberOfTapsRequired = 1
+        hkidsurlLabel.addGestureRecognizer(gesture21)
+
+        let gesture3 = UITapGestureRecognizer(target: self, action: #selector(readsLabelClicked(_:)))
+        gesture3.numberOfTapsRequired = 1
+        readsLabel.addGestureRecognizer(gesture3)
+
+        // ----
         let gesture6 = UITapGestureRecognizer(target: self, action: #selector(nathealthLabelClicked(_:)))
         gesture6.numberOfTapsRequired = 1
         natHealthLabel.addGestureRecognizer(gesture6)
@@ -112,10 +130,6 @@ class ResourcesViewController: UIViewController {
         gesture17.numberOfTapsRequired = 1
         parentLabel.addGestureRecognizer(gesture17)
         
-        let gesture3 = UITapGestureRecognizer(target: self, action: #selector(readsLabelClicked(_:)))
-        gesture3.numberOfTapsRequired = 1
-        readsLabel.addGestureRecognizer(gesture3)
-
         // ----
         let gesture7 = UITapGestureRecognizer(target: self, action: #selector(drugfreeLabelClicked(_:)))
         gesture7.numberOfTapsRequired = 1
@@ -200,6 +214,43 @@ class ResourcesViewController: UIViewController {
     }
     
     // ---
+    @objc func hkidsPhoneLabelClicked(_ sender: Any) {
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://14085645114"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
+        }
+    }
+    
+    @objc func hkidsUrlLabelClicked(_ sender: Any) {
+         if #available(iOS 10.0, *) {
+             guard let url = URL(string: "https://hkidsf.org"),
+                 UIApplication.shared.canOpenURL(url) else {
+                     return
+             }
+             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+         } else {
+             
+         }
+     }
+
+    @objc func readsLabelClicked(_ sender: Any) {
+         if #available(iOS 10.0, *) {
+             guard let url = URL(string: "https://www.amazon.com/Prescriptions-Without-Pills-Depression-Anxiety/dp/1630478105/ref=sr_1_5?dchild=1&keywords=prescriptions+without+pills&qid=1620984361&sr=8-5"),
+                 UIApplication.shared.canOpenURL(url) else {
+                     return
+             }
+             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+         } else {
+             
+         }
+     }
+     
+    // ---
     @objc func nathealthLabelClicked(_ sender: Any) {
         if #available(iOS 10.0, *) {
             guard let url = URL(string: "http://www.nimh.nih.gov"),
@@ -263,18 +314,6 @@ class ResourcesViewController: UIViewController {
     @objc func dviolenceLabelClicked(_ sender: Any) {
         if #available(iOS 10.0, *) {
             guard let url = URL(string: "tel://18007997233"),
-                UIApplication.shared.canOpenURL(url) else {
-                    return
-            }
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            
-        }
-    }
-    
-   @objc func readsLabelClicked(_ sender: Any) {
-        if #available(iOS 10.0, *) {
-            guard let url = URL(string: "https://www.amazon.com/Prescriptions-Without-Pills-Depression-Anxiety/dp/1630478105/ref=sr_1_5?dchild=1&keywords=prescriptions+without+pills&qid=1620984361&sr=8-5"),
                 UIApplication.shared.canOpenURL(url) else {
                     return
             }
