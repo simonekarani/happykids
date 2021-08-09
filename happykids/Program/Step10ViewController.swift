@@ -8,13 +8,10 @@
 import UIKit
 import youtube_ios_player_helper
 
-class Step10ViewController: UIViewController, YTPlayerViewDelegate {
+class Step10ViewController: UIViewController {
 
     @IBOutlet weak var email10step: UILabel!
     @IBOutlet weak var phone10step: UILabel!
-    @IBOutlet weak var ytPlayer: YTPlayerView!
-    @IBOutlet weak var videoButton: UIButton!
-    @IBOutlet weak var ytubeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +19,6 @@ class Step10ViewController: UIViewController, YTPlayerViewDelegate {
         email10step.isUserInteractionEnabled = true
         phone10step.isUserInteractionEnabled = true
         
-        ytPlayer.delegate = self
-
         setupLabelInteractions()
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Workshop",
@@ -35,7 +30,6 @@ class Step10ViewController: UIViewController, YTPlayerViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        ytPlayer.stopVideo()
     }
     
     @IBAction func workshopTapped(_ sender: Any) {
@@ -53,7 +47,7 @@ class Step10ViewController: UIViewController, YTPlayerViewDelegate {
     }
     
     @objc func callEmail10Clicked(_ sender: Any) {
-        /*if #available(iOS 10.0, *) {
+        if #available(iOS 10.0, *) {
             guard let url = URL(string: "tel://8553446347"),
                 UIApplication.shared.canOpenURL(url) else {
                     return
@@ -61,7 +55,7 @@ class Step10ViewController: UIViewController, YTPlayerViewDelegate {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             
-        }*/
+        }
     }
 
     @objc func callPhone10Clicked(_ sender: Any) {
@@ -74,19 +68,6 @@ class Step10ViewController: UIViewController, YTPlayerViewDelegate {
         } else {
             
         }
-    }
-
-    @IBAction func videoClicked(_ sender: Any) {
-        ytPlayer.load(withVideoId: "qi4ndEBXWuc")
-    }
-    
-    
-    @IBAction func ytubeClicked(_ sender: Any) {
-        ytPlayer.load(withVideoId: "qi4ndEBXWuc")
-    }
-    
-    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-        ytPlayer.playVideo()
     }
     /*
     // MARK: - Navigation

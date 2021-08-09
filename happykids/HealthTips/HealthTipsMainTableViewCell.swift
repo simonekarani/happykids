@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProgramMainTableViewCell: UITableViewCell {
+class HealthTipsMainTableViewCell: UITableViewCell {
     
     @IBOutlet weak var programLabel: UILabel!
     
