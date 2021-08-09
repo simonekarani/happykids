@@ -14,11 +14,11 @@ class GoalsMainViewController: UIViewController {
     
     let devCourses = [
         ("Goals"), ("Goal Based Plans"),
-        ("Daily Todo")
+        ("Daily Todo"), ("Aspire To Inspire")
     ]
     let devCousesImages = [
         UIImage(named: "setGoals"), UIImage(named: "goalPlans"),
-        UIImage(named: "dailyPlan")
+        UIImage(named: "dailyPlan"), UIImage(named: "aspireInspire")
     ]
     
     override func viewDidLoad() {
@@ -50,6 +50,8 @@ class GoalsMainViewController: UIViewController {
             performSegue(withIdentifier: "gotoGoalPlan", sender: self)
         case 2:
             performSegue(withIdentifier: "gotoDailyPlan", sender: self)
+        case 3:
+            performSegue(withIdentifier: "gotoAspire", sender: self)
         default:
             performSegue(withIdentifier: "gotoDailyPlan", sender: self)
             
