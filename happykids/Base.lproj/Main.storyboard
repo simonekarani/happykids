@@ -144,6 +144,8 @@
                         <segue destination="eav-4m-2HD" kind="show" identifier="gotoVisionFirst" id="pZj-9t-9FL"/>
                         <segue destination="jCD-sv-ZyA" kind="show" identifier="gotoSmileFirst" id="RvD-JH-b1F"/>
                         <segue destination="RRm-GW-LjN" kind="show" identifier="gotoHealthQuote" id="CpD-Hv-X9c"/>
+                        <segue destination="Lvn-MZ-xRZ" kind="show" identifier="gotoYearlyCheckup" id="Bcl-ew-yEQ"/>
+                        <segue destination="NTV-qa-6Vl" kind="show" identifier="gotoSafetyTips" id="Y9N-8t-WeM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBw-Ok-mI9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2832,6 +2834,68 @@
                 </scrollView>
             </objects>
             <point key="canvasLocation" x="-2594.202898550725" y="-1029.2410714285713"/>
+        </scene>
+        <!--Yearly Checkup-->
+        <scene sceneID="mXb-y8-aBs">
+            <objects>
+                <viewController id="Lvn-MZ-xRZ" customClass="YearlyCheckupViewController" customModule="happykids" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EXq-pa-6aI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2mL-Yz-7cP">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gjH-SF-RyT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2mL-Yz-7cP" firstAttribute="trailing" secondItem="gjH-SF-RyT" secondAttribute="trailing" id="K4G-pH-PsF"/>
+                            <constraint firstAttribute="bottom" secondItem="2mL-Yz-7cP" secondAttribute="bottom" id="cNf-y8-Q76"/>
+                            <constraint firstItem="2mL-Yz-7cP" firstAttribute="leading" secondItem="gjH-SF-RyT" secondAttribute="leading" id="fcz-dh-6jo"/>
+                            <constraint firstItem="2mL-Yz-7cP" firstAttribute="top" secondItem="gjH-SF-RyT" secondAttribute="top" id="gwT-uN-Wh8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Yearly Checkup" id="0qB-Oy-0z1"/>
+                    <connections>
+                        <outlet property="yearlyCheckupTableView" destination="2mL-Yz-7cP" id="qyN-r5-5Uo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kvj-GG-21Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1912" y="90"/>
+        </scene>
+        <!--Safety Tips-->
+        <scene sceneID="Jnj-R6-aqV">
+            <objects>
+                <viewController id="NTV-qa-6Vl" customClass="SafetyTipsViewController" customModule="happykids" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EV9-Z9-fpL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nLQ-L9-aPf">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zQ6-eq-BiQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="nLQ-L9-aPf" secondAttribute="bottom" id="5TD-o3-XP6"/>
+                            <constraint firstItem="nLQ-L9-aPf" firstAttribute="leading" secondItem="zQ6-eq-BiQ" secondAttribute="leading" id="Db4-pv-Arb"/>
+                            <constraint firstItem="nLQ-L9-aPf" firstAttribute="top" secondItem="zQ6-eq-BiQ" secondAttribute="top" id="Ln5-61-Jsh"/>
+                            <constraint firstItem="nLQ-L9-aPf" firstAttribute="trailing" secondItem="zQ6-eq-BiQ" secondAttribute="trailing" id="pUO-3m-Ndr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Safety Tips" id="33A-0D-XZn"/>
+                    <connections>
+                        <outlet property="safetyTipsTableView" destination="nLQ-L9-aPf" id="V6a-mU-gSF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HKb-UN-o0R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2586" y="230"/>
         </scene>
     </scenes>
     <designables>

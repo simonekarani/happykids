@@ -14,12 +14,12 @@ class HealthTipsMainViewController: UIViewController {
     @IBOutlet weak var healthTipsTableView: UITableView!
     
     let devCourses = [
-        ("Health Affirmation"), ("Eat Healthy"),
-        ("Yearly Checkup")
+        ("Health Affirmation"), ("Healthy Habits"),
+        ("Yearly Checkup"), ("Safety Tips")
     ]
     let devCousesImages = [
-        UIImage(named: "healthaffirm"), UIImage(named: "smileFirst"),
-        UIImage(named: "dentalFirst")
+        UIImage(named: "healthaffirm"), UIImage(named: "healthytips"),
+        UIImage(named: "yearlycheck"), UIImage(named: "childsafe")
     ]
 
     override func viewDidLoad() {
@@ -49,10 +49,12 @@ class HealthTipsMainViewController: UIViewController {
         case 1:
             performSegue(withIdentifier: "gotoSmileFirst", sender: self)
         case 2:
-            performSegue(withIdentifier: "gotoDentalFirst", sender: self)
+            performSegue(withIdentifier: "gotoYearlyCheckup", sender: self)
+        case 3:
+            performSegue(withIdentifier: "gotoSafetyTips", sender: self)
         default:
-            performSegue(withIdentifier: "goto10step", sender: self)
-            
+            performSegue(withIdentifier: "gotoHealthQuote", sender: self)
+
         }
     }
 }

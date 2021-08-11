@@ -1,5 +1,5 @@
 //
-//  MorningViewController.swift
+//  YearlyCheckupViewController.swift
 //  happykids
 //
 //  Created by Simone Karani on 2/28/21.
@@ -11,27 +11,28 @@ import CoreData
 import Foundation
 import UIKit
 
-class EveningViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class YearlyCheckupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let eveningRoutineArray = ["Eat dinner", "Homework", "40 minutes of free time",
-                           "Bath/Shower", "Put on Pajamas",  "Brush teeth",
-                           "Floss Teeth", "Read books", "Sleep at 10 pm"]
+    let yearlyCheckArray = ["Physician Annual Checkup", "Hearing Test", "Vision Test",
+                            "Dental Cleaning", "Immunization Check",  "Height growth",
+                            "Weight check", "Blood Pressure", "Sleep hours", "TV/Computer Hours",
+                            "Blood Test Anemia", "School Performance degraded?"]
     
-    @IBOutlet weak var eveningTableView: UITableView!
+    @IBOutlet weak var yearlyCheckupTableView: UITableView!
     
-    var editTodoRec: EveningRecItem!
+    var editTodoRec: YearlyCheckRecItem!
     var dailyTodoRecCount: Int!
     var todoStr: String!
     
-    var eveningItemArray = [EveningRecItem]()
+    var yearlyCheckItemArray = [YearlyCheckRecItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadEveningRecords()
-        if eveningItemArray.count == 0 {
-            createEveningRecords()
-            loadEveningRecords()
+        loadYearlyCheckRecords()
+        if yearlyCheckItemArray.count == 0 {
+            createYearlyCheckRecords()
+            loadYearlyCheckRecords()
         }
         setupTableView()
         
@@ -47,26 +48,26 @@ class EveningViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        loadEveningRecords()
+        loadYearlyCheckRecords()
         DispatchQueue.main.async {
-            self.eveningTableView.reloadData() }
+            self.yearlyCheckupTableView.reloadData() }
     }
     
     func setupTableView() {
-        eveningTableView.allowsSelection = true
-        eveningTableView.allowsSelectionDuringEditing = true
+        yearlyCheckupTableView.allowsSelection = true
+        yearlyCheckupTableView.allowsSelectionDuringEditing = true
         
-        eveningTableView.delegate = self
-        eveningTableView.dataSource = self
+        yearlyCheckupTableView.delegate = self
+        yearlyCheckupTableView.dataSource = self
         
         // Set automatic dimensions for row height
-        eveningTableView.rowHeight = 50
-        eveningTableView.estimatedRowHeight = UITableView.automaticDimension
+        yearlyCheckupTableView.rowHeight = 50
+        yearlyCheckupTableView.estimatedRowHeight = UITableView.automaticDimension
 
         
-        self.eveningTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
+        self.yearlyCheckupTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
         
-        eveningTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        yearlyCheckupTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     @IBAction func addTapped(_ sender: Any) {
@@ -79,7 +80,7 @@ class EveningViewController: UIViewController, UITableViewDataSource, UITableVie
 
     func addTodoDialog(msg: String) {
         var recExists = false
-        let alert = UIAlertController(title: "Morning Routine", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Yearly Checkup", message: nil, preferredStyle: .alert)
         if msg == "" {
             alert.addTextField { (textField) in
                 textField.placeholder = "Default placeholder text"
@@ -107,16 +108,16 @@ class EveningViewController: UIViewController, UITableViewDataSource, UITableVie
         self.present(alert, animated: true, completion: nil)
     }
     
-    func loadEveningRecords() {
-        eveningItemArray.removeAll()
+    func loadYearlyCheckRecords() {
+        yearlyCheckItemArray.removeAll()
         do {
-            let request: NSFetchRequest<EveningRecItem> = EveningRecItem.fetchRequest()
+            let request: NSFetchRequest<YearlyCheckRecItem> = YearlyCheckRecItem.fetchRequest()
             if #available(iOS 10.0, *) {
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                eveningItemArray = try context.fetch(request)
+                yearlyCheckItemArray = try context.fetch(request)
             } else {
                 let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                eveningItemArray = try context.fetch(request)
+                yearlyCheckItemArray = try context.fetch(request)
             }
         } catch {
             print("Error in loading \(error)")
@@ -128,25 +129,25 @@ class EveningViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: DailyTodoTableViewCell = eveningTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
-        cell.configureCell(recItem: eveningItemArray[indexPath.row])
+        let cell: DailyTodoTableViewCell = yearlyCheckupTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
+        cell.configureCell(recItem: yearlyCheckItemArray[indexPath.row])
         cell.todoBtn.addTarget(self, action: #selector(onClickedMapButton(_:)), for: .touchUpInside)
         return cell
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if eveningItemArray.count == 0 {
+        if yearlyCheckItemArray.count == 0 {
             return []
         }
         editTodoRec = getRecord(actionForRowAt: indexPath)!
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.addTodoDialog(msg: self.editTodoRec.routine!)
+            self.addTodoDialog(msg: self.editTodoRec.checkup!)
         })
         editAction.backgroundColor = UIColor.blue
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             // Declare Alert message
-            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record \(self.editTodoRec.routine!)?", preferredStyle: .alert)
+            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record \(self.editTodoRec.checkup!)?", preferredStyle: .alert)
             
             // Create OK button with action handler
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
@@ -171,11 +172,11 @@ class EveningViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if eveningItemArray.count == 0 {
+        if yearlyCheckItemArray.count == 0 {
             return
         }
         self.editTodoRec = getRecord(actionForRowAt: indexPath)!
-        self.addTodoDialog(msg: self.editTodoRec.routine!)
+        self.addTodoDialog(msg: self.editTodoRec.checkup!)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -187,30 +188,30 @@ class EveningViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func getRecordCount() -> Int {
-        return eveningItemArray.count
+        return yearlyCheckItemArray.count
     }
     
-    func getRecord(actionForRowAt indexPath: IndexPath) -> EveningRecItem? {
-        return eveningItemArray[indexPath.row]
+    func getRecord(actionForRowAt indexPath: IndexPath) -> YearlyCheckRecItem? {
+        return yearlyCheckItemArray[indexPath.row]
     }
     
-    func deletePlanRecord(deleteActionForRowAt indexPath: IndexPath, recitem: EveningRecItem) {
+    func deletePlanRecord(deleteActionForRowAt indexPath: IndexPath, recitem: YearlyCheckRecItem) {
         if (indexPath.section == 0) {
-            eveningItemArray.remove(at: indexPath.row)
+            yearlyCheckItemArray.remove(at: indexPath.row)
             deleteRecord(timeMillis: recitem.timeMillis)
-            loadEveningRecords()
+            loadYearlyCheckRecords()
             DispatchQueue.main.async {
-                self.eveningTableView.reloadData() }
+                self.yearlyCheckupTableView.reloadData() }
         }
     }
     
     func deleteRecord(timeMillis: Int64) {
-        let request: NSFetchRequest<EveningRecItem> = EveningRecItem.fetchRequest()
+        let request: NSFetchRequest<YearlyCheckRecItem> = YearlyCheckRecItem.fetchRequest()
         do {
             if #available(iOS 10.0, *) {
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                eveningItemArray = try context.fetch(request)
-                for (_, element) in eveningItemArray.enumerated() {
+                yearlyCheckItemArray = try context.fetch(request)
+                for (_, element) in yearlyCheckItemArray.enumerated() {
                     if (element.timeMillis == timeMillis) {
                         context.delete(element)
                         saveContext()
@@ -219,8 +220,8 @@ class EveningViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
             } else {
                 let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                eveningItemArray = try context.fetch(request)
-                for (_, element) in eveningItemArray.enumerated() {
+                yearlyCheckItemArray = try context.fetch(request)
+                for (_, element) in yearlyCheckItemArray.enumerated() {
                     if (element.timeMillis == timeMillis) {
                         context.delete(element)
                         saveContext()
@@ -233,21 +234,21 @@ class EveningViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func createEveningRecords() {
-        for i in 0 ..< eveningRoutineArray.count {
+    func createYearlyCheckRecords() {
+        for i in 0 ..< yearlyCheckArray.count {
             if #available(iOS 10.0, *) {
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                let plansRecItem = EveningRecItem(context: context)
+                let plansRecItem = YearlyCheckRecItem(context: context)
                 plansRecItem.timeMillis = getCurrentMillis()
                 plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                plansRecItem.routine = eveningRoutineArray[i]
+                plansRecItem.checkup = yearlyCheckArray[i]
                 plansRecItem.completed = false
             } else {
                 let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                let plansRecItem = EveningRecItem()
+                let plansRecItem = YearlyCheckRecItem()
                 plansRecItem.timeMillis = getCurrentMillis()
                 plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                plansRecItem.routine = eveningRoutineArray[i]
+                plansRecItem.checkup = yearlyCheckArray[i]
                 plansRecItem.completed = false
             }
             saveContext()
@@ -261,29 +262,29 @@ class EveningViewController: UIViewController, UITableViewDataSource, UITableVie
         
         if #available(iOS 10.0, *) {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let plansRecItem = EveningRecItem(context: context)
+            let plansRecItem = YearlyCheckRecItem(context: context)
             plansRecItem.timeMillis = getCurrentMillis()
             plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.routine = todoStr
+            plansRecItem.checkup = todoStr
             plansRecItem.completed = false
         } else {
             let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let plansRecItem = EveningRecItem()
+            let plansRecItem = YearlyCheckRecItem()
             plansRecItem.timeMillis = getCurrentMillis()
             plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.routine = todoStr
+            plansRecItem.checkup = todoStr
             plansRecItem.completed = false
         }
         saveContext()
 
-        loadEveningRecords()
+        loadYearlyCheckRecords()
         DispatchQueue.main.async {
-            self.eveningTableView.reloadData() }
+            self.yearlyCheckupTableView.reloadData() }
     }
     
     func updateRecord() {
-        var updtItemArray = [EveningRecItem]()
-        let request: NSFetchRequest<EveningRecItem> = EveningRecItem.fetchRequest()
+        var updtItemArray = [MorningRecItem]()
+        let request: NSFetchRequest<MorningRecItem> = MorningRecItem.fetchRequest()
         do {
             if #available(iOS 10.0, *) {
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -299,9 +300,9 @@ class EveningViewController: UIViewController, UITableViewDataSource, UITableVie
                     element.routine = todoStr
                     saveContext()
                     isFound = true
-                    loadEveningRecords()
+                    loadYearlyCheckRecords()
                     DispatchQueue.main.async {
-                        self.eveningTableView.reloadData() }
+                        self.yearlyCheckupTableView.reloadData() }
                     return
                 }
             }
@@ -336,20 +337,20 @@ class EveningViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 }
 
-extension EveningViewController: GrowingCellProtocol {
+extension YearlyCheckupViewController: GrowingCellProtocol {
     // Update height of UITextView based on string height
     func updateHeightOfRow(_ cell: RecDetailTableViewCell, _ textView: UITextView) {
         let size = textView.bounds.size
-        let newSize = eveningTableView.sizeThatFits(CGSize(width: size.width,
+        let newSize = yearlyCheckupTableView.sizeThatFits(CGSize(width: size.width,
                                                               height: CGFloat.greatestFiniteMagnitude))
         if size.height != newSize.height {
             UIView.setAnimationsEnabled(false)
-            eveningTableView?.beginUpdates()
-            eveningTableView?.endUpdates()
+            yearlyCheckupTableView?.beginUpdates()
+            yearlyCheckupTableView?.endUpdates()
             UIView.setAnimationsEnabled(true)
             // Scoll up your textview if required
-            if let thisIndexPath = eveningTableView.indexPath(for: cell) {
-                eveningTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
+            if let thisIndexPath = yearlyCheckupTableView.indexPath(for: cell) {
+                yearlyCheckupTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
             }
         }
     }

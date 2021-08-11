@@ -20,6 +20,8 @@ class DailyTodoTableViewCell: UITableViewCell {
     var eveningRecItem:EveningRecItem!
     var afternoonRecItem:AfternoonRecItem!
     var deedsRecItem:DeedsRecItem!
+    var yearlyRecItem:YearlyCheckRecItem!
+    var safetyRecItem:SafetyTipRecItem!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -122,6 +124,34 @@ class DailyTodoTableViewCell: UITableViewCell {
         setupCellDetails()
     }
 
+    func configureCell(recItem: YearlyCheckRecItem) {
+        planRecType = 9
+        todoTask.text = recItem.checkup!
+        if recItem.completed {
+            todoBtn.isSelected = true
+        } else {
+            todoBtn.isSelected = false
+        }
+        todoBtn.transform = .identity
+        yearlyRecItem = recItem
+        
+        setupCellDetails()
+    }
+    
+    func configureCell(recItem: SafetyTipRecItem) {
+        planRecType = 10
+        todoTask.text = recItem.safetyTip!
+        if recItem.completed {
+            todoBtn.isSelected = true
+        } else {
+            todoBtn.isSelected = false
+        }
+        todoBtn.transform = .identity
+        safetyRecItem = recItem
+        
+        setupCellDetails()
+    }
+    
     func setupCellDetails() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
@@ -140,7 +170,10 @@ class DailyTodoTableViewCell: UITableViewCell {
             eveningRecItem.completed = !sender.isSelected
         } else if planRecType == 6 {
             afternoonRecItem.completed = !sender.isSelected
-        } else {
+        } else if planRecType == 9 {
+            yearlyRecItem.completed = !sender.isSelected
+        } else if planRecType == 10 {
+            safetyRecItem.completed = !sender.isSelected
         }
         UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
             sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)

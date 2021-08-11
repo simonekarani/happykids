@@ -78,11 +78,29 @@
         <attribute name="quoteDate" optional="YES" attributeType="String"/>
         <attribute name="quoteMsg" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="SafetyTipRecItem" representedClassName="SafetyTipRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="dateStr" optional="YES" attributeType="String"/>
+        <attribute name="safetyTip" optional="YES" attributeType="String"/>
+        <attribute name="safetyType" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="SafetyTypeRecItem" representedClassName="SafetyTypeRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="dateStr" optional="YES" attributeType="String"/>
+        <attribute name="safetyType" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="YearlyCheckRecItem" representedClassName="YearlyCheckRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="checkup" optional="YES" attributeType="String"/>
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="dateStr" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <elements>
         <element name="AfternoonRecItem" positionX="-36" positionY="81" width="128" height="104"/>
+        <element name="AspireRecItem" positionX="-27" positionY="90" width="128" height="89"/>
         <element name="DailyPlanRecItem" positionX="-63" positionY="18" width="128" height="104"/>
         <element name="DeedsRecItem" positionX="-36" positionY="81" width="128" height="74"/>
-        <element name="AspireRecItem" positionX="-27" positionY="90" width="128" height="89"/>
         <element name="EsteemRecItem" positionX="-18" positionY="90" width="128" height="119"/>
         <element name="EveningRecItem" positionX="-36" positionY="81" width="128" height="104"/>
         <element name="GoalPlanRecItem" positionX="-54" positionY="45" width="128" height="134"/>
@@ -91,5 +109,8 @@
         <element name="MorningRecItem" positionX="-27" positionY="90" width="128" height="104"/>
         <element name="MyDayRecItem" positionX="-36" positionY="81" width="128" height="74"/>
         <element name="QuoteRecItem" positionX="-36" positionY="81" width="128" height="74"/>
+        <element name="SafetyTipRecItem" positionX="-36" positionY="81" width="128" height="104"/>
+        <element name="SafetyTypeRecItem" positionX="-27" positionY="90" width="128" height="74"/>
+        <element name="YearlyCheckRecItem" positionX="-36" positionY="81" width="128" height="89"/>
     </elements>
 </model>

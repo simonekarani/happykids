@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AEC5887B-137E-4460-A62A-A7019385D909"
+            uuid = "9235F0A3-FFAF-44A6-B086-686929FF12FE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happykids/MyHygiene/MorningViewController.swift"
+            filePath = "happykids/HealthTips/SafetyTipsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "376"
+            endingLineNumber = "376"
+            landmarkName = "getRecord(actionForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4ED120D9-89DF-4422-9327-404EDF7F20DC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happykids/HealthTips/SafetyTipsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "onPlusClickedMapButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
