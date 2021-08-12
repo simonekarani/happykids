@@ -67,15 +67,27 @@ class HearingFirstViewController: UIViewController, YTPlayerViewDelegate {
     }
 
     @IBAction func hearingTestClicked(_ sender: Any) {
-        ytPlayer.load(withVideoId: "_QSHHR70lcQ")
+        ytPlayer.load(withVideoId: "_QSHHR70lcQ?rel=0")
     }
     
     @IBAction func ytButtonClicked(_ sender: Any) {
-        ytPlayer.load(withVideoId: "_QSHHR70lcQ")
+        ytPlayer.load(withVideoId: "_QSHHR70lcQ?rel=0")
     }
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         ytPlayer.playVideo()
+    }
+
+    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState)
+    {
+        switch state {
+        case YTPlayerState.ended:
+            ytPlayer.stopVideo()
+            ytPlayer.removeWebView()
+            break;
+        default:
+            break;
+        }
     }
     /*
     // MARK: - Navigation

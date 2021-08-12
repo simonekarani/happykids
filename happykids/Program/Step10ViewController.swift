@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 import youtube_ios_player_helper
 
 class Step10ViewController: UIViewController {
@@ -13,6 +14,8 @@ class Step10ViewController: UIViewController {
     @IBOutlet weak var email10step: UILabel!
     @IBOutlet weak var phone10step: UILabel!
     
+    let rightBarDropDown = DropDown()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,19 +23,54 @@ class Step10ViewController: UIViewController {
         phone10step.isUserInteractionEnabled = true
         
         setupLabelInteractions()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Workshop",
-            style: .plain,
-            target: self,
-            action: #selector(workshopTapped)
-        )
+        
+        let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showBarButtonDropDown))
+        navigationItem.rightBarButtonItem = addBarButtonItem
+        
+        rightBarDropDown.anchorView = addBarButtonItem
+        rightBarDropDown.dataSource = ["Resources", "Workshop"]
+        rightBarDropDown.cellConfiguration = { (index, item) in return "\(item)" }
+        
+        /*rightBarDropDown.cancelAction = { [unowned self] in
+          println("Drop down dismissed")
+        }
+
+        rightBarDropDown.willShowAction = { [unowned self] in
+          println("Drop down will show")
+        }*/
+        /*let resButton   = UIBarButtonItem(title: "Resources", style: .plain,
+                                           target: self, action: #selector(resourcesTapped))
+        let workshopButton = UIBarButtonItem(title: "Workshop", style: .plain,
+                                             target: self, action: #selector(workshopTapped))
+
+        navigationItem.rightBarButtonItems = [resButton, workshopButton]*/
     }
     
+    @IBAction func showBarButtonDropDown(_ sender: AnyObject) {
+
+       rightBarDropDown.selectionAction = {
+        (index: Int, item: String) in
+        if index == 0 {
+            self.performSegue(withIdentifier: "gotoStep10Resources", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "gotoWorkshop", sender: self)
+        }
+       }
+
+       rightBarDropDown.width = 140
+       rightBarDropDown.bottomOffset = CGPoint(x: 0, y:(rightBarDropDown.anchorView?.plainView.bounds.height)!)
+       rightBarDropDown.show()
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
-    @IBAction func workshopTapped(_ sender: Any) {
+    @IBAction func resourcesTapped(_ sender: Any) {
+        performSegue(withIdentifier: "gotoStep10Resources", sender: self)
+    }
+    
+   @IBAction func workshopTapped(_ sender: Any) {
         performSegue(withIdentifier: "gotoWorkshop", sender: self)
     }
     

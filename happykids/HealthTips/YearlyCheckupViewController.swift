@@ -283,8 +283,8 @@ class YearlyCheckupViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func updateRecord() {
-        var updtItemArray = [MorningRecItem]()
-        let request: NSFetchRequest<MorningRecItem> = MorningRecItem.fetchRequest()
+        var updtItemArray = [YearlyCheckRecItem]()
+        let request: NSFetchRequest<YearlyCheckRecItem> = YearlyCheckRecItem.fetchRequest()
         do {
             if #available(iOS 10.0, *) {
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -297,7 +297,7 @@ class YearlyCheckupViewController: UIViewController, UITableViewDataSource, UITa
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
                 if (element.timeMillis == editTodoRec.timeMillis) {
-                    element.routine = todoStr
+                    element.checkup = todoStr
                     saveContext()
                     isFound = true
                     loadYearlyCheckRecords()

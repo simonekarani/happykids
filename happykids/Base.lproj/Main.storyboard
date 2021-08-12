@@ -74,7 +74,7 @@
                         <segue destination="jh5-HW-cNz" kind="show" identifier="gotoEsteem" id="cIw-90-P3W"/>
                         <segue destination="Vq0-d6-JaS" kind="show" identifier="gotoHealthTips" id="niY-E8-Wo6"/>
                         <segue destination="w34-d3-MTL" kind="show" identifier="gotoHygiene" id="WSH-Ru-QaY"/>
-                        <segue destination="HFl-9z-Lod" kind="show" identifier="gotoProgram" id="lv6-aG-zOw"/>
+                        <segue destination="Dv4-D4-xfl" kind="show" identifier="gotoProgram" id="8Cf-yb-szc"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQk-wJ-qgz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -146,6 +146,7 @@
                         <segue destination="RRm-GW-LjN" kind="show" identifier="gotoHealthQuote" id="CpD-Hv-X9c"/>
                         <segue destination="Lvn-MZ-xRZ" kind="show" identifier="gotoYearlyCheckup" id="Bcl-ew-yEQ"/>
                         <segue destination="NTV-qa-6Vl" kind="show" identifier="gotoSafetyTips" id="Y9N-8t-WeM"/>
+                        <segue destination="Ua7-kL-59d" kind="show" identifier="gotoHealthyHabits" id="jDU-tS-3ar"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBw-Ok-mI9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -456,7 +457,7 @@
                                                     <constraint firstAttribute="height" constant="22" id="wb7-uX-1tr"/>
                                                 </constraints>
                                                 <attributedString key="attributedText">
-                                                    <fragment content="Healthier Kids Foundation:  (408) 564-5114">
+                                                    <fragment content="Healthier Kids Foundation:  (877)464-0244">
                                                         <attributes>
                                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <font key="NSFont" metaFont="system" size="17"/>
@@ -2275,6 +2276,7 @@
                         <outlet property="email10step" destination="4kC-7s-oLD" id="bWx-tS-UHO"/>
                         <outlet property="phone10step" destination="Lie-gu-MPP" id="hoN-jv-PeO"/>
                         <segue destination="LuO-H3-bHS" kind="show" identifier="gotoWorkshop" id="yDX-lk-llU"/>
+                        <segue destination="HFl-9z-Lod" kind="show" identifier="gotoStep10Resources" id="jWk-uO-lWw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEG-sG-3aJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2398,7 +2400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRT-HI-w8Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-310" y="-1029"/>
+            <point key="canvasLocation" x="-1180" y="-960"/>
         </scene>
         <!--Dental First-->
         <scene sceneID="KjC-PM-q9O">
@@ -2515,7 +2517,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teR-nk-7FO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="558" y="-1342"/>
+            <point key="canvasLocation" x="-1929" y="-2067"/>
         </scene>
         <!--Smile First-->
         <scene sceneID="Cdb-XR-gtW">
@@ -2751,7 +2753,7 @@
         <!--happykidsMainView-->
         <scene sceneID="alH-IY-edD">
             <objects>
-                <collectionViewController id="HFl-9z-Lod" userLabel="happykidsMainView" customClass="HealthProgramMainCollectionViewController" customModule="happykids" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="HFl-9z-Lod" userLabel="happykidsMainView" customClass="Step10ResourcesViewController" customModule="happykids" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="AWL-NJ-1Sg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2816,12 +2818,11 @@
                             </collectionViewCell>
                         </cells>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Health Resources" id="Vkp-HW-N7g">
+                    <navigationItem key="navigationItem" title="Step10 Resources" id="Vkp-HW-N7g">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Hcn-54-5OR"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="ytPlayer" destination="d2p-UF-mou" id="n6k-CB-YMU"/>
-                        <segue destination="fVi-xQ-9yb" kind="show" identifier="goto10step" id="CGx-8I-gHb"/>
+                        <outlet property="ytPlayer" destination="d2p-UF-mou" id="WMg-0V-EzJ"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ShU-8r-EEH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2833,7 +2834,7 @@
                     <viewLayoutGuide key="frameLayoutGuide" id="DT4-kO-S8z"/>
                 </scrollView>
             </objects>
-            <point key="canvasLocation" x="-2594.202898550725" y="-1029.2410714285713"/>
+            <point key="canvasLocation" x="-3074" y="-1516"/>
         </scene>
         <!--Yearly Checkup-->
         <scene sceneID="mXb-y8-aBs">
@@ -2897,6 +2898,105 @@
             </objects>
             <point key="canvasLocation" x="2586" y="230"/>
         </scene>
+        <!--Healthy Habits-->
+        <scene sceneID="h2C-OB-ZOc">
+            <objects>
+                <viewController id="Ua7-kL-59d" customClass="HealthyHabitsViewController" customModule="happykids" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Fs-Q5-wi1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oBj-d6-IWa">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="b19-je-RFB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oBj-d6-IWa" firstAttribute="leading" secondItem="b19-je-RFB" secondAttribute="leading" id="8YT-JK-g94"/>
+                            <constraint firstAttribute="bottom" secondItem="oBj-d6-IWa" secondAttribute="bottom" id="FdA-3A-u0U"/>
+                            <constraint firstItem="oBj-d6-IWa" firstAttribute="trailing" secondItem="b19-je-RFB" secondAttribute="trailing" id="cvd-ED-QgL"/>
+                            <constraint firstItem="oBj-d6-IWa" firstAttribute="top" secondItem="b19-je-RFB" secondAttribute="top" id="jhc-3W-PCL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Healthy Habits" id="fsg-FC-eap"/>
+                    <connections>
+                        <outlet property="healthyHabitsTableView" destination="oBj-d6-IWa" id="3hv-iP-7v0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="54s-Rg-wDL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2688" y="-188"/>
+        </scene>
+        <!--Healthier Kids Programs-->
+        <scene sceneID="0sJ-Q7-rEj">
+            <objects>
+                <viewController id="Dv4-D4-xfl" customClass="ProgramMainViewController" customModule="happykids" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IJO-dl-8Fl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1HJ-5e-H7J">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="programCell" rowHeight="95" id="Id9-Qd-mlZ" customClass="ProgramMainTableViewCell" customModule="happykids" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="95"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Id9-Qd-mlZ" id="7bs-YO-JLd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zxh-4U-Vg0">
+                                                    <rect key="frame" x="125" y="32.5" width="284" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6kw-Ff-G2L">
+                                                    <rect key="frame" x="30" y="16" width="70" height="73"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="70" id="06T-4s-5Jv"/>
+                                                        <constraint firstAttribute="width" constant="70" id="KNv-4e-CmP"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Zxh-4U-Vg0" firstAttribute="centerY" secondItem="7bs-YO-JLd" secondAttribute="centerY" id="14d-6R-O4h"/>
+                                                <constraint firstItem="Zxh-4U-Vg0" firstAttribute="leading" secondItem="6kw-Ff-G2L" secondAttribute="trailing" constant="25" id="KRR-t7-hRs"/>
+                                                <constraint firstItem="Zxh-4U-Vg0" firstAttribute="trailing" secondItem="7bs-YO-JLd" secondAttribute="trailingMargin" constant="15" id="Tht-CU-OTY"/>
+                                                <constraint firstItem="6kw-Ff-G2L" firstAttribute="bottom" secondItem="7bs-YO-JLd" secondAttribute="bottomMargin" constant="5" id="cjK-bz-1Hd"/>
+                                                <constraint firstItem="6kw-Ff-G2L" firstAttribute="leading" secondItem="7bs-YO-JLd" secondAttribute="leadingMargin" constant="10" id="ogK-fS-7Cq"/>
+                                                <constraint firstItem="6kw-Ff-G2L" firstAttribute="top" secondItem="7bs-YO-JLd" secondAttribute="topMargin" constant="5" id="rPA-Ox-geN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="programImg" destination="6kw-Ff-G2L" id="Xoh-G3-qj0"/>
+                                            <outlet property="programLabel" destination="Zxh-4U-Vg0" id="Wpf-89-FAm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="d7c-Vk-P2X"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Healthier Kids Programs" id="qAU-8F-FKV"/>
+                    <connections>
+                        <outlet property="programTableView" destination="1HJ-5e-H7J" id="Wtr-cq-F92"/>
+                        <segue destination="fVi-xQ-9yb" kind="show" identifier="goto10step" id="oq1-5T-dRM"/>
+                        <segue destination="jCD-sv-ZyA" kind="show" identifier="gotoSmileFirst" id="WhE-E1-uRm"/>
+                        <segue destination="eav-4m-2HD" kind="show" identifier="gotoVisionFirst" id="x6b-dD-rNG"/>
+                        <segue destination="too-42-sVH" kind="show" identifier="gotoHearingFirst" id="1Fn-ht-nHH"/>
+                        <segue destination="hmu-mU-Yfa" kind="show" identifier="gotoDentalFirst" id="zzf-W1-LrA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0dt-se-qzN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2839" y="-702"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="3YF-pn-f0H">
@@ -2919,7 +3019,11 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="h2U-Xr-Mff"/>
+        <segue reference="WhE-E1-uRm"/>
+        <segue reference="zzf-W1-LrA"/>
+        <segue reference="1Fn-ht-nHH"/>
+        <segue reference="oq1-5T-dRM"/>
+        <segue reference="x6b-dD-rNG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="dentalTest" width="163.5" height="99.5"/>

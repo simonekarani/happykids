@@ -22,6 +22,7 @@ class DailyTodoTableViewCell: UITableViewCell {
     var deedsRecItem:DeedsRecItem!
     var yearlyRecItem:YearlyCheckRecItem!
     var safetyRecItem:SafetyTipRecItem!
+    var healthyRecItem:HealthyHabitRecItem!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -152,6 +153,20 @@ class DailyTodoTableViewCell: UITableViewCell {
         setupCellDetails()
     }
     
+    func configureCell(recItem: HealthyHabitRecItem) {
+        planRecType = 11
+        todoTask.text = recItem.habit!
+        if recItem.completed {
+            todoBtn.isSelected = true
+        } else {
+            todoBtn.isSelected = false
+        }
+        todoBtn.transform = .identity
+        healthyRecItem = recItem
+        
+        setupCellDetails()
+    }
+    
     func setupCellDetails() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
@@ -174,6 +189,8 @@ class DailyTodoTableViewCell: UITableViewCell {
             yearlyRecItem.completed = !sender.isSelected
         } else if planRecType == 10 {
             safetyRecItem.completed = !sender.isSelected
+        } else if planRecType == 11 {
+            healthyRecItem.completed = !sender.isSelected
         }
         UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
             sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)

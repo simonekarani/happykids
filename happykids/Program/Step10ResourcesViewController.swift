@@ -9,24 +9,20 @@ import Foundation
 import UIKit
 import youtube_ios_player_helper
 
-class HealthProgramMainCollectionViewController: UICollectionViewController, YTPlayerViewDelegate {
+class Step10ResourcesViewController: UICollectionViewController, YTPlayerViewDelegate {
 
-    let frontLabelArray = ["10 Steps", "Soda & Juice", "Vision Test",
-                           "Hearing Test", "Dental Test",  "Brushing Song",
+    let frontLabelArray = ["Soda & Juice", "Brushing Song",
                            "Structure & Routine",  "Flipping Your Lid"]
     let frontImageArray = [
-        UIImage(named: "10steps"),
         UIImage(named: "sodajuice"),
-        UIImage(named: "visionTest"),
-        UIImage(named: "hearingTest"),
-        UIImage(named: "dentalTest"),
         UIImage(named: "brushingsong"),
         UIImage(named: "structure"),
         UIImage(named: "flippingLid")
     ]
     var tablefontSize: Int = 22
-    @IBOutlet weak var ytPlayer: YTPlayerView!
 
+    @IBOutlet weak var ytPlayer: YTPlayerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,9 +56,7 @@ class HealthProgramMainCollectionViewController: UICollectionViewController, YTP
         
         cell.frontLabel.text = frontLabelArray[indexPath.item]
         cell.frontImage.image = frontImageArray[indexPath.item]
-        if indexPath.row > 0 {
-            cell.videoImage.image = UIImage(named: "ytube")
-        }
+        cell.videoImage.image = UIImage(named: "ytube")
         
         return cell
     }
@@ -85,31 +79,19 @@ class HealthProgramMainCollectionViewController: UICollectionViewController, YTP
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            performSegue(withIdentifier: "goto10step", sender: self)
-            
-        case 1:
             ytPlayer.load(withVideoId: "qi4ndEBXWuc?rel=0")
 
-        case 2:
-            ytPlayer.load(withVideoId: "kGMQ5MYaH3M?rel=0")
-
-        case 3:
-            ytPlayer.load(withVideoId: "_QSHHR70lcQ?rel=0")
-
-        case 4:
-            ytPlayer.load(withVideoId: "vXg60WC0juw?rel=0")
-
-        case 5:
+        case 1:
             ytPlayer.load(withVideoId: "o-x1krVSnuY?rel=0")
             
-        case 6:
+        case 2:
             ytPlayer.load(withVideoId: "FseBfTX3cw8?rel=0")
             
-        case 7:
+        case 3:
             ytPlayer.load(withVideoId: "xemUpOKZjf4?rel=0")
             
         default:
-            performSegue(withIdentifier: "goto10step", sender: self)
+            ytPlayer.load(withVideoId: "qi4ndEBXWuc?rel=0")
         }
     }
     

@@ -216,7 +216,7 @@ class ResourcesViewController: UIViewController {
     // ---
     @objc func hkidsPhoneLabelClicked(_ sender: Any) {
         if #available(iOS 10.0, *) {
-            guard let url = URL(string: "tel://14085645114"),
+            guard let url = URL(string: "tel://18774640244"),
                 UIApplication.shared.canOpenURL(url) else {
                     return
             }

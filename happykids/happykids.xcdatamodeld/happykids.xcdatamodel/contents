@@ -61,6 +61,12 @@
         <attribute name="quoteDate" optional="YES" attributeType="String"/>
         <attribute name="quoteMsg" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="HealthyHabitRecItem" representedClassName="HealthyHabitRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="dateStr" optional="YES" attributeType="String"/>
+        <attribute name="habit" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="MorningRecItem" representedClassName="MorningRecItem" syncable="YES" codeGenerationType="class">
         <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="dateStr" optional="YES" attributeType="String"/>
@@ -112,5 +118,6 @@
         <element name="SafetyTipRecItem" positionX="-36" positionY="81" width="128" height="104"/>
         <element name="SafetyTypeRecItem" positionX="-27" positionY="90" width="128" height="74"/>
         <element name="YearlyCheckRecItem" positionX="-36" positionY="81" width="128" height="89"/>
+        <element name="HealthyHabitRecItem" positionX="-36" positionY="81" width="128" height="89"/>
     </elements>
 </model>

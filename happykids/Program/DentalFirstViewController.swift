@@ -67,15 +67,27 @@ class DentalFirstViewController: UIViewController, YTPlayerViewDelegate {
     }
 
     @IBAction func videoButtonClicked(_ sender: Any) {
-        ytPlayer.load(withVideoId: "vXg60WC0juw")
+        ytPlayer.load(withVideoId: "vXg60WC0juw?rel=0")
     }
     
     @IBAction func ytubeButtonClicked(_ sender: Any) {
-        ytPlayer.load(withVideoId: "vXg60WC0juw")
+        ytPlayer.load(withVideoId: "vXg60WC0juw?rel=0")
     }
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         ytPlayer.playVideo()
+    }
+
+    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState)
+    {
+        switch state {
+        case YTPlayerState.ended:
+            ytPlayer.stopVideo()
+            ytPlayer.removeWebView()
+            break;
+        default:
+            break;
+        }
     }
     /*
     // MARK: - Navigation

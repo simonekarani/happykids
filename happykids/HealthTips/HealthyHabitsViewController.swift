@@ -11,28 +11,29 @@ import CoreData
 import Foundation
 import UIKit
 
-class HealthTipsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HealthyHabitsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let yearlyCheckArray = ["Physician Annual Checkup", "Hearing Test", "Vision Test",
-                            "Dental Cleaning", "Immunization Check",  "Height growth",
-                            "Weight check", "Blood Pressure", "Sleep hours", "TV/Computer Hours",
-                            "Blood Test Anemia", "School Performance degraded?"]
+    let healthyHabitsArray = ["Physician Annual Checkup",
+                              "Hearing Test",
+                              "Vision Test",
+                              "Dental Cleaning"
+                            ]
     
-    @IBOutlet weak var yearlyCheckupTableView: UITableView!
+    @IBOutlet weak var healthyHabitsTableView: UITableView!
     
-    var editTodoRec: YearlyCheckRecItem!
+    var editTodoRec: HealthyHabitRecItem!
     var dailyTodoRecCount: Int!
     var todoStr: String!
     
-    var yearlyCheckItemArray = [YearlyCheckRecItem]()
+    var healthyHabitsItemArray = [HealthyHabitRecItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadYearlyCheckRecords()
-        if yearlyCheckItemArray.count == 0 {
-            createYearlyCheckRecords()
-            loadYearlyCheckRecords()
+        loadHealthyHabitRecords()
+        if healthyHabitsItemArray.count == 0 {
+            createHealthyHabitRecords()
+            loadHealthyHabitRecords()
         }
         setupTableView()
         
@@ -48,26 +49,26 @@ class HealthTipsViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        loadYearlyCheckRecords()
+        loadHealthyHabitRecords()
         DispatchQueue.main.async {
-            self.yearlyCheckupTableView.reloadData() }
+            self.healthyHabitsTableView.reloadData() }
     }
     
     func setupTableView() {
-        yearlyCheckupTableView.allowsSelection = true
-        yearlyCheckupTableView.allowsSelectionDuringEditing = true
+        healthyHabitsTableView.allowsSelection = true
+        healthyHabitsTableView.allowsSelectionDuringEditing = true
         
-        yearlyCheckupTableView.delegate = self
-        yearlyCheckupTableView.dataSource = self
+        healthyHabitsTableView.delegate = self
+        healthyHabitsTableView.dataSource = self
         
         // Set automatic dimensions for row height
-        yearlyCheckupTableView.rowHeight = 50
-        yearlyCheckupTableView.estimatedRowHeight = UITableView.automaticDimension
+        healthyHabitsTableView.rowHeight = 50
+        healthyHabitsTableView.estimatedRowHeight = UITableView.automaticDimension
 
         
-        self.yearlyCheckupTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
+        self.healthyHabitsTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
         
-        yearlyCheckupTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        healthyHabitsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     @IBAction func addTapped(_ sender: Any) {
@@ -108,16 +109,16 @@ class HealthTipsViewController: UIViewController, UITableViewDataSource, UITable
         self.present(alert, animated: true, completion: nil)
     }
     
-    func loadYearlyCheckRecords() {
-        yearlyCheckItemArray.removeAll()
+    func loadHealthyHabitRecords() {
+        healthyHabitsItemArray.removeAll()
         do {
-            let request: NSFetchRequest<YearlyCheckRecItem> = YearlyCheckRecItem.fetchRequest()
+            let request: NSFetchRequest<HealthyHabitRecItem> = HealthyHabitRecItem.fetchRequest()
             if #available(iOS 10.0, *) {
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                yearlyCheckItemArray = try context.fetch(request)
+                healthyHabitsItemArray = try context.fetch(request)
             } else {
                 let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                yearlyCheckItemArray = try context.fetch(request)
+                healthyHabitsItemArray = try context.fetch(request)
             }
         } catch {
             print("Error in loading \(error)")
@@ -129,25 +130,25 @@ class HealthTipsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: DailyTodoTableViewCell = yearlyCheckupTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
-        cell.configureCell(recItem: yearlyCheckItemArray[indexPath.row])
+        let cell: DailyTodoTableViewCell = healthyHabitsTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
+        cell.configureCell(recItem: healthyHabitsItemArray[indexPath.row])
         cell.todoBtn.addTarget(self, action: #selector(onClickedMapButton(_:)), for: .touchUpInside)
         return cell
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if yearlyCheckItemArray.count == 0 {
+        if healthyHabitsItemArray.count == 0 {
             return []
         }
         editTodoRec = getRecord(actionForRowAt: indexPath)!
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.addTodoDialog(msg: self.editTodoRec.checkup!)
+            self.addTodoDialog(msg: self.editTodoRec.habit!)
         })
         editAction.backgroundColor = UIColor.blue
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             // Declare Alert message
-            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record \(self.editTodoRec.checkup!)?", preferredStyle: .alert)
+            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record \(self.editTodoRec.habit!)?", preferredStyle: .alert)
             
             // Create OK button with action handler
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
@@ -172,11 +173,11 @@ class HealthTipsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if yearlyCheckItemArray.count == 0 {
+        if healthyHabitsItemArray.count == 0 {
             return
         }
         self.editTodoRec = getRecord(actionForRowAt: indexPath)!
-        self.addTodoDialog(msg: self.editTodoRec.checkup!)
+        self.addTodoDialog(msg: self.editTodoRec.habit!)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -188,30 +189,30 @@ class HealthTipsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func getRecordCount() -> Int {
-        return yearlyCheckItemArray.count
+        return healthyHabitsItemArray.count
     }
     
-    func getRecord(actionForRowAt indexPath: IndexPath) -> YearlyCheckRecItem? {
-        return yearlyCheckItemArray[indexPath.row]
+    func getRecord(actionForRowAt indexPath: IndexPath) -> HealthyHabitRecItem? {
+        return healthyHabitsItemArray[indexPath.row]
     }
     
-    func deletePlanRecord(deleteActionForRowAt indexPath: IndexPath, recitem: YearlyCheckRecItem) {
+    func deletePlanRecord(deleteActionForRowAt indexPath: IndexPath, recitem: HealthyHabitRecItem) {
         if (indexPath.section == 0) {
-            yearlyCheckItemArray.remove(at: indexPath.row)
+            healthyHabitsItemArray.remove(at: indexPath.row)
             deleteRecord(timeMillis: recitem.timeMillis)
-            loadYearlyCheckRecords()
+            loadHealthyHabitRecords()
             DispatchQueue.main.async {
-                self.yearlyCheckupTableView.reloadData() }
+                self.healthyHabitsTableView.reloadData() }
         }
     }
     
     func deleteRecord(timeMillis: Int64) {
-        let request: NSFetchRequest<YearlyCheckRecItem> = YearlyCheckRecItem.fetchRequest()
+        let request: NSFetchRequest<HealthyHabitRecItem> = HealthyHabitRecItem.fetchRequest()
         do {
             if #available(iOS 10.0, *) {
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                yearlyCheckItemArray = try context.fetch(request)
-                for (_, element) in yearlyCheckItemArray.enumerated() {
+                healthyHabitsItemArray = try context.fetch(request)
+                for (_, element) in healthyHabitsItemArray.enumerated() {
                     if (element.timeMillis == timeMillis) {
                         context.delete(element)
                         saveContext()
@@ -220,8 +221,8 @@ class HealthTipsViewController: UIViewController, UITableViewDataSource, UITable
                 }
             } else {
                 let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                yearlyCheckItemArray = try context.fetch(request)
-                for (_, element) in yearlyCheckItemArray.enumerated() {
+                healthyHabitsItemArray = try context.fetch(request)
+                for (_, element) in healthyHabitsItemArray.enumerated() {
                     if (element.timeMillis == timeMillis) {
                         context.delete(element)
                         saveContext()
@@ -234,21 +235,21 @@ class HealthTipsViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    func createYearlyCheckRecords() {
-        for i in 0 ..< yearlyCheckArray.count {
+    func createHealthyHabitRecords() {
+        for i in 0 ..< healthyHabitsArray.count {
             if #available(iOS 10.0, *) {
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                let plansRecItem = YearlyCheckRecItem(context: context)
+                let plansRecItem = HealthyHabitRecItem(context: context)
                 plansRecItem.timeMillis = getCurrentMillis()
                 plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                plansRecItem.checkup = yearlyCheckArray[i]
+                plansRecItem.habit = healthyHabitsArray[i]
                 plansRecItem.completed = false
             } else {
                 let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                let plansRecItem = YearlyCheckRecItem()
+                let plansRecItem = HealthyHabitRecItem()
                 plansRecItem.timeMillis = getCurrentMillis()
                 plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                plansRecItem.checkup = yearlyCheckArray[i]
+                plansRecItem.habit = healthyHabitsArray[i]
                 plansRecItem.completed = false
             }
             saveContext()
@@ -262,29 +263,29 @@ class HealthTipsViewController: UIViewController, UITableViewDataSource, UITable
         
         if #available(iOS 10.0, *) {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let plansRecItem = YearlyCheckRecItem(context: context)
+            let plansRecItem = HealthyHabitRecItem(context: context)
             plansRecItem.timeMillis = getCurrentMillis()
             plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.checkup = todoStr
+            plansRecItem.habit = todoStr
             plansRecItem.completed = false
         } else {
             let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let plansRecItem = YearlyCheckRecItem()
+            let plansRecItem = HealthyHabitRecItem()
             plansRecItem.timeMillis = getCurrentMillis()
             plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.checkup = todoStr
+            plansRecItem.habit = todoStr
             plansRecItem.completed = false
         }
         saveContext()
 
-        loadYearlyCheckRecords()
+        loadHealthyHabitRecords()
         DispatchQueue.main.async {
-            self.yearlyCheckupTableView.reloadData() }
+            self.healthyHabitsTableView.reloadData() }
     }
     
     func updateRecord() {
-        var updtItemArray = [MorningRecItem]()
-        let request: NSFetchRequest<MorningRecItem> = MorningRecItem.fetchRequest()
+        var updtItemArray = [HealthyHabitRecItem]()
+        let request: NSFetchRequest<HealthyHabitRecItem> = HealthyHabitRecItem.fetchRequest()
         do {
             if #available(iOS 10.0, *) {
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -297,12 +298,12 @@ class HealthTipsViewController: UIViewController, UITableViewDataSource, UITable
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
                 if (element.timeMillis == editTodoRec.timeMillis) {
-                    element.routine = todoStr
+                    element.habit = todoStr
                     saveContext()
                     isFound = true
-                    loadYearlyCheckRecords()
+                    loadHealthyHabitRecords()
                     DispatchQueue.main.async {
-                        self.yearlyCheckupTableView.reloadData() }
+                        self.healthyHabitsTableView.reloadData() }
                     return
                 }
             }
@@ -337,20 +338,20 @@ class HealthTipsViewController: UIViewController, UITableViewDataSource, UITable
     }
 }
 
-extension HealthTipsViewController: GrowingCellProtocol {
+extension HealthyHabitsViewController: GrowingCellProtocol {
     // Update height of UITextView based on string height
     func updateHeightOfRow(_ cell: RecDetailTableViewCell, _ textView: UITextView) {
         let size = textView.bounds.size
-        let newSize = yearlyCheckupTableView.sizeThatFits(CGSize(width: size.width,
+        let newSize = healthyHabitsTableView.sizeThatFits(CGSize(width: size.width,
                                                               height: CGFloat.greatestFiniteMagnitude))
         if size.height != newSize.height {
             UIView.setAnimationsEnabled(false)
-            yearlyCheckupTableView?.beginUpdates()
-            yearlyCheckupTableView?.endUpdates()
+            healthyHabitsTableView?.beginUpdates()
+            healthyHabitsTableView?.endUpdates()
             UIView.setAnimationsEnabled(true)
             // Scoll up your textview if required
-            if let thisIndexPath = yearlyCheckupTableView.indexPath(for: cell) {
-                yearlyCheckupTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
+            if let thisIndexPath = healthyHabitsTableView.indexPath(for: cell) {
+                healthyHabitsTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
             }
         }
     }

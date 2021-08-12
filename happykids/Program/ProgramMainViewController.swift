@@ -9,17 +9,20 @@
 import Foundation
 import UIKit
 
-class HealthTipsMainViewController: UIViewController {
+class ProgramMainViewController: UIViewController {
+
     
-    @IBOutlet weak var healthTipsTableView: UITableView!
+    @IBOutlet weak var programTableView: UITableView!
     
     let devCourses = [
-        ("Health Affirmation"), ("Healthy Habits"),
-        ("Yearly Checkup"), ("Safety Tips")
+        ("10 Steps"), ("SmileFirst"),
+        ("DentalFirst"), ("HearingFirst"),
+        ("VisionFirst")
     ]
     let devCousesImages = [
-        UIImage(named: "healthaffirm"), UIImage(named: "healthtips"),
-        UIImage(named: "yearlycheck"), UIImage(named: "childsafe")
+        UIImage(named: "10steps"), UIImage(named: "smileFirst"),
+        UIImage(named: "dentalFirst"), UIImage(named: "hearingFirst"),
+        UIImage(named: "visionFirst"),
     ]
 
     override func viewDidLoad() {
@@ -36,30 +39,32 @@ class HealthTipsMainViewController: UIViewController {
     }
 
     func setupTableView() {
-        healthTipsTableView.delegate = self
-        healthTipsTableView.dataSource = self
+        programTableView.delegate = self
+        programTableView.dataSource = self
         
-        healthTipsTableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+        programTableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.row) {
         case 0:
-            performSegue(withIdentifier: "gotoHealthQuote", sender: self)
+            performSegue(withIdentifier: "goto10step", sender: self)
         case 1:
             performSegue(withIdentifier: "gotoSmileFirst", sender: self)
         case 2:
-            performSegue(withIdentifier: "gotoYearlyCheckup", sender: self)
+            performSegue(withIdentifier: "gotoDentalFirst", sender: self)
         case 3:
-            performSegue(withIdentifier: "gotoSafetyTips", sender: self)
+            performSegue(withIdentifier: "gotoHearingFirst", sender: self)
+        case 4:
+            performSegue(withIdentifier: "gotoVisionFirst", sender: self)
         default:
-            performSegue(withIdentifier: "gotoHealthQuote", sender: self)
-
+            performSegue(withIdentifier: "goto10step", sender: self)
+            
         }
     }
 }
 
-extension HealthTipsMainViewController: UITableViewDelegate {
+extension ProgramMainViewController: UITableViewDelegate {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -80,14 +85,14 @@ extension HealthTipsMainViewController: UITableViewDelegate {
     }
 }
 
-extension HealthTipsMainViewController: UITableViewDataSource {
+extension ProgramMainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return devCourses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "healthTipsCell", for: indexPath as IndexPath) as! HealthTipsMainTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "programCell", for: indexPath as IndexPath) as! ProgramMainTableViewCell
         
         cell.programImg.image = self.devCousesImages[indexPath .row]
         cell.programLabel.text  = self.devCourses[indexPath .row]
