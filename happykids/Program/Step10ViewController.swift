@@ -30,20 +30,6 @@ class Step10ViewController: UIViewController {
         rightBarDropDown.anchorView = addBarButtonItem
         rightBarDropDown.dataSource = ["Resources", "Workshop"]
         rightBarDropDown.cellConfiguration = { (index, item) in return "\(item)" }
-        
-        /*rightBarDropDown.cancelAction = { [unowned self] in
-          println("Drop down dismissed")
-        }
-
-        rightBarDropDown.willShowAction = { [unowned self] in
-          println("Drop down will show")
-        }*/
-        /*let resButton   = UIBarButtonItem(title: "Resources", style: .plain,
-                                           target: self, action: #selector(resourcesTapped))
-        let workshopButton = UIBarButtonItem(title: "Workshop", style: .plain,
-                                             target: self, action: #selector(workshopTapped))
-
-        navigationItem.rightBarButtonItems = [resButton, workshopButton]*/
     }
     
     @IBAction func showBarButtonDropDown(_ sender: AnyObject) {
@@ -64,14 +50,6 @@ class Step10ViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-    }
-    
-    @IBAction func resourcesTapped(_ sender: Any) {
-        performSegue(withIdentifier: "gotoStep10Resources", sender: self)
-    }
-    
-   @IBAction func workshopTapped(_ sender: Any) {
-        performSegue(withIdentifier: "gotoWorkshop", sender: self)
     }
     
     func setupLabelInteractions() {

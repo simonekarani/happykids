@@ -29,6 +29,8 @@ class HygieneMainViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        self.hygieneTableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.hygieneTableView.backgroundColor = UIColor.clear
     }
     
     override func viewWillAppear(_ animated: Bool) {

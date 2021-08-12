@@ -26,6 +26,8 @@ class HealthTipsMainViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        self.healthTipsTableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.healthTipsTableView.backgroundColor = UIColor.clear
     }
     
     override func viewWillAppear(_ animated: Bool) {

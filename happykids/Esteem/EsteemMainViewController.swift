@@ -28,6 +28,8 @@ class EsteemMainViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        self.esteemTableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.esteemTableView.backgroundColor = UIColor.clear
     }
     
     override func viewWillAppear(_ animated: Bool) {

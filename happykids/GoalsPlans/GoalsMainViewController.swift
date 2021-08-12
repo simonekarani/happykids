@@ -26,6 +26,8 @@ class GoalsMainViewController: UIViewController {
         self.plansMainTableView.tableFooterView = UIView(frame: CGRect.zero)
 
         setupTableView()
+        self.plansMainTableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.plansMainTableView.backgroundColor = UIColor.clear
     }
     
     override func viewWillAppear(_ animated: Bool) {

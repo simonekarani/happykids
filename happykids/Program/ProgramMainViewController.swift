@@ -29,6 +29,8 @@ class ProgramMainViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        self.programTableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.programTableView.backgroundColor = UIColor.clear
     }
     
     override func viewWillAppear(_ animated: Bool) {
