@@ -16,10 +16,12 @@ public enum EsteemFeelingType: String, CaseIterable {
     case EMBARRASSED = "Embarrassed"
     case JEALOUS = "Jealous"
     case HAPPY = "Happy"
+    case NERVOUS = "Nervous"
     case SAD = "Sad"
     case SICK = "Sick"
     case STRESSED = "Stressed"
     case SURPRISED = "Surprised"
+    case TIRED = "Tired"
     case WORRIED = "Worried"
 
     static var asArray: [EsteemFeelingType] {return self.allCases}
@@ -31,11 +33,13 @@ public enum EsteemFeelingType: String, CaseIterable {
         "Embarrassed": 3,
         "Jealous": 4,
         "Happy": 5,
-        "Sad": 6,
-        "Sick": 7,
-        "Stressed": 8,
-        "Surprised": 9,
-        "Worried": 10
+        "Nervous": 6,
+        "Sad": 7,
+        "Sick": 8,
+        "Stressed": 9,
+        "Surprised": 10,
+        "Tired": 11,
+        "Worried": 12
     ];
     
     static func toInt(value:String) -> Int {
@@ -50,10 +54,12 @@ public enum EsteemFeelingType: String, CaseIterable {
         case .EMBARRASSED: return "Embarrassed"
         case .JEALOUS: return "Jealous"
         case .HAPPY: return "Happy"
+        case .NERVOUS: return "Nervous"
         case .SAD: return "Sad"
         case .SICK: return "Sick"
         case .STRESSED: return "Stressed"
         case .SURPRISED: return "Surprised"
+        case .TIRED: return "Tired"
         case .WORRIED: return "Worried"
         }
     }
@@ -73,14 +79,18 @@ public enum EsteemFeelingType: String, CaseIterable {
         case 6:
             self = .HAPPY
         case 7:
-            self = .SAD
+            self = .NERVOUS
         case 8:
-            self = .SICK
+            self = .SAD
         case 9:
-            self = .STRESSED
+            self = .SICK
         case 10:
-            self = .SURPRISED
+            self = .STRESSED
         case 11:
+            self = .SURPRISED
+        case 12:
+            self = .TIRED
+        case 13:
             self = .WORRIED
         default:
             return nil

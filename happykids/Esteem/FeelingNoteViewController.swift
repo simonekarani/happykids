@@ -32,9 +32,10 @@ class FeelingNoteViewController: UIViewController {
         feelingDropDown.dataSource = [
             EsteemFeelingType.ANGRY.description, EsteemFeelingType.ANNOYED.description,
             EsteemFeelingType.BORED.description, EsteemFeelingType.EMBARRASSED.description,
-            EsteemFeelingType.JEALOUS.description, EsteemFeelingType.HAPPY.description,
-            EsteemFeelingType.SAD.description, EsteemFeelingType.SICK.description,
-            EsteemFeelingType.STRESSED.description, EsteemFeelingType.SURPRISED.description,
+            EsteemFeelingType.HAPPY.description, EsteemFeelingType.JEALOUS.description,
+            EsteemFeelingType.NERVOUS.description, EsteemFeelingType.SAD.description,
+            EsteemFeelingType.SICK.description, EsteemFeelingType.STRESSED.description,
+            EsteemFeelingType.SURPRISED.description, EsteemFeelingType.TIRED.description,
             EsteemFeelingType.WORRIED.description
         ]
 
