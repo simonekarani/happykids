@@ -233,6 +233,7 @@ class SafetyTipsViewController: UIViewController, UITableViewDataSource, UITable
             let cell: GoalPlanTableViewCell = safetyTipsTableView.dequeueReusableCell(withIdentifier: "GoalPlanTableViewCell", for: indexPath) as! GoalPlanTableViewCell
             cell.configureCell(section: indexPath.section, lblText: getGoalTitle(section: indexPath.section))
             cell.addBtn.addTarget(self, action: #selector(onPlusClickedMapButton(_:)), for: .touchUpInside)
+            cell.backgroundColor = UIColor(rgb: 0xc9c9cc)
             cell.addBtn.tag = indexPath.section
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
@@ -243,6 +244,7 @@ class SafetyTipsViewController: UIViewController, UITableViewDataSource, UITable
                 let cell: GoalPlanTableViewCell = safetyTipsTableView.dequeueReusableCell(withIdentifier: "GoalPlanTableViewCell", for: indexPath) as! GoalPlanTableViewCell
                 cell.configureCell(section: indexPath.section, lblText: getGoalTitle(section: indexPath.section))
                 cell.addBtn.addTarget(self, action: #selector(onPlusClickedMapButton(_:)), for: .touchUpInside)
+                cell.backgroundColor = UIColor(rgb: 0xc9c9cc)
                 cell.addBtn.tag = indexPath.section
                 cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 return cell
@@ -540,5 +542,16 @@ extension SafetyTipsViewController: GrowingCellProtocol {
                 safetyTipsTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
             }
         }
+    }
+}
+
+extension UIColor {
+    convenience init(rgb: UInt) {
+        self.init(
+            red: CGFloat((rgb & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgb & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgb & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }

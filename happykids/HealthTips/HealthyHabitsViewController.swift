@@ -13,11 +13,19 @@ import UIKit
 
 class HealthyHabitsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let healthyHabitsArray = ["Physician Annual Checkup",
-                              "Hearing Test",
-                              "Vision Test",
-                              "Dental Cleaning"
-                            ]
+    let healthyHabitsArray = [
+        "Stay positive - Read affirmation of the day",
+        "Kids 4-8 years old drink around 5 cups, and older kids 7-8 cups of water",
+        "Don't skip breakfast",
+        "Make half of your meal with fruits and vegetables",
+        "Eat meals together as a family. Eat at the table and not in front of television",
+        "Look at food nutrition labels for amount of - grams of sugar, calories, saturated fats",
+        "Pick enjoyable physical activities like gymnastics, swimming, or archery",
+        "Make 30 min reading a part of every day bedtime activity",
+        "Brush your teeth twice a day and floss once a day",
+        "Spend time socicalizing with friends",
+        "Prioritize sleep - Kids 7-12 years sleep 10-11 hours a day, and 12-18 years sleep 8-9 hours a day"
+    ]
     
     @IBOutlet weak var healthyHabitsTableView: UITableView!
     
@@ -81,7 +89,7 @@ class HealthyHabitsViewController: UIViewController, UITableViewDataSource, UITa
 
     func addTodoDialog(msg: String) {
         var recExists = false
-        let alert = UIAlertController(title: "Yearly Checkup", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Healthy Habits", message: nil, preferredStyle: .alert)
         if msg == "" {
             alert.addTextField { (textField) in
                 textField.placeholder = "Default placeholder text"

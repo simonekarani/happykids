@@ -38,6 +38,7 @@ class FeelingNoteViewController: UIViewController {
             EsteemFeelingType.SURPRISED.description, EsteemFeelingType.TIRED.description,
             EsteemFeelingType.WORRIED.description
         ]
+        feelingDropDown.width = 200
 
         recCreated = false
         feelingTitle.isUserInteractionEnabled = true

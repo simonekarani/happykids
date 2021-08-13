@@ -49,7 +49,7 @@ class HealthTipsMainViewController: UIViewController {
         case 0:
             performSegue(withIdentifier: "gotoHealthQuote", sender: self)
         case 1:
-            performSegue(withIdentifier: "gotoSmileFirst", sender: self)
+            performSegue(withIdentifier: "gotoHealthyHabits", sender: self)
         case 2:
             performSegue(withIdentifier: "gotoYearlyCheckup", sender: self)
         case 3:

@@ -10,7 +10,7 @@ import Foundation
 
 public enum EsteemFeelingType: String, CaseIterable {
     
-    case ANGRY = "Angry"
+    case ANGRY = "\u{1F621}Angry"
     case ANNOYED = "Annoyed"
     case BORED = "Bored"
     case EMBARRASSED = "Embarrassed"
@@ -48,7 +48,7 @@ public enum EsteemFeelingType: String, CaseIterable {
     
     var description: String {
         switch self {
-        case .ANGRY: return "Angry"
+        case .ANGRY: return "\u{1F621}Angry"
         case .ANNOYED: return "Annoyed"
         case .BORED: return "Bored"
         case .EMBARRASSED: return "Embarrassed"

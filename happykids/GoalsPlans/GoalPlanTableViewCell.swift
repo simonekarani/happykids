@@ -6,6 +6,7 @@
 //  Copyright © 2021 Simone Karani. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class GoalPlanTableViewCell: UITableViewCell {
@@ -30,6 +31,7 @@ class GoalPlanTableViewCell: UITableViewCell {
     func configureCell(section: Int, lblText: String) {
         yearLabel.font = yearLabel.font.withSize(18)
         addBtn.tag = 2000 + section
+        addBtn.backgroundColor = UIColor(rgb: 0x636366)
         yearLabel.text = lblText
         setupCellDetails()
     }
