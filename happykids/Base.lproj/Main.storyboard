@@ -1661,11 +1661,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWq-Qm-7Tt">
-                                <rect key="frame" x="15" y="103" width="384" height="30"/>
+                                <rect key="frame" x="100" y="103" width="180" height="30"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="0iA-jI-Qq4"/>
                                     <constraint firstAttribute="height" constant="30" id="1Tn-xF-OfW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="tapChooseMenuItem:" destination="bCN-p5-FVM" eventType="touchUpInside" id="juK-iB-Syz"/>
@@ -1701,15 +1702,14 @@
                             <constraint firstItem="x8X-Di-BX3" firstAttribute="trailing" secondItem="mCn-mA-sAS" secondAttribute="trailing" constant="15" id="8wU-co-mDW"/>
                             <constraint firstItem="x8X-Di-BX3" firstAttribute="bottom" secondItem="cLb-Aa-jAX" secondAttribute="bottom" constant="15" id="J2N-34-tAn"/>
                             <constraint firstItem="mCn-mA-sAS" firstAttribute="top" secondItem="GIs-at-8x8" secondAttribute="bottom" constant="10" id="KtZ-Id-xab"/>
-                            <constraint firstItem="x8X-Di-BX3" firstAttribute="trailing" secondItem="lWq-Qm-7Tt" secondAttribute="trailing" constant="15" id="Mpc-gU-hVB"/>
                             <constraint firstItem="cLb-Aa-jAX" firstAttribute="top" secondItem="Mjt-dD-aHk" secondAttribute="bottom" constant="10" id="T8M-cv-Vtx"/>
                             <constraint firstItem="x8X-Di-BX3" firstAttribute="trailing" secondItem="GIs-at-8x8" secondAttribute="trailing" constant="15" id="Tea-VM-VaO"/>
                             <constraint firstItem="8lh-I5-tZs" firstAttribute="leading" secondItem="x8X-Di-BX3" secondAttribute="leading" constant="15" id="Uai-hC-nGw"/>
                             <constraint firstItem="snG-2J-cmu" firstAttribute="leading" secondItem="x8X-Di-BX3" secondAttribute="leading" constant="17" id="XkJ-qE-97E"/>
+                            <constraint firstItem="lWq-Qm-7Tt" firstAttribute="leading" secondItem="8lh-I5-tZs" secondAttribute="trailing" constant="10" id="Y8h-28-WXp"/>
                             <constraint firstItem="Mjt-dD-aHk" firstAttribute="leading" secondItem="x8X-Di-BX3" secondAttribute="leading" constant="15" id="bzo-vf-4nB"/>
                             <constraint firstItem="GIs-at-8x8" firstAttribute="trailing" secondItem="Mjt-dD-aHk" secondAttribute="trailing" id="fZs-7R-kVJ"/>
                             <constraint firstItem="x8X-Di-BX3" firstAttribute="trailing" secondItem="cLb-Aa-jAX" secondAttribute="trailing" constant="15" id="g3y-hM-zfS"/>
-                            <constraint firstItem="GIs-at-8x8" firstAttribute="top" secondItem="lWq-Qm-7Tt" secondAttribute="bottom" constant="20" id="gzO-Qd-oXo"/>
                             <constraint firstItem="GIs-at-8x8" firstAttribute="leading" secondItem="Mjt-dD-aHk" secondAttribute="leading" id="kNr-H8-QWD"/>
                             <constraint firstItem="8lh-I5-tZs" firstAttribute="top" secondItem="x8X-Di-BX3" secondAttribute="top" constant="15" id="m80-Gb-Sgi"/>
                             <constraint firstItem="lWq-Qm-7Tt" firstAttribute="top" secondItem="x8X-Di-BX3" secondAttribute="top" constant="15" id="ntf-Mg-Ggt"/>
@@ -1718,7 +1718,6 @@
                             <constraint firstItem="mCn-mA-sAS" firstAttribute="top" secondItem="GIs-at-8x8" secondAttribute="bottom" constant="10" id="rzZ-Vl-0OW"/>
                             <constraint firstItem="x8X-Di-BX3" firstAttribute="trailing" secondItem="Mjt-dD-aHk" secondAttribute="trailing" constant="15" id="wqz-8b-vtw"/>
                             <constraint firstItem="x8X-Di-BX3" firstAttribute="trailing" secondItem="snG-2J-cmu" secondAttribute="trailing" constant="17" id="wtM-sA-TPl"/>
-                            <constraint firstItem="GIs-at-8x8" firstAttribute="centerX" secondItem="lWq-Qm-7Tt" secondAttribute="centerX" id="y4q-Yq-pj8"/>
                             <constraint firstItem="GIs-at-8x8" firstAttribute="leading" secondItem="mCn-mA-sAS" secondAttribute="leading" id="yI5-lV-STr"/>
                         </constraints>
                     </view>
@@ -1733,7 +1732,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5mH-Xe-0zQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5832" y="896"/>
+            <point key="canvasLocation" x="5831.884057971015" y="895.98214285714278"/>
         </scene>
         <!--Past Day View Controller-->
         <scene sceneID="4cc-7c-vvY">

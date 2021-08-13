@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class FeelingRecTableViewCell: UITableViewCell {
 
@@ -24,7 +25,9 @@ class FeelingRecTableViewCell: UITableViewCell {
     }
     
     func configureCell(recItem: EsteemRecItem, count: Int) {
-        feelingTitle.text = recItem.feelingType! + ":" + recItem.msgTitle!
+        let index = recItem.feelingType!.index(recItem.feelingType!.startIndex, offsetBy: 1)
+        let fType:String = String(recItem.feelingType!.prefix(upTo: index))
+        feelingTitle.text = fType + ":" + recItem.msgTitle!
         feelingDate.text = recItem.date
         feelingDetails.text = recItem.message
         

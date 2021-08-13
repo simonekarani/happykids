@@ -38,7 +38,7 @@ class FeelingNoteViewController: UIViewController {
             EsteemFeelingType.SURPRISED.description, EsteemFeelingType.TIRED.description,
             EsteemFeelingType.WORRIED.description
         ]
-        feelingDropDown.width = 200
+        feelingDropDown.width = 180
 
         recCreated = false
         feelingTitle.isUserInteractionEnabled = true
@@ -47,8 +47,9 @@ class FeelingNoteViewController: UIViewController {
         if (editEsteemRec != nil) {
             feelingTitle.text = editEsteemRec.msgTitle!
             feelingDetail.text = editEsteemRec.message!
-            feelingDropDown.selectRow(EsteemFeelingType.toInt(value: editEsteemRec.feelingType!))
-            feelingTypeButton.setTitle(editEsteemRec.feelingType, for: .normal)
+            let selectedRow = EsteemFeelingType.toInt(value: editEsteemRec.feelingType!)
+            feelingDropDown.selectRow(selectedRow)
+            feelingTypeButton.setTitle(feelingDropDown.dataSource[selectedRow], for: .normal)
             recState = .UPDATE
         } else {
             feelingDropDown.selectRow(6)
