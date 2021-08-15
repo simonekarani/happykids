@@ -43,7 +43,8 @@ public enum EsteemFeelingType: String, CaseIterable {
     ];
     
     static func toInt(value:String) -> Int {
-        return esteemFeelingTypeDict[value]!
+        let valueStr = value.removeWhitespace()
+        return esteemFeelingTypeDict[valueStr]!
     }
     
     var description: String {
@@ -101,3 +102,13 @@ public enum EsteemFeelingType: String, CaseIterable {
         return EsteemFeelingType.asArray.firstIndex(of: self)!
     }
 }
+
+extension String {
+   func replace(string:String, replacement:String) -> String {
+       return self.replacingOccurrences(of: string, with: replacement, options: NSString.CompareOptions.literal, range: nil)
+   }
+
+   func removeWhitespace() -> String {
+       return self.replace(string: " ", replacement: "")
+   }
+ }

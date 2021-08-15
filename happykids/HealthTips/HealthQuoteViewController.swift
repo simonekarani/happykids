@@ -35,65 +35,36 @@ class HealthQuoteViewController: UIViewController {
     }
     
     func saveRecord(qMsg: String, qAuthor: String) {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let quoteRecItem = HealthRecItem(context: context)
-            quoteRecItem.quoteDate = Date().string(format: "MM/dd/yyyy")
-            quoteRecItem.quoteMsg = qMsg
-            quoteRecItem.quoteAuthor = qAuthor
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let quoteRecItem = HealthRecItem()
-            quoteRecItem.quoteDate = Date().string(format: "MM/dd/yyyy")
-            quoteRecItem.quoteMsg = qMsg
-            quoteRecItem.quoteAuthor = qAuthor
-        }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let quoteRecItem = HealthRecItem(context: context)
+        quoteRecItem.quoteDate = Date().string(format: "MM/dd/yyyy")
+        quoteRecItem.quoteMsg = qMsg
+        quoteRecItem.quoteAuthor = qAuthor
+
         saveContext()
     }
     
     func updateQuoteStoredList() {
         let request: NSFetchRequest<HealthRecItem> = HealthRecItem.fetchRequest()
 
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                let quoteItemArray = try context.fetch(request)
-                if (quoteItemArray.count > 8) {
-                    context.delete(quoteItemArray[0])
-                    saveContext()
-                }
-            } catch {
-                print("Error in loading \(error)")
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            let quoteItemArray = try context.fetch(request)
+            if (quoteItemArray.count > 8) {
+                context.delete(quoteItemArray[0])
+                saveContext()
             }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                let quoteItemArray = try context.fetch(request)
-                if (quoteItemArray.count > 8) {
-                    context.delete(quoteItemArray[0])
-                    saveContext()
-                }
-            } catch {
-                print("Error in loading \(error)")
-            }
+        } catch {
+            print("Error in loading \(error)")
         }
     }
     
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
 }

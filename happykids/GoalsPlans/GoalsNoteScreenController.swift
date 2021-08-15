@@ -62,95 +62,49 @@ class GoalsNoteScreenController: UIViewController {
         }
         
         recCreated = true
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-            let goalsRecItem = GoalsRecItem(context: context)
-            goalsRecItem.timeMillis = getCurrentMillis()
-            goalsRecItem.dateSet = Date().getFormattedDate(format: "MM/dd/yyyy")
-            goalsRecItem.title = goalsTitle.text
-            goalsRecItem.goalDetails = goalsDetails.text
-            goalsRecItem.completed = false
-            saveContext()
-        } else {
-            _ = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-
-            let goalsRecItem = GoalsRecItem()
-            goalsRecItem.timeMillis = getCurrentMillis()
-            goalsRecItem.dateSet = Date().getFormattedDate(format: "MM/dd/yyyy")
-            goalsRecItem.title = goalsTitle.text
-            goalsRecItem.goalDetails = goalsDetails.text
-            goalsRecItem.completed = false
-            saveContext()
-        }
+        let goalsRecItem = GoalsRecItem(context: context)
+        goalsRecItem.timeMillis = getCurrentMillis()
+        goalsRecItem.dateSet = Date().getFormattedDate(format: "MM/dd/yyyy")
+        goalsRecItem.title = goalsTitle.text
+        goalsRecItem.goalDetails = goalsDetails.text
+        goalsRecItem.completed = false
+        saveContext()
     }
     
     func updateRecord() {
         var goalsItemArray = [GoalsRecItem]()
         let request: NSFetchRequest<GoalsRecItem> = GoalsRecItem.fetchRequest()
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-            do {
-                goalsItemArray = try context.fetch(request)
-                var isFound: Bool = false
-                for (_, element) in goalsItemArray.enumerated() {
-                    if (element.timeMillis == editGoalsRec.timeMillis) {
-                        element.title = goalsTitle.text
-                        element.goalDetails = goalsDetails.text
-                        saveContext()
-                        isFound = true
-                        return
-                    }
+        do {
+            goalsItemArray = try context.fetch(request)
+            var isFound: Bool = false
+            for (_, element) in goalsItemArray.enumerated() {
+                if (element.timeMillis == editGoalsRec.timeMillis) {
+                    element.title = goalsTitle.text
+                    element.goalDetails = goalsDetails.text
+                    saveContext()
+                    isFound = true
+                    return
                 }
-                if !isFound {
-                    createRecord()
-                }
-            } catch {
-                print("Error in loading \(error)")
             }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-
-            do {
-                goalsItemArray = try context.fetch(request)
-                var isFound: Bool = false
-                for (_, element) in goalsItemArray.enumerated() {
-                    if (element.timeMillis == editGoalsRec.timeMillis) {
-                        element.title = goalsTitle.text
-                        element.goalDetails = goalsDetails.text
-                        saveContext()
-                        isFound = true
-                        return
-                    }
-                }
-                if !isFound {
-                    createRecord()
-                }
-            } catch {
-                print("Error in loading \(error)")
+            if !isFound {
+                createRecord()
             }
-
+        } catch {
+            print("Error in loading \(error)")
         }
     }
     
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
     

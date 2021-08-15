@@ -141,13 +141,8 @@ extension MyDayViewController: UITableViewDelegate {
         var updtItemArray = [MyDayRecItem]()
         let request: NSFetchRequest<MyDayRecItem> = MyDayRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                updtItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                updtItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            updtItemArray = try context.fetch(request)
             
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
@@ -157,19 +152,11 @@ extension MyDayViewController: UITableViewDelegate {
                 }
             }
             if !isFound {
-                if #available(iOS 10.0, *) {
-                    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                    let plansRecItem = MyDayRecItem(context: context)
-                    plansRecItem.timeMillis = getCurrentMillis()
-                    plansRecItem.dayDate = Date().getFormattedDate(format: "MM/dd/yyyy")
-                    plansRecItem.howStatus = dayLabelArray[rowIdx]
-                } else {
-                    _ = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                    let plansRecItem = MyDayRecItem()
-                    plansRecItem.timeMillis = getCurrentMillis()
-                    plansRecItem.dayDate = Date().getFormattedDate(format: "MM/dd/yyyy")
-                    plansRecItem.howStatus = dayLabelArray[rowIdx]
-                }
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                let plansRecItem = MyDayRecItem(context: context)
+                plansRecItem.timeMillis = getCurrentMillis()
+                plansRecItem.dayDate = Date().getFormattedDate(format: "MM/dd/yyyy")
+                plansRecItem.howStatus = dayLabelArray[rowIdx]
             }
         } catch {
             print("Error in loading \(error)")
@@ -183,20 +170,11 @@ extension MyDayViewController: UITableViewDelegate {
     }
     
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
 

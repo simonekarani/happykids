@@ -121,13 +121,8 @@ class HealthyHabitsViewController: UIViewController, UITableViewDataSource, UITa
         healthyHabitsItemArray.removeAll()
         do {
             let request: NSFetchRequest<HealthyHabitRecItem> = HealthyHabitRecItem.fetchRequest()
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                healthyHabitsItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                healthyHabitsItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            healthyHabitsItemArray = try context.fetch(request)
         } catch {
             print("Error in loading \(error)")
         }
@@ -217,25 +212,13 @@ class HealthyHabitsViewController: UIViewController, UITableViewDataSource, UITa
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<HealthyHabitRecItem> = HealthyHabitRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                healthyHabitsItemArray = try context.fetch(request)
-                for (_, element) in healthyHabitsItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
-                }
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                healthyHabitsItemArray = try context.fetch(request)
-                for (_, element) in healthyHabitsItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            healthyHabitsItemArray = try context.fetch(request)
+            for (_, element) in healthyHabitsItemArray.enumerated() {
+                if (element.timeMillis == timeMillis) {
+                    context.delete(element)
+                    saveContext()
+                    return
                 }
             }
         } catch {
@@ -245,21 +228,12 @@ class HealthyHabitsViewController: UIViewController, UITableViewDataSource, UITa
     
     func createHealthyHabitRecords() {
         for i in 0 ..< healthyHabitsArray.count {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                let plansRecItem = HealthyHabitRecItem(context: context)
-                plansRecItem.timeMillis = getCurrentMillis()
-                plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                plansRecItem.habit = healthyHabitsArray[i]
-                plansRecItem.completed = false
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                let plansRecItem = HealthyHabitRecItem()
-                plansRecItem.timeMillis = getCurrentMillis()
-                plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                plansRecItem.habit = healthyHabitsArray[i]
-                plansRecItem.completed = false
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let plansRecItem = HealthyHabitRecItem(context: context)
+            plansRecItem.timeMillis = getCurrentMillis()
+            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+            plansRecItem.habit = healthyHabitsArray[i]
+            plansRecItem.completed = false
             saveContext()
         }
     }
@@ -269,21 +243,12 @@ class HealthyHabitsViewController: UIViewController, UITableViewDataSource, UITa
             return
         }
         
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let plansRecItem = HealthyHabitRecItem(context: context)
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.habit = todoStr
-            plansRecItem.completed = false
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let plansRecItem = HealthyHabitRecItem()
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.habit = todoStr
-            plansRecItem.completed = false
-        }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let plansRecItem = HealthyHabitRecItem(context: context)
+        plansRecItem.timeMillis = getCurrentMillis()
+        plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+        plansRecItem.habit = todoStr
+        plansRecItem.completed = false
         saveContext()
 
         loadHealthyHabitRecords()
@@ -295,13 +260,8 @@ class HealthyHabitsViewController: UIViewController, UITableViewDataSource, UITa
         var updtItemArray = [HealthyHabitRecItem]()
         let request: NSFetchRequest<HealthyHabitRecItem> = HealthyHabitRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                updtItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                updtItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            updtItemArray = try context.fetch(request)
             
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
@@ -324,20 +284,11 @@ class HealthyHabitsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
 

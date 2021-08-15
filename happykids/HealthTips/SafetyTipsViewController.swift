@@ -166,13 +166,8 @@ class SafetyTipsViewController: UIViewController, UITableViewDataSource, UITable
         goalsTodoAllItemArray.removeAll()
         let request: NSFetchRequest<SafetyTipRecItem> = SafetyTipRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                goalsTodoAllItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                goalsTodoAllItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            goalsTodoAllItemArray = try context.fetch(request)
         } catch {
             print("Error in loading \(error)")
         }
@@ -180,19 +175,11 @@ class SafetyTipsViewController: UIViewController, UITableViewDataSource, UITable
     
     func createSafetyRecords() {
         for i in 0 ..< safetyTypeArray.count {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                let typeRecItem = SafetyTypeRecItem(context: context)
-                typeRecItem.timeMillis = getCurrentMillis()
-                typeRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                typeRecItem.safetyType = safetyTypeArray[i]
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                let typeRecItem = SafetyTypeRecItem()
-                typeRecItem.timeMillis = getCurrentMillis()
-                typeRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                typeRecItem.safetyType = safetyTypeArray[i]
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let typeRecItem = SafetyTypeRecItem(context: context)
+            typeRecItem.timeMillis = getCurrentMillis()
+            typeRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+            typeRecItem.safetyType = safetyTypeArray[i]
             saveContext()
         }
         createSafetyTipRecords(sTipArray: covidTipsArray, sType: safetyTypeArray[0])
@@ -202,23 +189,13 @@ class SafetyTipsViewController: UIViewController, UITableViewDataSource, UITable
     
     func createSafetyTipRecords(sTipArray: [String], sType: String) {
         for i in 0 ..< sTipArray.count {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                let tipRecItem = SafetyTipRecItem(context: context)
-                tipRecItem.timeMillis = getCurrentMillis()
-                tipRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                tipRecItem.safetyType = sType
-                tipRecItem.safetyTip = sTipArray[i]
-                tipRecItem.completed = false
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                let tipRecItem = SafetyTipRecItem()
-                tipRecItem.timeMillis = getCurrentMillis()
-                tipRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                tipRecItem.safetyType = sType
-                tipRecItem.safetyTip = sTipArray[i]
-                tipRecItem.completed = false
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let tipRecItem = SafetyTipRecItem(context: context)
+            tipRecItem.timeMillis = getCurrentMillis()
+            tipRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+            tipRecItem.safetyType = sType
+            tipRecItem.safetyTip = sTipArray[i]
+            tipRecItem.completed = false
             saveContext()
         }
     }
@@ -388,25 +365,13 @@ class SafetyTipsViewController: UIViewController, UITableViewDataSource, UITable
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<SafetyTipRecItem> = SafetyTipRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                goalsTodoAllItemArray = try context.fetch(request)
-                for (_, element) in goalsTodoAllItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
-                }
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                goalsTodoAllItemArray = try context.fetch(request)
-                for (_, element) in goalsTodoAllItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            goalsTodoAllItemArray = try context.fetch(request)
+            for (_, element) in goalsTodoAllItemArray.enumerated() {
+                if (element.timeMillis == timeMillis) {
+                    context.delete(element)
+                    saveContext()
+                    return
                 }
             }
         } catch {
@@ -419,19 +384,11 @@ class SafetyTipsViewController: UIViewController, UITableViewDataSource, UITable
             return
         }
         
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let plansRecItem = SafetyTypeRecItem(context: context)
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.safetyType = todoStr
-        } else {
-            _ = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let plansRecItem = SafetyTypeRecItem()
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.safetyType = todoStr
-        }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let plansRecItem = SafetyTypeRecItem(context: context)
+        plansRecItem.timeMillis = getCurrentMillis()
+        plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+        plansRecItem.safetyType = todoStr
         deedsList.append(todoStr)
         
         saveContext()
@@ -446,23 +403,13 @@ class SafetyTipsViewController: UIViewController, UITableViewDataSource, UITable
             return
         }
         
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let plansRecItem = SafetyTipRecItem(context: context)
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.safetyType = safetyType
-            plansRecItem.safetyTip = todoStr
-            plansRecItem.completed = false
-        } else {
-            _ = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let plansRecItem = SafetyTipRecItem()
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.safetyType = safetyType
-            plansRecItem.safetyTip = todoStr
-            plansRecItem.completed = false
-        }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let plansRecItem = SafetyTipRecItem(context: context)
+        plansRecItem.timeMillis = getCurrentMillis()
+        plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+        plansRecItem.safetyType = safetyType
+        plansRecItem.safetyTip = todoStr
+        plansRecItem.completed = false
         
         saveContext()
         
@@ -475,13 +422,8 @@ class SafetyTipsViewController: UIViewController, UITableViewDataSource, UITable
         var updtItemArray = [GoalPlanRecItem]()
         let request: NSFetchRequest<GoalPlanRecItem> = GoalPlanRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                updtItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                updtItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            updtItemArray = try context.fetch(request)
             
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
@@ -504,20 +446,11 @@ class SafetyTipsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
     

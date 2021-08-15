@@ -76,20 +76,11 @@ class GoalsViewController: UIViewController, UITableViewDataSource, UITableViewD
     func loadGoalsRecords() {
         goalsItemArray.removeAll()
         let request: NSFetchRequest<GoalsRecItem> = GoalsRecItem.fetchRequest()
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                goalsItemArray = try context.fetch(request)
-            } catch {
-                print("Error in loading \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                goalsItemArray = try context.fetch(request)
-            } catch {
-                print("Error in loading \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            goalsItemArray = try context.fetch(request)
+        } catch {
+            print("Error in loading \(error)")
         }
     }
     
@@ -175,52 +166,27 @@ class GoalsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<GoalsRecItem> = GoalsRecItem.fetchRequest()
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                goalsItemArray = try context.fetch(request)
-                for (_, element) in goalsItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            goalsItemArray = try context.fetch(request)
+            for (_, element) in goalsItemArray.enumerated() {
+                if (element.timeMillis == timeMillis) {
+                    context.delete(element)
+                    saveContext()
+                    return
                 }
-            } catch {
-                print("Error in loading \(error)")
             }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                goalsItemArray = try context.fetch(request)
-                for (_, element) in goalsItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
-                }
-            } catch {
-                print("Error in loading \(error)")
-            }
+        } catch {
+            print("Error in loading \(error)")
         }
     }
     
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
     

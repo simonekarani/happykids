@@ -61,86 +61,45 @@ class AspireInspireViewController: UIViewController {
         }
         
         recCreated = true
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let esteemRecItem = AspireRecItem(context: context)
-            esteemRecItem.timeMillis = getCurrentMillis()
-            esteemRecItem.date = Date().getFormattedDate(format: "MM/dd/yyyy")
-            esteemRecItem.aspireTo = inspireName.text
-            esteemRecItem.aspireReasons = inspireReasons.text
-            saveContext()
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let esteemRecItem = AspireRecItem()
-            esteemRecItem.timeMillis = getCurrentMillis()
-            esteemRecItem.date = Date().getFormattedDate(format: "MM/dd/yyyy")
-            esteemRecItem.aspireTo = inspireName.text
-            esteemRecItem.aspireReasons = inspireReasons.text
-            saveContext()
-        }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let esteemRecItem = AspireRecItem(context: context)
+        esteemRecItem.timeMillis = getCurrentMillis()
+        esteemRecItem.date = Date().getFormattedDate(format: "MM/dd/yyyy")
+        esteemRecItem.aspireTo = inspireName.text
+        esteemRecItem.aspireReasons = inspireReasons.text
+        saveContext()
     }
     
     func updateRecord() {
         var esteemItemArray = [AspireRecItem]()
         let request: NSFetchRequest<AspireRecItem> = AspireRecItem.fetchRequest()
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                esteemItemArray = try context.fetch(request)
-                var isFound: Bool = false
-                for (_, element) in esteemItemArray.enumerated() {
-                    if (element.timeMillis == editAspireRec.timeMillis) {
-                        element.aspireTo = inspireName.text
-                        element.aspireReasons = inspireReasons.text
-                        saveContext()
-                        isFound = true
-                        return
-                    }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            esteemItemArray = try context.fetch(request)
+            var isFound: Bool = false
+            for (_, element) in esteemItemArray.enumerated() {
+                if (element.timeMillis == editAspireRec.timeMillis) {
+                    element.aspireTo = inspireName.text
+                    element.aspireReasons = inspireReasons.text
+                    saveContext()
+                    isFound = true
+                    return
                 }
-                if !isFound {
-                    createRecord()
-                }
-            } catch {
-                print("Error in loading \(error)")
             }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                esteemItemArray = try context.fetch(request)
-                var isFound: Bool = false
-                for (_, element) in esteemItemArray.enumerated() {
-                    if (element.timeMillis == editAspireRec.timeMillis) {
-                        element.aspireTo = inspireName.text
-                        element.aspireReasons = inspireReasons.text
-                        saveContext()
-                        isFound = true
-                        return
-                    }
-                }
-                if !isFound {
-                    createRecord()
-                }
-            } catch {
-                print("Error in loading \(error)")
+            if !isFound {
+                createRecord()
             }
+        } catch {
+            print("Error in loading \(error)")
         }
     }
 
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
 

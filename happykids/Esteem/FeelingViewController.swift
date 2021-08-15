@@ -73,30 +73,16 @@ class FeelingViewController: UIViewController, UITableViewDataSource, UITableVie
         feelingItemArray.removeAll()
         let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
         
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                esteemItemArray = try context.fetch(request)
-                for (_, element) in esteemItemArray.enumerated() {
-                    if element.esteemType == EsteemType.FEELING.description {
-                        feelingItemArray.append(element)
-                    }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            esteemItemArray = try context.fetch(request)
+            for (_, element) in esteemItemArray.enumerated() {
+                if element.esteemType == EsteemType.FEELING.description {
+                    feelingItemArray.append(element)
                 }
-            } catch {
-                print("Error in loading \(error)")
             }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                esteemItemArray = try context.fetch(request)
-                for (_, element) in esteemItemArray.enumerated() {
-                    if element.esteemType == EsteemType.FEELING.description {
-                        feelingItemArray.append(element)
-                    }
-                }
-            } catch {
-                print("Error in loading \(error)")
-            }
+        } catch {
+            print("Error in loading \(error)")
         }
     }
     
@@ -182,52 +168,27 @@ class FeelingViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-           do {
-                esteemItemArray = try context.fetch(request)
-                for (_, element) in esteemItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+       do {
+            esteemItemArray = try context.fetch(request)
+            for (_, element) in esteemItemArray.enumerated() {
+                if (element.timeMillis == timeMillis) {
+                    context.delete(element)
+                    saveContext()
+                    return
                 }
-            } catch {
-                print("Error in loading \(error)")
             }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                 esteemItemArray = try context.fetch(request)
-                 for (_, element) in esteemItemArray.enumerated() {
-                     if (element.timeMillis == timeMillis) {
-                         context.delete(element)
-                         saveContext()
-                         return
-                     }
-                 }
-             } catch {
-                 print("Error in loading \(error)")
-             }
+        } catch {
+            print("Error in loading \(error)")
         }
     }
     
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
     

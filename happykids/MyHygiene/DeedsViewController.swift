@@ -102,9 +102,9 @@ class DeedsViewController: UIViewController, UITableViewDataSource, UITableViewD
         deedsTableView.dataSource = self
         
         // Set automatic dimensions for row height
-        deedsTableView.rowHeight = UITableView.automaticDimension
         deedsTableView.estimatedRowHeight = UITableView.automaticDimension
-        
+        deedsTableView.estimatedRowHeight = 600
+
         self.deedsTableView.register(UINib.init(nibName: "GoalPlanTableViewCell", bundle: .main), forCellReuseIdentifier: "GoalPlanTableViewCell")
         self.deedsTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
         
@@ -115,13 +115,8 @@ class DeedsViewController: UIViewController, UITableViewDataSource, UITableViewD
         goalsTodoAllItemArray.removeAll()
         let request: NSFetchRequest<DeedsRecItem> = DeedsRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                goalsTodoAllItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                goalsTodoAllItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            goalsTodoAllItemArray = try context.fetch(request)
         } catch {
             print("Error in loading \(error)")
         }
@@ -136,6 +131,7 @@ class DeedsViewController: UIViewController, UITableViewDataSource, UITableViewD
         if (goalsTodoAllItemArray.count == 0) {
             let cell: GoalPlanTableViewCell = deedsTableView.dequeueReusableCell(withIdentifier: "GoalPlanTableViewCell", for: indexPath) as! GoalPlanTableViewCell
             cell.configureCell(section: indexPath.section, lblText: getGoalTitle(section: indexPath.section))
+            cell.backgroundColor = UIColor(rgb: 0xc9c9cc)
             cell.addBtn.addTarget(self, action: #selector(onPlusClickedMapButton(_:)), for: .touchUpInside)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
@@ -145,6 +141,7 @@ class DeedsViewController: UIViewController, UITableViewDataSource, UITableViewD
             if indexPath.row == 0 {
                 let cell: GoalPlanTableViewCell = deedsTableView.dequeueReusableCell(withIdentifier: "GoalPlanTableViewCell", for: indexPath) as! GoalPlanTableViewCell
                 cell.configureCell(section: indexPath.section, lblText: getGoalTitle(section: indexPath.section))
+                cell.backgroundColor = UIColor(rgb: 0xc9c9cc)
                 cell.addBtn.addTarget(self, action: #selector(onPlusClickedMapButton(_:)), for: .touchUpInside)
                 cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 return cell
@@ -286,25 +283,13 @@ class DeedsViewController: UIViewController, UITableViewDataSource, UITableViewD
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<DeedsRecItem> = DeedsRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                goalsTodoAllItemArray = try context.fetch(request)
-                for (_, element) in goalsTodoAllItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
-                }
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                goalsTodoAllItemArray = try context.fetch(request)
-                for (_, element) in goalsTodoAllItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            goalsTodoAllItemArray = try context.fetch(request)
+            for (_, element) in goalsTodoAllItemArray.enumerated() {
+                if (element.timeMillis == timeMillis) {
+                    context.delete(element)
+                    saveContext()
+                    return
                 }
             }
         } catch {
@@ -317,19 +302,11 @@ class DeedsViewController: UIViewController, UITableViewDataSource, UITableViewD
             return
         }
         
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let plansRecItem = DeedsRecItem(context: context)
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.deedDetails = todoStr
-        } else {
-            _ = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let plansRecItem = DeedsRecItem()
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.deedDetails = todoStr
-        }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let plansRecItem = DeedsRecItem(context: context)
+        plansRecItem.timeMillis = getCurrentMillis()
+        plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+        plansRecItem.deedDetails = todoStr
         
         saveContext()
         
@@ -342,13 +319,8 @@ class DeedsViewController: UIViewController, UITableViewDataSource, UITableViewD
         var updtItemArray = [GoalPlanRecItem]()
         let request: NSFetchRequest<GoalPlanRecItem> = GoalPlanRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                updtItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                updtItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            updtItemArray = try context.fetch(request)
             
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
@@ -371,20 +343,11 @@ class DeedsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
     

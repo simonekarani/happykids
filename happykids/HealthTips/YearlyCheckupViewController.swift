@@ -61,8 +61,8 @@ class YearlyCheckupViewController: UIViewController, UITableViewDataSource, UITa
         yearlyCheckupTableView.dataSource = self
         
         // Set automatic dimensions for row height
-        yearlyCheckupTableView.rowHeight = 50
         yearlyCheckupTableView.estimatedRowHeight = UITableView.automaticDimension
+        yearlyCheckupTableView.estimatedRowHeight = 600
 
         
         self.yearlyCheckupTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
@@ -112,13 +112,8 @@ class YearlyCheckupViewController: UIViewController, UITableViewDataSource, UITa
         yearlyCheckItemArray.removeAll()
         do {
             let request: NSFetchRequest<YearlyCheckRecItem> = YearlyCheckRecItem.fetchRequest()
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                yearlyCheckItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                yearlyCheckItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            yearlyCheckItemArray = try context.fetch(request)
         } catch {
             print("Error in loading \(error)")
         }
@@ -208,25 +203,13 @@ class YearlyCheckupViewController: UIViewController, UITableViewDataSource, UITa
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<YearlyCheckRecItem> = YearlyCheckRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                yearlyCheckItemArray = try context.fetch(request)
-                for (_, element) in yearlyCheckItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
-                }
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                yearlyCheckItemArray = try context.fetch(request)
-                for (_, element) in yearlyCheckItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            yearlyCheckItemArray = try context.fetch(request)
+            for (_, element) in yearlyCheckItemArray.enumerated() {
+                if (element.timeMillis == timeMillis) {
+                    context.delete(element)
+                    saveContext()
+                    return
                 }
             }
         } catch {
@@ -236,21 +219,12 @@ class YearlyCheckupViewController: UIViewController, UITableViewDataSource, UITa
     
     func createYearlyCheckRecords() {
         for i in 0 ..< yearlyCheckArray.count {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                let plansRecItem = YearlyCheckRecItem(context: context)
-                plansRecItem.timeMillis = getCurrentMillis()
-                plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                plansRecItem.checkup = yearlyCheckArray[i]
-                plansRecItem.completed = false
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                let plansRecItem = YearlyCheckRecItem()
-                plansRecItem.timeMillis = getCurrentMillis()
-                plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                plansRecItem.checkup = yearlyCheckArray[i]
-                plansRecItem.completed = false
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let plansRecItem = YearlyCheckRecItem(context: context)
+            plansRecItem.timeMillis = getCurrentMillis()
+            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+            plansRecItem.checkup = yearlyCheckArray[i]
+            plansRecItem.completed = false
             saveContext()
         }
     }
@@ -260,21 +234,12 @@ class YearlyCheckupViewController: UIViewController, UITableViewDataSource, UITa
             return
         }
         
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let plansRecItem = YearlyCheckRecItem(context: context)
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.checkup = todoStr
-            plansRecItem.completed = false
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let plansRecItem = YearlyCheckRecItem()
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.checkup = todoStr
-            plansRecItem.completed = false
-        }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let plansRecItem = YearlyCheckRecItem(context: context)
+        plansRecItem.timeMillis = getCurrentMillis()
+        plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+        plansRecItem.checkup = todoStr
+        plansRecItem.completed = false
         saveContext()
 
         loadYearlyCheckRecords()
@@ -286,13 +251,8 @@ class YearlyCheckupViewController: UIViewController, UITableViewDataSource, UITa
         var updtItemArray = [YearlyCheckRecItem]()
         let request: NSFetchRequest<YearlyCheckRecItem> = YearlyCheckRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                updtItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                updtItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            updtItemArray = try context.fetch(request)
             
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
@@ -315,20 +275,11 @@ class YearlyCheckupViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
 

@@ -61,90 +61,47 @@ class LetterFriendViewController: UIViewController {
         }
         
         recCreated = true
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let esteemRecItem = EsteemRecItem(context: context)
-            esteemRecItem.esteemType = EsteemType.LETTER.description
-            esteemRecItem.feelingType = EsteemFeelingType.HAPPY.description
-            esteemRecItem.timeMillis = getCurrentMillis()
-            esteemRecItem.date = Date().getFormattedDate(format: "MM/dd/yyyy")
-            esteemRecItem.msgTitle = friendName.text
-            esteemRecItem.message = friendLetter.text
-            saveContext()
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let esteemRecItem = EsteemRecItem()
-            esteemRecItem.esteemType = EsteemType.LETTER.description
-            esteemRecItem.feelingType = EsteemFeelingType.HAPPY.description
-            esteemRecItem.timeMillis = getCurrentMillis()
-            esteemRecItem.date = Date().getFormattedDate(format: "MM/dd/yyyy")
-            esteemRecItem.msgTitle = friendName.text
-            esteemRecItem.message = friendLetter.text
-            saveContext()
-        }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let esteemRecItem = EsteemRecItem(context: context)
+        esteemRecItem.esteemType = EsteemType.LETTER.description
+        esteemRecItem.feelingType = EsteemFeelingType.HAPPY.description
+        esteemRecItem.timeMillis = getCurrentMillis()
+        esteemRecItem.date = Date().getFormattedDate(format: "MM/dd/yyyy")
+        esteemRecItem.msgTitle = friendName.text
+        esteemRecItem.message = friendLetter.text
+        saveContext()
     }
     
     func updateRecord() {
         var esteemItemArray = [EsteemRecItem]()
         let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                esteemItemArray = try context.fetch(request)
-                var isFound: Bool = false
-                for (_, element) in esteemItemArray.enumerated() {
-                    if (element.timeMillis == editEsteemRec.timeMillis) {
-                        element.msgTitle = friendName.text
-                        element.message = friendLetter.text
-                        saveContext()
-                        isFound = true
-                        return
-                    }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            esteemItemArray = try context.fetch(request)
+            var isFound: Bool = false
+            for (_, element) in esteemItemArray.enumerated() {
+                if (element.timeMillis == editEsteemRec.timeMillis) {
+                    element.msgTitle = friendName.text
+                    element.message = friendLetter.text
+                    saveContext()
+                    isFound = true
+                    return
                 }
-                if !isFound {
-                    createRecord()
-                }
-            } catch {
-                print("Error in loading \(error)")
             }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                esteemItemArray = try context.fetch(request)
-                var isFound: Bool = false
-                for (_, element) in esteemItemArray.enumerated() {
-                    if (element.timeMillis == editEsteemRec.timeMillis) {
-                        element.msgTitle = friendName.text
-                        element.message = friendLetter.text
-                        saveContext()
-                        isFound = true
-                        return
-                    }
-                }
-                if !isFound {
-                    createRecord()
-                }
-            } catch {
-                print("Error in loading \(error)")
+            if !isFound {
+                createRecord()
             }
+        } catch {
+            print("Error in loading \(error)")
         }
     }
 
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
 

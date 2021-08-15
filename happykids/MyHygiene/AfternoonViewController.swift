@@ -58,8 +58,8 @@ class AfternoonViewController: UIViewController, UITableViewDataSource, UITableV
         afternoonTableView.dataSource = self
         
         // Set automatic dimensions for row height
-        afternoonTableView.rowHeight = 50
         afternoonTableView.estimatedRowHeight = UITableView.automaticDimension
+        afternoonTableView.estimatedRowHeight = 600
 
         
         self.afternoonTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
@@ -109,13 +109,8 @@ class AfternoonViewController: UIViewController, UITableViewDataSource, UITableV
         afternoonItemArray.removeAll()
         do {
             let request: NSFetchRequest<AfternoonRecItem> = AfternoonRecItem.fetchRequest()
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                afternoonItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                afternoonItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            afternoonItemArray = try context.fetch(request)
         } catch {
             print("Error in loading \(error)")
         }
@@ -205,25 +200,13 @@ class AfternoonViewController: UIViewController, UITableViewDataSource, UITableV
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<AfternoonRecItem> = AfternoonRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                afternoonItemArray = try context.fetch(request)
-                for (_, element) in afternoonItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
-                }
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                afternoonItemArray = try context.fetch(request)
-                for (_, element) in afternoonItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            afternoonItemArray = try context.fetch(request)
+            for (_, element) in afternoonItemArray.enumerated() {
+                if (element.timeMillis == timeMillis) {
+                    context.delete(element)
+                    saveContext()
+                    return
                 }
             }
         } catch {
@@ -233,21 +216,12 @@ class AfternoonViewController: UIViewController, UITableViewDataSource, UITableV
     
     func createMorningRecords() {
         for i in 0 ..< afternoonRoutineArray.count {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                let plansRecItem = AfternoonRecItem(context: context)
-                plansRecItem.timeMillis = getCurrentMillis()
-                plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                plansRecItem.routine = afternoonRoutineArray[i]
-                plansRecItem.completed = false
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                let plansRecItem = AfternoonRecItem()
-                plansRecItem.timeMillis = getCurrentMillis()
-                plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-                plansRecItem.routine = afternoonRoutineArray[i]
-                plansRecItem.completed = false
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let plansRecItem = AfternoonRecItem(context: context)
+            plansRecItem.timeMillis = getCurrentMillis()
+            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+            plansRecItem.routine = afternoonRoutineArray[i]
+            plansRecItem.completed = false
             saveContext()
         }
     }
@@ -257,21 +231,12 @@ class AfternoonViewController: UIViewController, UITableViewDataSource, UITableV
             return
         }
         
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let plansRecItem = AfternoonRecItem(context: context)
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.routine = todoStr
-            plansRecItem.completed = false
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let plansRecItem = AfternoonRecItem()
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.routine = todoStr
-            plansRecItem.completed = false
-        }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let plansRecItem = AfternoonRecItem(context: context)
+        plansRecItem.timeMillis = getCurrentMillis()
+        plansRecItem.dateStr = Date().getFormattedDate(format: "MM/dd/yyyy")
+        plansRecItem.routine = todoStr
+        plansRecItem.completed = false
         saveContext()
 
         loadMorningRecords()
@@ -283,13 +248,8 @@ class AfternoonViewController: UIViewController, UITableViewDataSource, UITableV
         var updtItemArray = [AfternoonRecItem]()
         let request: NSFetchRequest<AfternoonRecItem> = AfternoonRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                updtItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                updtItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            updtItemArray = try context.fetch(request)
             
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
@@ -312,20 +272,11 @@ class AfternoonViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
 

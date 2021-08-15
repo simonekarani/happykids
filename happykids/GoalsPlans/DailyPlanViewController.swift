@@ -97,9 +97,9 @@ class DailyPlanViewController: UIViewController, UITableViewDataSource, UITableV
         dailyPlanTableView.dataSource = self
         
         // Set automatic dimensions for row height
-        dailyPlanTableView.rowHeight = UITableView.automaticDimension
         dailyPlanTableView.estimatedRowHeight = UITableView.automaticDimension
-        
+        dailyPlanTableView.estimatedRowHeight = 600
+
         self.dailyPlanTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
         
         dailyPlanTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -154,13 +154,8 @@ class DailyPlanViewController: UIViewController, UITableViewDataSource, UITableV
         dailyPlanItemArray.removeAll()
         let request: NSFetchRequest<DailyPlanRecItem> = DailyPlanRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                dailyTodoAllItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                dailyTodoAllItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            dailyTodoAllItemArray = try context.fetch(request)
             
             for (_, element) in dailyTodoAllItemArray.enumerated() {
                 if todoView == TodoViewType.TODO_ALL {
@@ -265,25 +260,13 @@ class DailyPlanViewController: UIViewController, UITableViewDataSource, UITableV
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<DailyPlanRecItem> = DailyPlanRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                dailyPlanItemArray = try context.fetch(request)
-                for (_, element) in dailyPlanItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
-                }
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                dailyPlanItemArray = try context.fetch(request)
-                for (_, element) in dailyPlanItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            dailyPlanItemArray = try context.fetch(request)
+            for (_, element) in dailyPlanItemArray.enumerated() {
+                if (element.timeMillis == timeMillis) {
+                    context.delete(element)
+                    saveContext()
+                    return
                 }
             }
         } catch {
@@ -296,21 +279,12 @@ class DailyPlanViewController: UIViewController, UITableViewDataSource, UITableV
             return
         }
         
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let plansRecItem = DailyPlanRecItem(context: context)
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.startDate = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.taskDetails = todoStr
-            plansRecItem.completed = false
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let plansRecItem = DailyPlanRecItem()
-            plansRecItem.timeMillis = getCurrentMillis()
-            plansRecItem.startDate = Date().getFormattedDate(format: "MM/dd/yyyy")
-            plansRecItem.taskDetails = todoStr
-            plansRecItem.completed = false
-        }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let plansRecItem = DailyPlanRecItem(context: context)
+        plansRecItem.timeMillis = getCurrentMillis()
+        plansRecItem.startDate = Date().getFormattedDate(format: "MM/dd/yyyy")
+        plansRecItem.taskDetails = todoStr
+        plansRecItem.completed = false
         saveContext()
 
         loadDailyPlanRecords()
@@ -322,13 +296,8 @@ class DailyPlanViewController: UIViewController, UITableViewDataSource, UITableV
         var updtItemArray = [DailyPlanRecItem]()
         let request: NSFetchRequest<DailyPlanRecItem> = DailyPlanRecItem.fetchRequest()
         do {
-            if #available(iOS 10.0, *) {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                updtItemArray = try context.fetch(request)
-            } else {
-                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-                updtItemArray = try context.fetch(request)
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            updtItemArray = try context.fetch(request)
             
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
@@ -351,20 +320,11 @@ class DailyPlanViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
 

@@ -77,28 +77,15 @@ class AspireListViewController: UIViewController, UITableViewDataSource, UITable
         letterItemArray.removeAll()
         let request: NSFetchRequest<AspireRecItem> = AspireRecItem.fetchRequest()
         
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            
-            do {
-                aspireItemArray = try context.fetch(request)
-                for (_, element) in aspireItemArray.enumerated() {
-                    letterItemArray.append(element)
-                }
-            } catch {
-                print("Error in loading \(error)")
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        do {
+            aspireItemArray = try context.fetch(request)
+            for (_, element) in aspireItemArray.enumerated() {
+                letterItemArray.append(element)
             }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            
-            do {
-                aspireItemArray = try context.fetch(request)
-                for (_, element) in aspireItemArray.enumerated() {
-                    letterItemArray.append(element)
-                }
-            } catch {
-                print("Error in loading \(error)")
-            }
+        } catch {
+            print("Error in loading \(error)")
         }
     }
     
@@ -184,53 +171,28 @@ class AspireListViewController: UIViewController, UITableViewDataSource, UITable
     
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<AspireRecItem> = AspireRecItem.fetchRequest()
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            
-            do {
-                aspireItemArray = try context.fetch(request)
-                for (_, element) in aspireItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        do {
+            aspireItemArray = try context.fetch(request)
+            for (_, element) in aspireItemArray.enumerated() {
+                if (element.timeMillis == timeMillis) {
+                    context.delete(element)
+                    saveContext()
+                    return
                 }
-            } catch {
-                print("Error in loading \(error)")
             }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                aspireItemArray = try context.fetch(request)
-                for (_, element) in aspireItemArray.enumerated() {
-                    if (element.timeMillis == timeMillis) {
-                        context.delete(element)
-                        saveContext()
-                        return
-                    }
-                }
-            } catch {
-                print("Error in loading \(error)")
-            }
+        } catch {
+            print("Error in loading \(error)")
         }
     }
     
     func saveContext() {
-        if #available(iOS 10.0, *) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
-        } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context \(error)")
-            }
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
     
