@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "meh-1.png",
+      "filename" : "meh.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "meh-1@2x.png",
+      "filename" : "meh@2x.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "meh-1@3x.png",
+      "filename" : "meh@3x.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

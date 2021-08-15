@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: UICollectionViewController {
 
-    let frontLabelArray = ["Self-Esteem", "Goals & Plans", "Health Resources",
+    let frontLabelArray = ["Self-Esteem", "Goals & Plans", "Health Programs",
                            "Health Tips", "My Hygiene",  "Resources"]
     let frontImageArray = [
         UIImage(named: "esteem"),

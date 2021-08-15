@@ -153,9 +153,9 @@ class SafetyTipsViewController: UIViewController, UITableViewDataSource, UITable
         safetyTipsTableView.dataSource = self
         
         // Set automatic dimensions for row height
-        safetyTipsTableView.rowHeight = UITableView.automaticDimension
         safetyTipsTableView.estimatedRowHeight = UITableView.automaticDimension
-        
+        safetyTipsTableView.estimatedRowHeight = 600
+
         self.safetyTipsTableView.register(UINib.init(nibName: "GoalPlanTableViewCell", bundle: .main), forCellReuseIdentifier: "GoalPlanTableViewCell")
         self.safetyTipsTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
         

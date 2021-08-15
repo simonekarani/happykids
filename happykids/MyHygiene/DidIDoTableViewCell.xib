@@ -34,8 +34,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9X-AI-r2e">
-                        <rect key="frame" x="160" y="30" width="260" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <rect key="frame" x="165" y="28.5" width="255" height="27.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -43,7 +43,7 @@
                 <constraints>
                     <constraint firstItem="a9X-AI-r2e" firstAttribute="centerY" secondItem="1qB-dd-Je5" secondAttribute="centerY" id="21X-6I-C8n"/>
                     <constraint firstItem="58F-Yo-rT5" firstAttribute="centerY" secondItem="1qB-dd-Je5" secondAttribute="centerY" id="BrC-3z-Hfn"/>
-                    <constraint firstItem="a9X-AI-r2e" firstAttribute="leading" secondItem="58F-Yo-rT5" secondAttribute="trailing" constant="15" id="IIs-xE-uO1"/>
+                    <constraint firstItem="a9X-AI-r2e" firstAttribute="leading" secondItem="58F-Yo-rT5" secondAttribute="trailing" constant="20" id="IIs-xE-uO1"/>
                     <constraint firstAttribute="trailing" secondItem="a9X-AI-r2e" secondAttribute="trailing" constant="10" id="NrA-P8-fpE"/>
                     <constraint firstItem="BlF-d1-fxh" firstAttribute="leading" secondItem="1qB-dd-Je5" secondAttribute="leading" constant="20" id="S1y-KS-jKc"/>
                     <constraint firstItem="BlF-d1-fxh" firstAttribute="centerY" secondItem="1qB-dd-Je5" secondAttribute="centerY" id="coV-CZ-eS9"/>

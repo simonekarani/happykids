@@ -72,7 +72,7 @@ class HealthQuotesData {
         healthQuoteList.append(MoralQuote(quoteId: 53, quote: "You don’t have to control your thoughts. You just have to stop letting them control you.", author: "Dan Millman"))
         healthQuoteList.append(MoralQuote(quoteId: 54, quote: "It is during our darkest moments that we must focus to see the light.", author: "Aristotle"))
         healthQuoteList.append(MoralQuote(quoteId: 55, quote: "I am bent, but not broken. I am scarred, but not disfigured. I am sad, but not hopeless. I am tired, but not powerless. I am angry, but not bitter. I am depressed, but not giving up.", author: "Unknown"))
-        healthQuoteList.append(MoralQuote(quoteId: 56, quote: "ust when the caterpillar thought the world was ending, he turned into a butterfly.", author: "Anonymous proverb"))
+        healthQuoteList.append(MoralQuote(quoteId: 56, quote: "Just when the caterpillar thought the world was ending, he turned into a butterfly.", author: "Anonymous proverb"))
         healthQuoteList.append(MoralQuote(quoteId: 57, quote: "If you can’t fly, run. If you can’t run, walk. If you can’t walk, crawl, but by all means, keep moving.", author: "Martin Luther King, Jr."))
         healthQuoteList.append(MoralQuote(quoteId: 58, quote: "Happiness can be found even in the darkest of times, if one only remembers to turn on the light.", author: "Albus Dumbledore from Harry Potter"))
         healthQuoteList.append(MoralQuote(quoteId: 59, quote: "Mental health… is not a destination but a process. It’s about how you drive, not where you’re going.", author: "Noam Shpancer"))

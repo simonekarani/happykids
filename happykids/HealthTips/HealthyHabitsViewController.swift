@@ -70,8 +70,8 @@ class HealthyHabitsViewController: UIViewController, UITableViewDataSource, UITa
         healthyHabitsTableView.dataSource = self
         
         // Set automatic dimensions for row height
-        healthyHabitsTableView.rowHeight = 50
         healthyHabitsTableView.estimatedRowHeight = UITableView.automaticDimension
+        healthyHabitsTableView.estimatedRowHeight = 600
 
         
         self.healthyHabitsTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
