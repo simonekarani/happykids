@@ -10,6 +10,17 @@ import UIKit
 
 class MainViewController: UICollectionViewController {
 
+    let userLicenseAgreement  = """
+                                    
+                                    Healthier Kids, is an application for helping kids manage stress, wellbeing, and have a healthy lifestyle. The application provides tested methodologies for kids to maintain stress free lifestyle. The application is built for the Healthier Kids Foundation (HKF).
+                                    
+                                    HKF's mission is to remove barriers impacting the health, learning and life success of Silicon Valley youth.
+                                    
+                                    The application has been built by Simone Karani, a Saratoga High School student residing in Saratoga, CA in US.
+                                    
+                                    NOTE: The application does not solve mental health or emotional stress problems. For problems related to mental health, refer to \"Resources\" section in the application, and consult a medical professional.
+                                    """
+    
     let frontLabelArray = ["Self-Esteem", "Goals & Plans", "Health Programs",
                            "Health Tips", "My Hygiene",  "Resources"]
     let frontImageArray = [
@@ -43,6 +54,13 @@ class MainViewController: UICollectionViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let hasAlreadyLaunched :Bool = UserDefaults.standard.bool(forKey: "hasAlreadyLaunched")
+        if hasAlreadyLaunched {
+            displayLicenAgreement(message: self.userLicenseAgreement)
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -83,7 +101,30 @@ class MainViewController: UICollectionViewController {
         }
     }
     
-    
+    func displayLicenAgreement(message:String){
+        
+        //create alert
+        let alert = UIAlertController(title: "License Agreement", message: message, preferredStyle: .alert)
+        
+        //create Decline button
+        /*let declineAction = UIAlertAction(title: "Decline" , style: .destructive){ (action) -> Void in
+            //DECLINE LOGIC GOES HERE
+            
+        }*/
+        
+        //create Accept button
+        let acceptAction = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
+            UserDefaults.standard.set(false, forKey: "hasAlreadyLaunched")
+        }
+        
+        //add task to tableview buttons
+        //alert.addAction(declineAction)
+        alert.addAction(acceptAction)
+        
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+
     @IBAction func backFromUnwind(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
     }

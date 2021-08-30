@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "dental-first.png",
+      "filename" : "myfirsttooth.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "dental-first@2x.png",
+      "filename" : "myfirsttooth@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "dental-first@3x.png",
+      "filename" : "myfirsttooth@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -13,10 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var modelName: String = "happykidsModel"
+    var hasAlreadyLaunched :Bool!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //retrieve value from local store, if value doesn't exist then false is returned
+        hasAlreadyLaunched = UserDefaults.standard.bool(forKey: "hasAlreadyLaunched")
+        
+        //check first launched
+        if (hasAlreadyLaunched != false) {
+            UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
+        }
+        
         return true
     }
 
