@@ -149,13 +149,13 @@ class DeedsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 let cell: DailyTodoTableViewCell = deedsTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
                 let yearlyItem: DeedsRecItem = getRecord(actionForRowAt: indexPath)!
                 cell.configureCell(recItem: yearlyItem)
-                cell.todoBtn.addTarget(self, action: #selector(DailyPlanViewController.onClickedMapButton(_:)), for: .touchUpInside)
+                cell.todoBtn.addTarget(self, action: #selector(onClickedMapButton(_:)), for: .touchUpInside)
                 return cell
             }
         }
         else {
             let cell: DailyTodoTableViewCell = deedsTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
-            cell.todoBtn.addTarget(self, action: #selector(DailyPlanViewController.onClickedMapButton(_:)), for: .touchUpInside)
+            cell.todoBtn.addTarget(self, action: #selector(onClickedMapButton(_:)), for: .touchUpInside)
             return cell
         }
     }
